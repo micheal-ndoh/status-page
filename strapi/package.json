@@ -4,9 +4,10 @@
   "version": "0.1.0",
   "description": "A Strapi application for status page CMS",
   "scripts": {
+    "setup": "node scripts/setup.js",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "node scripts/build.js",
     "strapi": "strapi"
   },
   "dependencies": {
@@ -14,6 +15,10 @@
     "@strapi/plugin-users-permissions": "4.15.0",
     "@strapi/plugin-i18n": "4.15.0",
     "better-sqlite3": "8.6.0"
+  },
+  "devDependencies": {
+    "@strapi/typescript-utils": "4.15.0",
+    "typescript": "5.0.4"
   },
   "author": {
     "name": "A Strapi developer"

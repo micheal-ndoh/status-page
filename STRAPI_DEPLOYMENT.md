@@ -16,7 +16,7 @@ This guide shows you how to deploy the Strapi CMS from your main project reposit
    - **Region**: Choose closest to you
    - **Branch**: `main`
    - **Root Directory**: `strapi` ⭐ **Important!**
-   - **Build Command**: `npm install && npm run build`
+   - **Build Command**: `npm install && node scripts/build.js`
    - **Start Command**: `npm start`
    - **Plan**: `Free`
 
