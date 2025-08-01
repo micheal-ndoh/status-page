@@ -28,6 +28,7 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import StatusLoading from "@/components/StatusLoading";
 import {
   SunIcon,
   MoonIcon,
@@ -64,17 +65,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }, [session, status, router]);
 
   if (status === "loading") {
-    return (
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        minH="100vh"
-        bg={bgColor}
-      >
-        <Text>Loading...</Text>
-      </Box>
-    );
+    return <StatusLoading variant="dashboard" />;
   }
 
   if (!session) {

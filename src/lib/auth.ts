@@ -34,6 +34,13 @@ export const authOptions: NextAuthOptions = {
             }
             return token
         },
+        async redirect({ url, baseUrl }) {
+            // Redirect to dashboard after successful sign in
+            if (url.startsWith(baseUrl)) {
+                return `${baseUrl}/dashboard`
+            }
+            return baseUrl
+        },
     },
     pages: {
         signIn: '/auth/signin',
