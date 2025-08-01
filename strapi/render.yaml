@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: strapi-cms
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    rootDir: strapi
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_CLIENT
+        value: sqlite
+      - key: DATABASE_FILENAME
+        value: .tmp/data.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: APP_KEYS
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: TRANSFER_TOKEN_SALT
+        generateValue: true 
