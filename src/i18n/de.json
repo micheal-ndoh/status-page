@@ -1,0 +1,450 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "update": "Aktualisieren",
+    "submit": "Absenden",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "search": "Suchen",
+    "filter": "Filter",
+    "sort": "Sortieren",
+    "refresh": "Aktualisieren",
+    "retry": "Wiederholen",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "ok": "OK",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "description": "Beschreibung",
+    "status": "Status",
+    "date": "Datum",
+    "time": "Zeit",
+    "actions": "Aktionen",
+    "details": "Details",
+    "settings": "Einstellungen",
+    "profile": "Profil",
+    "logout": "Abmelden",
+    "theme": "Theme",
+    "dark": "Dunkel",
+    "light": "Hell",
+    "auto": "Auto",
+    "backToHome": "Zurück zur Startseite",
+    "login": "Anmelden",
+    "signup": "Registrieren"
+  },
+  "navigation": {
+    "product": "Produkt",
+    "customers": "Kunden",
+    "integrations": "Integrationen",
+    "pricing": "Preise",
+    "dashboard": "Dashboard",
+    "services": "Services",
+    "incidents": "Vorfälle",
+    "activity": "Aktivität",
+    "stats": "Statistiken",
+    "home": "Startseite",
+    "menu": "Menü",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "profile": "Profil",
+    "user": "Benutzer"
+  },
+  "homepage": {
+    "hero": {
+      "title": "ÜBERWACHE ALLES",
+      "subtitle": "Echtzeit-Überwachung mit intelligenter Erkennung und sofortigen Warnungen"
+    },
+    "features": {
+      "title": "Alles was Sie brauchen, um Ihre Services zu überwachen",
+      "subtitle": "Leistungsstarke Funktionen, um Ihre Services reibungslos laufen zu lassen",
+      "monitorEverything": {
+        "title": "Überwachen Sie alles",
+        "description": "Überprüfen Sie alle Ihre Services und verfolgen Sie Verfügbarkeit und Leistung mit Echtzeit-Warnungen über alle Kanäle."
+      },
+      "fixIncidents": {
+        "title": "Beheben Sie Vorfälle mit Ihrem Team",
+        "description": "Integrieren Sie sich mit Tools, die Sie bereits verwenden, und arbeiten Sie mit Ihrem Team an Vorfällen von Slack & Teams."
+      },
+      "publishStatus": {
+        "title": "Veröffentlichen Sie auf der Statusseite",
+        "description": "Machen Sie es zu Ihrem, machen Sie es privat oder teilen Sie es mit der Welt! Veröffentlichen Sie Updates auf Ihrer benutzerdefinierten Statusseite."
+      },
+      "realTimeAlerts": {
+        "title": "Echtzeit-Warnungen",
+        "description": "Erhalten Sie sofortige Benachrichtigungen bei Problemen. Verpassen Sie nie einen kritischen Vorfall mit unserem intelligenten Warnsystem."
+      },
+      "easyIntegrations": {
+        "title": "Einfache Integrationen",
+        "description": "Verbinden Sie sich mit Ihren bestehenden Tools und Workflows. Wir integrieren uns mit allen wichtigen Plattformen und Services."
+      },
+      "continuousMonitoring": {
+        "title": "24/7 Überwachung",
+        "description": "Kontinuierliche Überwachung stellt sicher, dass Sie Probleme erkennen, bevor sie Ihre Benutzer beeinträchtigen. Seien Sie immer einen Schritt voraus."
+      }
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Willkommen bei Prism! ✨",
+      "subtitle": "Melden Sie sich an, um auf Ihr Dashboard zuzugreifen und Ihre Services zu verwalten",
+      "features": [
+        "Sichere E-Mail-basierte Authentifizierung",
+        "Sofortiger Zugriff auf Ihr Dashboard"
+      ],
+      "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+      "submitButton": "Anmelden",
+      "noAccount": "Haben Sie kein Konto?",
+      "signupLink": "Registrieren",
+      "forgotPassword": "Passwort vergessen?",
+      "emailSent": "E-Mail überprüfen",
+      "emailSentMessage": "Wir haben Ihnen einen Magic Link gesendet, um sich in Ihr Konto einzuloggen.",
+      "secureAuth": "Sichere passwortlose Authentifizierung",
+      "instantAccess": "Sofortiger Zugriff auf Ihr Dashboard"
+    },
+    "signout": {
+      "title": "Abmelden",
+      "confirmation": "Sind Sie sicher, dass Sie sich abmelden möchten? Sie müssen sich erneut anmelden, um auf Ihr Dashboard zuzugreifen.",
+      "signingOut": "Abmeldung läuft...",
+      "signedOut": "Erfolgreich abgemeldet!",
+      "signingOutMessage": "Bitte warten Sie, während wir Sie sicher abmelden.",
+      "signedOutMessage": "Sie wurden erfolgreich abgemeldet. Weiterleitung zur Startseite...",
+      "goHomeButton": "Zur Startseite"
+    },
+    "verifyRequest": {
+      "title": "Überprüfen Sie Ihre E-Mail",
+      "subtitle": "Ein Anmeldelink wurde an Ihre E-Mail-Adresse gesendet.",
+      "message": "Falls Sie ihn nicht sehen, überprüfen Sie Ihren Spam-Ordner.",
+      "resendButton": "E-Mail erneut senden",
+      "backToSignin": "Zurück zur Anmeldung",
+      "sending": "Magic Link wird gesendet...",
+      "preparing": "Ihr sicherer Authentifizierungslink wird vorbereitet. Das dauert nur einen Moment.",
+      "magicLinkSent": "Magic Link gesendet! ✨",
+      "magicLinkDescription": "Wir haben Ihnen einen sicheren Magic Link an Ihre E-Mail-Adresse gesendet. Klicken Sie auf den Link, um sich sofort in Ihr Prism-Dashboard einzuloggen.",
+      "noPassword": "Kein Passwort erforderlich",
+      "expiresIn": "Link läuft in 24 Stunden ab",
+      "instantAccess": "Sofortiger Zugriff auf das Dashboard",
+      "backToSignIn": "Zurück zur Anmeldung",
+      "didntReceive": "E-Mail nicht erhalten?",
+      "resendEmail": "E-Mail erneut senden",
+      "backToHomepage": "Zurück zur Startseite"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Willkommen zurück",
+    "overview": "Übersicht",
+    "quickActions": "Schnellaktionen",
+    "recentActivity": "Letzte Aktivität",
+    "systemStatus": "Systemstatus",
+    "uptime": "Betriebszeit",
+    "responseTime": "Antwortzeit",
+    "incidents": "Vorfälle",
+    "services": "Services",
+    "alerts": "Warnungen",
+    "notifications": "Benachrichtigungen",
+    "stats": {
+      "totalServices": "Gesamte Services",
+      "operationalServices": "Betriebsbereit",
+      "degradedServices": "Beeinträchtigt",
+      "outageServices": "Ausfall",
+      "totalIncidents": "Gesamte Vorfälle",
+      "resolvedIncidents": "Gelöst",
+      "openIncidents": "Offen",
+      "uptime": "Betriebszeit",
+      "responseTime": "Antwortzeit",
+      "ofServices": "der Services",
+      "ofTotal": "des Gesamten",
+      "activeIncidents": "Aktive Vorfälle"
+    },
+    "activity": {
+      "title": "Letzte Aktivität",
+      "noActivity": "Keine letzte Aktivität",
+      "serviceCreated": "Service erstellt",
+      "serviceUpdated": "Service aktualisiert",
+      "serviceDeleted": "Service gelöscht",
+      "incidentCreated": "Vorfall erstellt",
+      "incidentUpdated": "Vorfall aktualisiert",
+      "incidentResolved": "Vorfall gelöst",
+      "statusChanged": "Status geändert"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "addService": "Service hinzufügen",
+    "editService": "Service bearbeiten",
+    "deleteService": "Service löschen",
+    "serviceName": "Service-Name",
+    "serviceDescription": "Service-Beschreibung",
+    "serviceUrl": "Service-URL",
+    "serviceLogo": "Service-Logo",
+    "serviceStatus": "Service-Status",
+    "operational": "Betriebsbereit",
+    "degraded": "Beeinträchtigt",
+    "outage": "Ausfall",
+    "uptime": "Betriebszeit",
+    "responseTime": "Antwortzeit",
+    "lastChecked": "Zuletzt überprüft",
+    "createdAt": "Erstellt",
+    "updatedAt": "Aktualisiert",
+    "actions": "Aktionen",
+    "noServices": "Keine Services gefunden",
+    "loadingServices": "Services werden geladen...",
+    "errorLoadingServices": "Fehler beim Laden der Services",
+    "serviceCreated": "Service erfolgreich erstellt",
+    "serviceUpdated": "Service erfolgreich aktualisiert",
+    "serviceDeleted": "Service erfolgreich gelöscht",
+    "confirmDelete": "Sind Sie sicher, dass Sie diesen Service löschen möchten?",
+    "manageServices": "Verwalten Sie Ihre Services und ihren Status",
+    "service": "Service",
+    "noUrl": "Keine URL"
+  },
+  "incidents": {
+    "title": "Vorfälle",
+    "addIncident": "Vorfall hinzufügen",
+    "editIncident": "Vorfall bearbeiten",
+    "deleteIncident": "Vorfall löschen",
+    "incidentTitle": "Vorfall-Titel",
+    "incidentDescription": "Vorfall-Beschreibung",
+    "incidentStatus": "Vorfall-Status",
+    "incidentSeverity": "Vorfall-Schweregrad",
+    "affectedServices": "Betroffene Services",
+    "author": "Autor",
+    "createdAt": "Erstellt",
+    "updatedAt": "Aktualisiert",
+    "resolvedAt": "Gelöst",
+    "investigating": "Untersuchung läuft",
+    "identified": "Identifiziert",
+    "monitoring": "Überwachung",
+    "resolved": "Gelöst",
+    "minor": "Gering",
+    "major": "Erheblich",
+    "critical": "Kritisch",
+    "noIncidents": "Keine Vorfälle",
+    "loadingIncidents": "Vorfälle werden geladen...",
+    "errorLoadingIncidents": "Fehler beim Laden der Vorfälle",
+    "incidentCreated": "Vorfall erfolgreich erstellt",
+    "incidentUpdated": "Vorfall erfolgreich aktualisiert",
+    "incidentDeleted": "Vorfall erfolgreich gelöscht",
+    "confirmDelete": "Sind Sie sicher, dass Sie diesen Vorfall löschen möchten?",
+    "manageIncidents": "Verwalten und verfolgen Sie Service-Vorfälle"
+  },
+  "status": {
+    "title": "Status",
+    "overallStatus": "Gesamtstatus",
+    "allSystemsOperational": "Alle Systeme betriebsbereit",
+    "partialSystemOutage": "Teilweiser Systemausfall",
+    "majorOutage": "Hauptausfall",
+    "degradedPerformance": "Beeinträchtigte Leistung",
+    "operational": "Betriebsbereit",
+    "degraded": "Beeinträchtigt",
+    "outage": "Ausfall",
+    "uptime": "Betriebszeit",
+    "responseTime": "Antwortzeit",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "incidentHistory": "Vorfall-Historie",
+    "noIncidents": "Keine Vorfälle",
+    "subscribe": "Abonnieren",
+    "unsubscribe": "Abbestellen",
+    "emailPlaceholder": "Ihre E-Mail-Adresse",
+    "subscribeButton": "Updates abonnieren",
+    "unsubscribeButton": "Abbestellen",
+    "subscribed": "Abonniert",
+    "unsubscribed": "Abbestellt",
+    "subscriptionError": "Abonnement-Fehler",
+    "loadingStatus": "Status wird geladen...",
+    "services": "Services",
+    "recentIncidents": "Letzte Vorfälle",
+    "created": "Erstellt",
+    "updated": "Aktualisiert",
+    "needToManage": "Muss verwalten?",
+    "accessDashboard": "Dashboard aufrufen",
+    "copyright": "© 2024 Prism. Alle Rechte vorbehalten.",
+    "degradedPerformance": "Beeinträchtigte Leistung",
+    "majorOutage": "Hauptausfall",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "recentIncidents": "Letzte Vorfälle"
+  },
+  "game": {
+    "startGame": "Spiel starten",
+    "pauseGame": "Spiel pausieren",
+    "reset": "Zurücksetzen",
+    "uptime": "Betriebszeit",
+    "fixService": "Service reparieren",
+    "howToPlay": "Wie man spielt",
+    "instruction1": "Klicken Sie auf \"Spiel starten\", um mit der Überwachung zu beginnen",
+    "instruction2": "Services werden zufällig Probleme haben",
+    "instruction3": "Klicken Sie auf \"Service reparieren\", um Vorfälle zu lösen",
+    "instruction4": "Verdienen Sie Punkte für jeden Service, den Sie reparieren",
+    "instruction5": "Versuchen Sie, die höchste Betriebszeit zu erreichen!",
+    "preview": {
+      "title": "Probieren Sie unser Status-Überwachungsspiel",
+      "subtitle": "Erleben Sie Echtzeit-Überwachung in Aktion mit unserem interaktiven Spiel",
+      "gameTitle": "Status-Überwachungsspiel",
+      "gameDescription": "Überwachen Sie Services und beheben Sie Vorfälle",
+      "live": "LIVE",
+      "services": "Aktive Services",
+      "score": "Punktzahl",
+      "time": "Zeit",
+      "incidents": "Vorfälle",
+      "playNow": "Jetzt spielen",
+      "freeToPlay": "Kostenlos spielbar - Keine Registrierung erforderlich"
+    }
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "Wählen Sie den Plan, der für Ihr Team richtig ist",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "save25": "25% sparen",
+    "starter": {
+      "name": "Starter",
+      "price": "9€",
+      "period": "/Monat",
+      "description": "Perfekt für kleine Teams und Startups",
+      "features": [
+        "Bis zu 5 Services",
+        "Grundlegende Überwachung",
+        "E-Mail-Benachrichtigungen",
+        "Statusseite",
+        "Grundlegende Integrationen"
+      ],
+      "cta": "Loslegen"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "29€",
+      "period": "/Monat",
+      "description": "Am besten für wachsende Unternehmen",
+      "features": [
+        "Bis zu 25 Services",
+        "Erweiterte Überwachung",
+        "Slack & Teams Integration",
+        "Benutzerdefinierte Statusseite",
+        "Prioritäts-Support",
+        "Erweiterte Analysen"
+      ],
+      "cta": "Kostenlose Testversion starten",
+      "popular": "Am beliebtesten"
+    },
+    "business": {
+      "name": "Business",
+      "price": "99€",
+      "period": "/Monat",
+      "description": "Für Enterprise-Teams",
+      "features": [
+        "Unbegrenzte Services",
+        "Enterprise-Überwachung",
+        "Benutzerdefinierte Integrationen",
+        "White-Label Statusseite",
+        "24/7 Support",
+        "Erweiterte Berichte"
+      ],
+      "cta": "Vertrieb kontaktieren"
+    }
+  },
+  "customers": {
+    "title": "Vertraut von Teams weltweit",
+    "subtitle": "Sehen Sie, wie Unternehmen Prism verwenden, um ihre Services reibungslos laufen zu lassen",
+    "testimonials": {
+      "title": "Was unsere Kunden sagen",
+      "subtitle": "Echte Erfahrungen von echten Teams"
+    },
+    "cta": {
+      "title": "Bereit, loszulegen?",
+      "subtitle": "Schließen Sie sich Tausenden von Teams an, die Prism vertrauen",
+      "button": "Kostenlos starten"
+    }
+  },
+  "integrations": {
+    "title": "Integrationen",
+    "subtitle": "Verbinden Sie Ihre Lieblingstools",
+    "hero": {
+      "title": "Verbinden Sie alles",
+      "subtitle": "Integrieren Sie sich mit den Tools, die Sie bereits verwenden"
+    },
+    "grid": {
+      "title": "Beliebte Integrationen",
+      "subtitle": "Verbinden Sie sich mit über 100+ Tools und Services"
+    },
+    "createIncident": {
+      "title": "Neuen Vorfall erstellen",
+      "description": "Erstellen Sie schnell einen neuen Vorfall über die API"
+    }
+  },
+  "product": {
+    "hero": {
+      "title": "Intelligente Überwachung",
+      "subtitle": "Überwachen Sie alles mit Präzision und Stil. Echtzeit-Warnungen, schöne Dashboards und intelligente Erkennung, die Ihre Services reibungslos laufen lässt.",
+      "primaryCta": "Kostenlose Testversion starten",
+      "secondaryCta": "Demo ansehen"
+    },
+    "features": {
+      "title": "Leistungsstarke Funktionen",
+      "subtitle": "Alles was Sie brauchen, um Ihre Services effektiv zu überwachen"
+    },
+    "demo": {
+      "title": "Live-Demo",
+      "subtitle": "Sehen Sie Prism in Aktion"
+    },
+    "cta": {
+      "title": "Bereit zu starten?",
+      "subtitle": "Starten Sie noch heute mit der Überwachung Ihrer Services",
+      "button": "Kostenlos starten"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Seite nicht gefunden",
+      "message": "Die gesuchte Seite existiert nicht",
+      "goBack": "Zurück",
+      "goHome": "Startseite"
+    },
+    "500": {
+      "title": "Serverfehler",
+      "message": "Ein Fehler ist auf dem Server aufgetreten",
+      "retry": "Wiederholen"
+    },
+    "unauthorized": {
+      "title": "Nicht autorisiert",
+      "message": "Sie müssen angemeldet sein, um auf diese Seite zuzugreifen",
+      "signin": "Anmelden"
+    },
+    "notFound": {
+      "title": "Nicht gefunden",
+      "message": "Die angeforderte Ressource wurde nicht gefunden",
+      "goBack": "Zurück"
+    }
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "url": "Bitte geben Sie eine gültige URL ein",
+    "minLength": "Muss mindestens {min} Zeichen enthalten",
+    "maxLength": "Darf maximal {max} Zeichen enthalten",
+    "invalidFormat": "Ungültiges Format"
+  },
+  "notifications": {
+    "success": "Erfolg",
+    "error": "Fehler",
+    "warning": "Warnung",
+    "info": "Information",
+    "serviceCreated": "Service erfolgreich erstellt",
+    "serviceUpdated": "Service erfolgreich aktualisiert",
+    "serviceDeleted": "Service erfolgreich gelöscht",
+    "incidentCreated": "Vorfall erfolgreich erstellt",
+    "incidentUpdated": "Vorfall erfolgreich aktualisiert",
+    "incidentDeleted": "Vorfall erfolgreich gelöscht",
+    "updateCreated": "Update erfolgreich erstellt"
+  }
+}

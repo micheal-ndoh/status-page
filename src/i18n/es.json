@@ -1,0 +1,450 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "update": "Actualizar",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "refresh": "Actualizar",
+    "retry": "Reintentar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "description": "Descripción",
+    "status": "Estado",
+    "date": "Fecha",
+    "time": "Hora",
+    "actions": "Acciones",
+    "details": "Detalles",
+    "settings": "Configuración",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión",
+    "theme": "Tema",
+    "dark": "Oscuro",
+    "light": "Claro",
+    "auto": "Automático",
+    "backToHome": "Volver al inicio",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse"
+  },
+  "navigation": {
+    "product": "Producto",
+    "customers": "Clientes",
+    "integrations": "Integraciones",
+    "pricing": "Precios",
+    "dashboard": "Panel de control",
+    "services": "Servicios",
+    "incidents": "Incidentes",
+    "activity": "Actividad",
+    "stats": "Estadísticas",
+    "home": "Inicio",
+    "menu": "Menú",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "profile": "Perfil",
+    "user": "Usuario"
+  },
+  "homepage": {
+    "hero": {
+      "title": "MONITOREA TODO",
+      "subtitle": "Monitoreo en tiempo real con detección inteligente y alertas instantáneas"
+    },
+    "features": {
+      "title": "Todo lo que necesitas para monitorear tus servicios",
+      "subtitle": "Funciones poderosas para mantener tus servicios funcionando sin problemas",
+      "monitorEverything": {
+        "title": "Monitorea todo",
+        "description": "Verifica todos tus servicios y rastrea la disponibilidad y el rendimiento con alertas en tiempo real en todos los canales."
+      },
+      "fixIncidents": {
+        "title": "Soluciona incidentes con tu equipo",
+        "description": "Integra con herramientas que ya usas y colabora en incidentes con tu equipo desde Slack y Teams."
+      },
+      "publishStatus": {
+        "title": "Publica en la página de estado",
+        "description": "¡Hazlo tuyo, hazlo privado o compártelo con el mundo! Publica actualizaciones en tu página de estado personalizada."
+      },
+      "realTimeAlerts": {
+        "title": "Alertas en tiempo real",
+        "description": "Recibe notificaciones instantáneas cuando surjan problemas. Nunca te pierdas un incidente crítico con nuestro sistema de alertas inteligente."
+      },
+      "easyIntegrations": {
+        "title": "Integraciones fáciles",
+        "description": "Conecta con tus herramientas y flujos de trabajo existentes. Nos integramos con todas las plataformas y servicios principales."
+      },
+      "continuousMonitoring": {
+        "title": "Monitoreo 24/7",
+        "description": "El monitoreo continuo asegura que detectes problemas antes de que afecten a tus usuarios. Siempre un paso adelante."
+      }
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "¡Bienvenido a Prism! ✨",
+      "subtitle": "Inicia sesión para acceder a tu panel de control y gestionar tus servicios",
+      "features": [
+        "Autenticación segura basada en correo electrónico",
+        "Acceso instantáneo a tu panel de control"
+      ],
+      "emailPlaceholder": "Ingresa tu dirección de correo electrónico",
+      "submitButton": "Iniciar sesión",
+      "noAccount": "¿No tienes cuenta?",
+      "signupLink": "Registrarse",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "emailSent": "Revisa tu correo electrónico",
+      "emailSentMessage": "Te hemos enviado un enlace mágico para iniciar sesión en tu cuenta.",
+      "secureAuth": "Autenticación segura sin contraseña",
+      "instantAccess": "Acceso instantáneo a tu panel de control"
+    },
+    "signout": {
+      "title": "Cerrar sesión",
+      "confirmation": "¿Estás seguro de que quieres cerrar sesión? Necesitarás iniciar sesión nuevamente para acceder a tu panel de control.",
+      "signingOut": "Cerrando sesión...",
+      "signedOut": "¡Sesión cerrada exitosamente!",
+      "signingOutMessage": "Por favor espera mientras cerramos tu sesión de forma segura.",
+      "signedOutMessage": "Has cerrado sesión exitosamente. Redirigiendo al inicio...",
+      "goHomeButton": "Ir al inicio"
+    },
+    "verifyRequest": {
+      "title": "Revisa tu correo electrónico",
+      "subtitle": "Se ha enviado un enlace de inicio de sesión a tu dirección de correo electrónico.",
+      "message": "Si no lo ves, revisa tu carpeta de spam.",
+      "resendButton": "Reenviar correo electrónico",
+      "backToSignin": "Volver al inicio de sesión",
+      "sending": "Enviando enlace mágico...",
+      "preparing": "Preparando tu enlace de autenticación seguro. Esto solo tomará un momento.",
+      "magicLinkSent": "¡Enlace mágico enviado! ✨",
+      "magicLinkDescription": "Hemos enviado un enlace mágico seguro a tu dirección de correo electrónico. Haz clic en el enlace para iniciar sesión instantáneamente en tu panel de control de Prism.",
+      "noPassword": "No se requiere contraseña",
+      "expiresIn": "El enlace expira en 24 horas",
+      "instantAccess": "Acceso instantáneo al panel de control",
+      "backToSignIn": "Volver al inicio de sesión",
+      "didntReceive": "¿No recibiste el correo electrónico?",
+      "resendEmail": "Reenviar correo electrónico",
+      "backToHomepage": "Volver a la página de inicio"
+    }
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "welcome": "Bienvenido de vuelta",
+    "overview": "Resumen",
+    "quickActions": "Acciones rápidas",
+    "recentActivity": "Actividad reciente",
+    "systemStatus": "Estado del sistema",
+    "uptime": "Tiempo de actividad",
+    "responseTime": "Tiempo de respuesta",
+    "incidents": "Incidentes",
+    "services": "Servicios",
+    "alerts": "Alertas",
+    "notifications": "Notificaciones",
+    "stats": {
+      "totalServices": "Total de servicios",
+      "operationalServices": "Operacional",
+      "degradedServices": "Degradado",
+      "outageServices": "Interrupción",
+      "totalIncidents": "Total de incidentes",
+      "resolvedIncidents": "Resuelto",
+      "openIncidents": "Abierto",
+      "uptime": "Tiempo de actividad",
+      "responseTime": "Tiempo de respuesta",
+      "ofServices": "de servicios",
+      "ofTotal": "del total",
+      "activeIncidents": "Incidentes activos"
+    },
+    "activity": {
+      "title": "Actividad reciente",
+      "noActivity": "Sin actividad reciente",
+      "serviceCreated": "Servicio creado",
+      "serviceUpdated": "Servicio actualizado",
+      "serviceDeleted": "Servicio eliminado",
+      "incidentCreated": "Incidente creado",
+      "incidentUpdated": "Incidente actualizado",
+      "incidentResolved": "Incidente resuelto",
+      "statusChanged": "Estado cambiado"
+    }
+  },
+  "services": {
+    "title": "Servicios",
+    "addService": "Agregar servicio",
+    "editService": "Editar servicio",
+    "deleteService": "Eliminar servicio",
+    "serviceName": "Nombre del servicio",
+    "serviceDescription": "Descripción del servicio",
+    "serviceUrl": "URL del servicio",
+    "serviceLogo": "Logo del servicio",
+    "serviceStatus": "Estado del servicio",
+    "operational": "Operacional",
+    "degraded": "Degradado",
+    "outage": "Interrupción",
+    "uptime": "Tiempo de actividad",
+    "responseTime": "Tiempo de respuesta",
+    "lastChecked": "Última verificación",
+    "createdAt": "Creado",
+    "updatedAt": "Actualizado",
+    "actions": "Acciones",
+    "noServices": "No se encontraron servicios",
+    "loadingServices": "Cargando servicios...",
+    "errorLoadingServices": "Error al cargar servicios",
+    "serviceCreated": "Servicio creado exitosamente",
+    "serviceUpdated": "Servicio actualizado exitosamente",
+    "serviceDeleted": "Servicio eliminado exitosamente",
+    "confirmDelete": "¿Estás seguro de que quieres eliminar este servicio?",
+    "manageServices": "Gestiona tus servicios y su estado",
+    "service": "Servicio",
+    "noUrl": "Sin URL"
+  },
+  "incidents": {
+    "title": "Incidentes",
+    "addIncident": "Agregar incidente",
+    "editIncident": "Editar incidente",
+    "deleteIncident": "Eliminar incidente",
+    "incidentTitle": "Título del incidente",
+    "incidentDescription": "Descripción del incidente",
+    "incidentStatus": "Estado del incidente",
+    "incidentSeverity": "Severidad del incidente",
+    "affectedServices": "Servicios afectados",
+    "author": "Autor",
+    "createdAt": "Creado",
+    "updatedAt": "Actualizado",
+    "resolvedAt": "Resuelto",
+    "investigating": "Investigando",
+    "identified": "Identificado",
+    "monitoring": "Monitoreando",
+    "resolved": "Resuelto",
+    "minor": "Menor",
+    "major": "Mayor",
+    "critical": "Crítico",
+    "noIncidents": "No se encontraron incidentes",
+    "loadingIncidents": "Cargando incidentes...",
+    "errorLoadingIncidents": "Error al cargar incidentes",
+    "incidentCreated": "Incidente creado exitosamente",
+    "incidentUpdated": "Incidente actualizado exitosamente",
+    "incidentDeleted": "Incidente eliminado exitosamente",
+    "confirmDelete": "¿Estás seguro de que quieres eliminar este incidente?",
+    "manageIncidents": "Gestiona y rastrea incidentes de servicio"
+  },
+  "status": {
+    "title": "Estado",
+    "overallStatus": "Estado general",
+    "allSystemsOperational": "Todos los sistemas operacionales",
+    "partialSystemOutage": "Interrupción parcial del sistema",
+    "majorOutage": "Interrupción mayor",
+    "degradedPerformance": "Rendimiento degradado",
+    "operational": "Operacional",
+    "degraded": "Degradado",
+    "outage": "Interrupción",
+    "uptime": "Tiempo de actividad",
+    "responseTime": "Tiempo de respuesta",
+    "lastUpdated": "Última actualización",
+    "incidentHistory": "Historial de incidentes",
+    "noIncidents": "Sin incidentes",
+    "subscribe": "Suscribirse",
+    "unsubscribe": "Cancelar suscripción",
+    "emailPlaceholder": "Tu dirección de correo electrónico",
+    "subscribeButton": "Suscribirse a actualizaciones",
+    "unsubscribeButton": "Cancelar suscripción",
+    "subscribed": "Suscrito",
+    "unsubscribed": "Suscripción cancelada",
+    "subscriptionError": "Error de suscripción",
+    "loadingStatus": "Cargando estado...",
+    "services": "Servicios",
+    "recentIncidents": "Incidentes recientes",
+    "created": "Creado",
+    "updated": "Actualizado",
+    "needToManage": "¿Necesitas gestionar?",
+    "accessDashboard": "Acceder al panel de control",
+    "copyright": "© 2024 Prism. Todos los derechos reservados.",
+    "degradedPerformance": "Rendimiento degradado",
+    "majorOutage": "Interrupción mayor",
+    "lastUpdated": "Última actualización",
+    "recentIncidents": "Incidentes recientes"
+  },
+  "game": {
+    "startGame": "Iniciar juego",
+    "pauseGame": "Pausar juego",
+    "reset": "Reiniciar",
+    "uptime": "Tiempo de actividad",
+    "fixService": "Reparar servicio",
+    "howToPlay": "Cómo jugar",
+    "instruction1": "Haz clic en \"Iniciar juego\" para comenzar el monitoreo",
+    "instruction2": "Los servicios tendrán problemas aleatoriamente",
+    "instruction3": "Haz clic en \"Reparar servicio\" para resolver incidentes",
+    "instruction4": "Gana puntos por cada servicio que repares",
+    "instruction5": "¡Intenta mantener el tiempo de actividad más alto posible!",
+    "preview": {
+      "title": "Prueba nuestro juego de monitoreo de estado",
+      "subtitle": "Experimenta el monitoreo en tiempo real con nuestro juego interactivo",
+      "gameTitle": "Juego de monitoreo de estado",
+      "gameDescription": "Monitorea servicios y repara incidentes",
+      "live": "EN VIVO",
+      "services": "Servicios activos",
+      "score": "Puntuación",
+      "time": "Tiempo",
+      "incidents": "Incidentes",
+      "playNow": "Jugar ahora",
+      "freeToPlay": "Gratis para jugar - No requiere registro"
+    }
+  },
+  "pricing": {
+    "title": "Precios simples y transparentes",
+    "subtitle": "Elige el plan que sea adecuado para tu equipo",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "save25": "Ahorra 25%",
+    "starter": {
+      "name": "Inicial",
+      "price": "$9",
+      "period": "/mes",
+      "description": "Perfecto para equipos pequeños y startups",
+      "features": [
+        "Hasta 5 servicios",
+        "Monitoreo básico",
+        "Notificaciones por correo electrónico",
+        "Página de estado",
+        "Integraciones básicas"
+      ],
+      "cta": "Comenzar"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$29",
+      "period": "/mes",
+      "description": "Mejor para empresas en crecimiento",
+      "features": [
+        "Hasta 25 servicios",
+        "Monitoreo avanzado",
+        "Integración con Slack y Teams",
+        "Página de estado personalizada",
+        "Soporte prioritario",
+        "Análisis avanzado"
+      ],
+      "cta": "Comenzar prueba gratuita",
+      "popular": "Más popular"
+    },
+    "business": {
+      "name": "Empresarial",
+      "price": "$99",
+      "period": "/mes",
+      "description": "Para equipos empresariales",
+      "features": [
+        "Servicios ilimitados",
+        "Monitoreo empresarial",
+        "Integraciones personalizadas",
+        "Página de estado white-label",
+        "Soporte 24/7",
+        "Reportes avanzados"
+      ],
+      "cta": "Contactar ventas"
+    }
+  },
+  "customers": {
+    "title": "Confiado por equipos en todo el mundo",
+    "subtitle": "Ve cómo las empresas usan Prism para mantener sus servicios funcionando sin problemas",
+    "testimonials": {
+      "title": "Lo que dicen nuestros clientes",
+      "subtitle": "Experiencias reales de equipos reales"
+    },
+    "cta": {
+      "title": "¿Listo para comenzar?",
+      "subtitle": "Únete a miles de equipos que confían en Prism",
+      "button": "Comenzar gratis"
+    }
+  },
+  "integrations": {
+    "title": "Integraciones",
+    "subtitle": "Conecta tus herramientas favoritas",
+    "hero": {
+      "title": "Conecta todo",
+      "subtitle": "Integra con las herramientas que ya usas"
+    },
+    "grid": {
+      "title": "Integraciones populares",
+      "subtitle": "Conecta con más de 100+ herramientas y servicios"
+    },
+    "createIncident": {
+      "title": "Crear nuevo incidente",
+      "description": "Crea rápidamente un nuevo incidente a través de la API"
+    }
+  },
+  "product": {
+    "hero": {
+      "title": "Monitoreo inteligente",
+      "subtitle": "Monitorea todo con precisión y estilo. Alertas en tiempo real, hermosos paneles de control y detección inteligente que mantiene tus servicios funcionando sin problemas.",
+      "primaryCta": "Comenzar prueba gratuita",
+      "secondaryCta": "Ver demo"
+    },
+    "features": {
+      "title": "Funciones poderosas",
+      "subtitle": "Todo lo que necesitas para monitorear tus servicios efectivamente"
+    },
+    "demo": {
+      "title": "Demo en vivo",
+      "subtitle": "Ve Prism en acción"
+    },
+    "cta": {
+      "title": "¿Listo para comenzar?",
+      "subtitle": "Comienza hoy a monitorear tus servicios",
+      "button": "Comenzar gratis"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Página no encontrada",
+      "message": "La página que buscas no existe",
+      "goBack": "Atrás",
+      "goHome": "Inicio"
+    },
+    "500": {
+      "title": "Error del servidor",
+      "message": "Ocurrió un error en el servidor",
+      "retry": "Reintentar"
+    },
+    "unauthorized": {
+      "title": "No autorizado",
+      "message": "Necesitas iniciar sesión para acceder a esta página",
+      "signin": "Iniciar sesión"
+    },
+    "notFound": {
+      "title": "No encontrado",
+      "message": "El recurso solicitado no se encontró",
+      "goBack": "Atrás"
+    }
+  },
+  "validation": {
+    "required": "Este campo es requerido",
+    "email": "Por favor ingresa una dirección de correo electrónico válida",
+    "url": "Por favor ingresa una URL válida",
+    "minLength": "Debe contener al menos {min} caracteres",
+    "maxLength": "Debe contener máximo {max} caracteres",
+    "invalidFormat": "Formato inválido"
+  },
+  "notifications": {
+    "success": "Éxito",
+    "error": "Error",
+    "warning": "Advertencia",
+    "info": "Información",
+    "serviceCreated": "Servicio creado exitosamente",
+    "serviceUpdated": "Servicio actualizado exitosamente",
+    "serviceDeleted": "Servicio eliminado exitosamente",
+    "incidentCreated": "Incidente creado exitosamente",
+    "incidentUpdated": "Incidente actualizado exitosamente",
+    "incidentDeleted": "Incidente eliminado exitosamente",
+    "updateCreated": "Actualización creada exitosamente"
+  }
+}

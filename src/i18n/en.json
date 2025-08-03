@@ -70,7 +70,10 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light",
-    "auto": "Auto"
+    "auto": "Auto",
+    "backToHome": "Back to Homepage",
+    "login": "Login",
+    "signup": "Sign up"
   },
   "navigation": {
     "product": "Product",
@@ -137,7 +140,9 @@
       "signupLink": "Sign up",
       "forgotPassword": "Forgot your password?",
       "emailSent": "Check your email",
-      "emailSentMessage": "We've sent you a magic link to sign in to your account."
+      "emailSentMessage": "We've sent you a magic link to sign in to your account.",
+      "secureAuth": "Secure passwordless authentication",
+      "instantAccess": "Instant access to your dashboard"
     },
     "signout": {
       "title": "Sign Out",
@@ -153,7 +158,18 @@
       "subtitle": "A sign in link has been sent to your email address.",
       "message": "If you don't see it, check your spam folder.",
       "resendButton": "Resend email",
-      "backToSignin": "Back to sign in"
+      "backToSignin": "Back to sign in",
+      "sending": "Sending Magic Link...",
+      "preparing": "Preparing your secure authentication link. This will only take a moment.",
+      "magicLinkSent": "Magic Link Sent! ✨",
+      "magicLinkDescription": "We've sent a secure magic link to your email address. Click the link to instantly sign in to your Prism dashboard.",
+      "noPassword": "No password required",
+      "expiresIn": "Link expires in 24 hours",
+      "instantAccess": "Instant access to dashboard",
+      "backToSignIn": "Back to Sign In",
+      "didntReceive": "Didn't receive the email?",
+      "resendEmail": "Resend Email",
+      "backToHomepage": "Back to Homepage"
     }
   },
   "dashboard": {
@@ -178,7 +194,10 @@
       "resolvedIncidents": "Resolved",
       "openIncidents": "Open",
       "uptime": "Uptime",
-      "responseTime": "Response Time"
+      "responseTime": "Response Time",
+      "ofServices": "of services",
+      "ofTotal": "of total",
+      "activeIncidents": "Active Incidents"
     },
     "activity": {
       "title": "Recent Activity",
@@ -214,6 +233,9 @@
     "noServices": "No services found",
     "loadingServices": "Loading services...",
     "errorLoadingServices": "Error loading services",
+    "manageServices": "Manage your services and their status",
+    "service": "Service",
+    "noUrl": "No URL",
     "serviceCreated": "Service created successfully",
     "serviceUpdated": "Service updated successfully",
     "serviceDeleted": "Service deleted successfully",
@@ -255,6 +277,7 @@
     "incidentUpdated": "Incident updated successfully",
     "incidentDeleted": "Incident deleted successfully",
     "confirmDelete": "Are you sure you want to delete this incident?",
+    "manageIncidents": "Manage and track service incidents",
     "form": {
       "titleRequired": "Title is required",
       "titleMaxLength": "Title must be less than 200 characters",
@@ -299,45 +322,30 @@
     "copyright": "© 2024 Prism. All rights reserved."
   },
   "game": {
-    "title": "Status Monitoring Game",
-    "subtitle": "Test your incident response skills",
-    "startGame": "Start Game",
-    "stopGame": "Stop Game",
-    "resetGame": "Reset Game",
-    "score": "Score",
-    "time": "Time",
-    "gameOver": "Game Over",
-    "incidentDetected": "🚨 Incident Detected!",
-    "incidentDescription": "is experiencing {status} performance.",
-    "fixService": "Fix Service",
-    "serviceFixed": "Service fixed! +10 points",
-    "gameInstructions": "Monitor services and fix incidents as they occur. Earn points for quick responses!",
-    "webServer": "Web Server",
-    "database": "Database",
-    "apiGateway": "API Gateway",
-    "cdn": "CDN",
-    "statusGame": "Status Game",
-    "gameSubtitle": "Monitor your services and fix incidents as they occur!",
-    "score": "Score",
-    "time": "Time",
-    "status": "Status",
-    "running": "Running",
-    "stopped": "Stopped",
     "startGame": "Start Game",
     "pauseGame": "Pause Game",
     "reset": "Reset",
     "uptime": "Uptime",
     "fixService": "Fix Service",
     "howToPlay": "How to Play",
-    "instructions": [
-      "Click \"Start Game\" to begin monitoring",
-      "Services will randomly experience issues",
-      "Click \"Fix Service\" to resolve incidents",
-      "Earn points for each service you fix",
-      "Try to maintain the highest uptime possible!"
-    ],
-    "serviceFixed": "✅ Service Fixed!",
-    "serviceFixedMessage": "Great job! You've resolved the incident."
+    "instruction1": "Click \"Start Game\" to begin monitoring",
+    "instruction2": "Services will randomly experience issues",
+    "instruction3": "Click \"Fix Service\" to resolve incidents",
+    "instruction4": "Earn points for each service you fix",
+    "instruction5": "Try to maintain the highest uptime possible!",
+    "preview": {
+      "title": "Try Our Status Monitoring Game",
+      "subtitle": "Experience real-time monitoring in action with our interactive game",
+      "gameTitle": "Status Monitoring Game",
+      "gameDescription": "Monitor services and fix incidents as they occur",
+      "live": "LIVE",
+      "services": "Active Services",
+      "score": "Score",
+      "time": "Time",
+      "incidents": "Incidents",
+      "playNow": "Play Now",
+      "freeToPlay": "Free to play - No registration required"
+    }
   },
   "pricing": {
     "title": "Simple, transparent pricing",
@@ -424,10 +432,10 @@
   },
   "product": {
     "hero": {
-      "title": "Monitor everything, everywhere",
-      "subtitle": "Get real-time insights into your services with intelligent monitoring and instant alerts",
+      "title": "Intelligent Monitoring",
+      "subtitle": "Monitor everything with precision and style. Real-time alerts, beautiful dashboards, and intelligent detection that keeps your services running smoothly.",
       "primaryCta": "Start Free Trial",
-      "secondaryCta": "View Demo",
+      "secondaryCta": "Watch Demo",
       "stats": {
         "uptime": "99.9%",
         "uptimeLabel": "Average Uptime",
@@ -438,8 +446,8 @@
       }
     },
     "features": {
-      "title": "Everything you need to monitor your services",
-      "subtitle": "Powerful features designed for modern teams",
+      "title": "Powerful Features",
+      "subtitle": "Everything you need to monitor your services effectively",
       "monitoring": {
         "title": "Real-time Monitoring",
         "description": "Monitor your services 24/7 with intelligent detection and instant alerts"
