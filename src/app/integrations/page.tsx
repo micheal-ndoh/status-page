@@ -41,7 +41,7 @@ const integrations = [
     name: "PagerDuty",
     description: "Integrate with PagerDuty for incident management",
     logo: "/logo/PagerDuty_Logo-700x144.png",
-    color: "#06AD56",
+    color: "black",
   },
   {
     name: "Microsoft Teams",
@@ -53,7 +53,7 @@ const integrations = [
     name: "Email",
     description: "Send email notifications to your team",
     logo: "/logo/email-png-png-image-pngimg-10.png",
-    color: "#EA4335",
+    color: "grey",
   },
   {
     name: "Webhook",
@@ -65,7 +65,7 @@ const integrations = [
     name: "SMS",
     description: "Send SMS alerts via Twilio integration",
     logo: "/logo/sms-png-13.png",
-    color: "#F22F46",
+    color: "white",
   },
   {
     name: "Telegram",
@@ -89,7 +89,7 @@ const integrations = [
     name: "Zapier",
     description: "Automate workflows with Zapier",
     logo: "/logo/zapier-logo-png-transparent.png",
-    color: "#FF4A00",
+    color: "white",
   },
 ];
 
