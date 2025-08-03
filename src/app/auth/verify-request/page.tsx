@@ -21,11 +21,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import Logo from "@/components/Logo";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
 
 export default function VerifyRequestPage() {
+  const { t } = useTranslation();
   const router = useRouter();
   const [emailSent, setEmailSent] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -264,7 +266,7 @@ export default function VerifyRequestPage() {
                         color="white"
                         textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
                       >
-                        Sending Magic Link...
+                        {t("auth.verifyRequest.sending")}
                       </Text>
                       <Text
                         fontSize="lg"
@@ -272,8 +274,7 @@ export default function VerifyRequestPage() {
                         maxW="400px"
                         lineHeight="tall"
                       >
-                        Preparing your secure authentication link. This will
-                        only take a moment.
+                        {t("auth.verifyRequest.preparing")}
                       </Text>
                     </VStack>
                   </VStack>
@@ -370,7 +371,7 @@ export default function VerifyRequestPage() {
                         color="white"
                         textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
                       >
-                        Magic Link Sent! ✨
+                        {t("auth.verifyRequest.magicLinkSent")}
                       </Text>
                       <Text
                         fontSize="lg"
@@ -378,9 +379,7 @@ export default function VerifyRequestPage() {
                         maxW="400px"
                         lineHeight="tall"
                       >
-                        We've sent a secure magic link to your email address.
-                        Click the link to instantly sign in to your Prism
-                        dashboard.
+                        {t("auth.verifyRequest.magicLinkDescription")}
                       </Text>
                     </VStack>
 
@@ -388,15 +387,21 @@ export default function VerifyRequestPage() {
                     <VStack spacing={3} pt={4}>
                       <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
                         <ShieldCheckIcon className="w-5 h-5" />
-                        <Text fontSize="sm">No password required</Text>
+                        <Text fontSize="sm">
+                          {t("auth.verifyRequest.noPassword")}
+                        </Text>
                       </HStack>
                       <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
                         <ClockIcon className="w-5 h-5" />
-                        <Text fontSize="sm">Link expires in 24 hours</Text>
+                        <Text fontSize="sm">
+                          {t("auth.verifyRequest.expiresIn")}
+                        </Text>
                       </HStack>
                       <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
                         <SparklesIcon className="w-5 h-5" />
-                        <Text fontSize="sm">Instant access to dashboard</Text>
+                        <Text fontSize="sm">
+                          {t("auth.verifyRequest.instantAccess")}
+                        </Text>
                       </HStack>
                     </VStack>
 
@@ -425,14 +430,14 @@ export default function VerifyRequestPage() {
                         >
                           <HStack spacing={2}>
                             <ArrowLeftIcon className="w-5 h-5" />
-                            <Text>Back to Sign In</Text>
+                            <Text>{t("auth.verifyRequest.backToSignIn")}</Text>
                           </HStack>
                         </Button>
                       </motion.div>
 
                       <VStack spacing={2}>
                         <Text fontSize="sm" color="rgba(173, 216, 230, 0.6)">
-                          Didn't receive the email?
+                          {t("auth.verifyRequest.didntReceive")}
                         </Text>
                         <motion.div
                           whileHover={{ scale: 1.05 }}
@@ -449,7 +454,7 @@ export default function VerifyRequestPage() {
                             }}
                             transition="all 0.3s ease"
                           >
-                            Resend Email
+                            {t("auth.verifyRequest.resendEmail")}
                           </Button>
                         </motion.div>
                       </VStack>
@@ -469,7 +474,7 @@ export default function VerifyRequestPage() {
                           }}
                           transition="all 0.3s ease"
                         >
-                          ← Back to Homepage
+                          ← {t("auth.verifyRequest.backToHomepage")}
                         </Button>
                       </motion.div>
                     </VStack>

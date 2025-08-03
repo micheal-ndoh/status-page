@@ -50,6 +50,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { serviceSchema, type ServiceFormData } from "@/lib/validations";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionCard = motion(Card);
 
@@ -65,6 +66,7 @@ interface Service {
 }
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
   const [services, setServices] = useState<Service[]>([]);
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -214,15 +216,15 @@ export default function ServicesPage() {
       {/* Header */}
       <HStack justify="space-between">
         <Box>
-          <Heading size="lg">Services</Heading>
-          <Text color="gray.600">Manage your services and their status</Text>
+          <Heading size="lg">{t("services.title")}</Heading>
+          <Text color="gray.600">{t("services.manageServices")}</Text>
         </Box>
         <Button
           leftIcon={<PlusIcon className="w-4 h-4" />}
           colorScheme="brand"
           onClick={openModal}
         >
-          New Service
+          {t("services.addService")}
         </Button>
       </HStack>
 
@@ -239,11 +241,11 @@ export default function ServicesPage() {
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Service</Th>
-                <Th>Status</Th>
-                <Th>URL</Th>
-                <Th>Created</Th>
-                <Th>Updated</Th>
+                <Th>{t("services.service")}</Th>
+                <Th>{t("services.serviceStatus")}</Th>
+                <Th>{t("services.serviceUrl")}</Th>
+                <Th>{t("services.createdAt")}</Th>
+                <Th>{t("services.updatedAt")}</Th>
                 <Th></Th>
               </Tr>
             </Thead>
@@ -288,7 +290,7 @@ export default function ServicesPage() {
                       </Text>
                     ) : (
                       <Text fontSize="sm" color="gray.400">
-                        No URL
+                        {t("services.noUrl")}
                       </Text>
                     )}
                   </Td>
@@ -336,7 +338,7 @@ export default function ServicesPage() {
           {services.length === 0 && (
             <Box textAlign="center" py={12}>
               <Cog6ToothIcon className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-              <Text color="gray.500">No services found</Text>
+              <Text color="gray.500">{t("services.noServices")}</Text>
               <Text fontSize="sm" color="gray.400">
                 Create your first service to get started
               </Text>

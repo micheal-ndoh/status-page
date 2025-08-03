@@ -26,6 +26,7 @@ import {
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
 import GlassmorphismNavbar from "@/components/GlassmorphismNavbar";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 const MotionGridItem = motion(GridItem);
@@ -97,6 +98,7 @@ const demoScreenshots = [
 ];
 
 const ProductPage = () => {
+  const { t } = useTranslation();
   const [activeDemo, setActiveDemo] = useState(0);
   const bgColor = useColorModeValue(
     "rgba(255, 255, 255, 0.1)",
@@ -132,7 +134,7 @@ const ProductPage = () => {
               letterSpacing="wider"
               fontFamily="mono"
             >
-              Intelligent Monitoring
+              {t("product.hero.title")}
             </Heading>
           </motion.div>
 
@@ -147,9 +149,7 @@ const ProductPage = () => {
               maxW="600px"
               lineHeight="tall"
             >
-              Monitor everything with precision and style. Real-time alerts,
-              beautiful dashboards, and intelligent detection that keeps your
-              services running smoothly.
+              {t("product.hero.subtitle")}
             </Text>
           </motion.div>
 
@@ -181,7 +181,7 @@ const ProductPage = () => {
                   }}
                   transition="all 0.3s ease"
                 >
-                  Start Free Trial
+                  {t("product.hero.primaryCta")}
                 </Button>
               </motion.div>
 
@@ -205,7 +205,7 @@ const ProductPage = () => {
                   }}
                   transition="all 0.3s ease"
                 >
-                  Watch Demo
+                  {t("product.hero.secondaryCta")}
                 </Button>
               </motion.div>
             </HStack>
@@ -275,7 +275,7 @@ const ProductPage = () => {
               textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
               mb={4}
             >
-              Powerful Features
+              {t("product.features.title")}
             </Heading>
             <Text
               fontSize={{ base: "lg", md: "xl" }}

@@ -31,12 +31,14 @@ import {
   BoltIcon,
 } from "@heroicons/react/24/outline";
 import Logo from "@/components/Logo";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 const MotionInput = motion(Input);
 
 export default function SignInPage() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -59,11 +61,11 @@ export default function SignInPage() {
       // The redirect will be handled by NextAuth
       // If we reach here, there was an error
       if (result?.error) {
-        setError("Failed to send sign-in email. Please try again.");
+        setError(t("auth.signin.emailSent"));
         setIsLoading(false);
       }
     } catch (error) {
-      setError("An unexpected error occurred. Please try again.");
+      setError(t("common.error"));
       setIsLoading(false);
     }
   };
@@ -172,7 +174,7 @@ export default function SignInPage() {
                     color="white"
                     letterSpacing="wider"
                   >
-                    Welcome to Prism
+                    {t("auth.signin.title")}
                   </Text>
                 </MotionBox>
 
@@ -182,7 +184,7 @@ export default function SignInPage() {
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <Text fontSize="lg" color="rgba(255, 255, 255, 0.8)">
-                    Sign in to access your dashboard
+                    {t("auth.signin.subtitle")}
                   </Text>
                 </MotionBox>
               </VStack>
@@ -215,13 +217,13 @@ export default function SignInPage() {
                         color="white"
                         mb={3}
                       >
-                        Email Address
+                        {t("common.email")}
                       </FormLabel>
                       <MotionInput
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
+                        placeholder={t("auth.signin.emailPlaceholder")}
                         size="lg"
                         borderRadius="xl"
                         border="2px solid"
@@ -261,7 +263,7 @@ export default function SignInPage() {
                       borderRadius="xl"
                       py={4}
                       isLoading={isLoading}
-                      loadingText="Sending magic link..."
+                      loadingText={t("auth.signin.emailSent")}
                       rightIcon={<ArrowRightIcon className="w-5 h-5" />}
                       _hover={{
                         bg: "rgba(173, 216, 230, 1)",
@@ -279,7 +281,7 @@ export default function SignInPage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      Sign In with Email
+                      {t("auth.signin.submitButton")}
                     </MotionButton>
 
                     {/* Instructions */}
@@ -289,8 +291,7 @@ export default function SignInPage() {
                       textAlign="center"
                       lineHeight="tall"
                     >
-                      We'll send a magic link to your inbox. No password
-                      required.
+                      {t("auth.signin.emailSentMessage")}
                     </Text>
                   </VStack>
                 </form>
@@ -305,13 +306,11 @@ export default function SignInPage() {
                 <VStack spacing={3}>
                   <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
                     <Icon as={ShieldCheckIcon} w={4} h={4} color="green.400" />
-                    <Text fontSize="sm">
-                      Secure passwordless authentication
-                    </Text>
+                    <Text fontSize="sm">{t("auth.signin.secureAuth")}</Text>
                   </HStack>
                   <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
                     <Icon as={BoltIcon} w={4} h={4} color="blue.400" />
-                    <Text fontSize="sm">Instant access to your dashboard</Text>
+                    <Text fontSize="sm">{t("auth.signin.instantAccess")}</Text>
                   </HStack>
                 </VStack>
               </MotionBox>
@@ -333,7 +332,7 @@ export default function SignInPage() {
                   }}
                   transition="color 0.2s"
                 >
-                  ← Back to Homepage
+                  ← {t("common.backToHome")}
                 </Link>
               </MotionBox>
             </VStack>

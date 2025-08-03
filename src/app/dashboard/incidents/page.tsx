@@ -49,6 +49,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { incidentSchema, type IncidentFormData } from "@/lib/validations";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionCard = motion(Card);
 
@@ -76,6 +77,7 @@ interface Incident {
 }
 
 export default function IncidentsPage() {
+  const { t } = useTranslation();
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -190,8 +192,8 @@ export default function IncidentsPage() {
       {/* Header */}
       <HStack justify="space-between">
         <Box>
-          <Heading size="lg">Incidents</Heading>
-          <Text color="gray.600">Manage and track service incidents</Text>
+                  <Heading size="lg">{t("incidents.title")}</Heading>
+        <Text color="gray.600">{t("incidents.manageIncidents")}</Text>
         </Box>
         <Button
           leftIcon={<PlusIcon className="w-4 h-4" />}
@@ -286,7 +288,7 @@ export default function IncidentsPage() {
           {incidents.length === 0 && (
             <Box textAlign="center" py={12}>
               <ExclamationTriangleIcon className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-              <Text color="gray.500">No incidents found</Text>
+              <Text color="gray.500">{t("incidents.noIncidents")}</Text>
               <Text fontSize="sm" color="gray.400">
                 Create your first incident to get started
               </Text>

@@ -27,6 +27,7 @@ import {
   XCircleIcon,
   ClockIcon,
 } from "@heroicons/react/24/outline";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionCard = motion(Card);
 
@@ -51,6 +52,7 @@ interface RecentActivity {
 }
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
   const [stats, setStats] = useState<DashboardStats>({
     totalServices: 0,
     operationalServices: 0,
@@ -128,11 +130,9 @@ export default function DashboardPage() {
       {/* Header */}
       <Box>
         <Heading size="lg" mb={2}>
-          Dashboard Overview
+          {t("dashboard.title")}
         </Heading>
-        <Text color="gray.600">
-          Monitor your services and track incidents in real-time
-        </Text>
+        <Text color="gray.600">{t("dashboard.overview")}</Text>
       </Box>
 
       {/* Stats Grid */}
@@ -154,7 +154,7 @@ export default function DashboardPage() {
         >
           <CardBody>
             <Stat>
-              <StatLabel>Total Services</StatLabel>
+              <StatLabel>{t("dashboard.stats.totalServices")}</StatLabel>
               <StatNumber>{stats.totalServices}</StatNumber>
               <StatHelpText>
                 <StatArrow type="increase" />
@@ -174,7 +174,7 @@ export default function DashboardPage() {
         >
           <CardBody>
             <Stat>
-              <StatLabel>Operational</StatLabel>
+              <StatLabel>{t("dashboard.stats.operationalServices")}</StatLabel>
               <StatNumber color="success.500">
                 {stats.operationalServices}
               </StatNumber>
@@ -184,7 +184,7 @@ export default function DashboardPage() {
                       (stats.operationalServices / stats.totalServices) * 100
                     )
                   : 0}
-                % of services
+                % {t("dashboard.stats.ofServices")}
               </StatHelpText>
             </Stat>
           </CardBody>
@@ -200,7 +200,7 @@ export default function DashboardPage() {
         >
           <CardBody>
             <Stat>
-              <StatLabel>Active Incidents</StatLabel>
+              <StatLabel>{t("dashboard.stats.activeIncidents")}</StatLabel>
               <StatNumber color="warning.500">
                 {stats.activeIncidents}
               </StatNumber>
@@ -210,7 +210,7 @@ export default function DashboardPage() {
                       (stats.activeIncidents / stats.totalIncidents) * 100
                     )
                   : 0}
-                % of total
+                % {t("dashboard.stats.ofTotal")}
               </StatHelpText>
             </Stat>
           </CardBody>
