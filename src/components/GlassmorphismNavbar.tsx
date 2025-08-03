@@ -22,6 +22,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 
 const MotionBox = motion(Box);
 
@@ -125,6 +126,7 @@ const GlassmorphismNavbar = () => {
 
           {/* Right - Auth Buttons */}
           <HStack spacing={4} display={{ base: "none", md: "flex" }}>
+            <ThemeToggle />
             {session ? (
               // User is logged in - show dashboard button
               <Button
@@ -249,6 +251,7 @@ const GlassmorphismNavbar = () => {
 
               {/* Mobile Auth Buttons */}
               <VStack spacing={4} pt={4}>
+                <ThemeToggle />
                 {session ? (
                   // User is logged in - show dashboard button
                   <Button

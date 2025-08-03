@@ -40,6 +40,7 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const MotionBox = motion(Box);
 
@@ -58,25 +59,25 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const borderColor = useColorModeValue("gray.200", "gray.700");
 
   useEffect(() => {
-    console.log('Dashboard Layout - Session Status:', status);
-    console.log('Dashboard Layout - Session Data:', session);
-    
+    console.log("Dashboard Layout - Session Status:", status);
+    console.log("Dashboard Layout - Session Data:", session);
+
     if (status === "loading") return;
     if (!session) {
-      console.log('No session found, redirecting to signin');
+      console.log("No session found, redirecting to signin");
       router.push("/auth/signin");
     } else {
-      console.log('Session found, user:', session.user?.email);
+      console.log("Session found, user:", session.user?.email);
     }
   }, [session, status, router]);
 
   if (status === "loading") {
-    console.log('Dashboard Layout - Loading session...');
+    console.log("Dashboard Layout - Loading session...");
     return <StatusLoading variant="dashboard" />;
   }
 
   if (!session) {
-    console.log('Dashboard Layout - No session, returning null');
+    console.log("Dashboard Layout - No session, returning null");
     return null;
   }
 
@@ -98,7 +99,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <DrawerContent bg={sidebarBg}>
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px" borderColor={borderColor}>
-            Status Dashboard
+            <Box cursor="pointer" onClick={() => router.push("/")}>
+              <Logo size="sm" variant="default" />
+            </Box>
           </DrawerHeader>
           <DrawerBody p={0}>
             <VStack spacing={0} align="stretch">
@@ -140,9 +143,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <VStack spacing={0} align="stretch" h="full">
             {/* Header */}
             <Box p={6} borderBottom="1px" borderColor={borderColor}>
-              <Text fontSize="xl" fontWeight="bold" color="brand.500">
-                Status Dashboard
-              </Text>
+              <Box cursor="pointer" onClick={() => router.push("/")}>
+                <Logo size="md" variant="default" />
+              </Box>
             </Box>
 
             {/* Navigation */}
@@ -197,7 +200,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   <MenuDivider />
                   <MenuItem
                     icon={<ArrowRightOnRectangleIcon className="w-4 h-4" />}
-                    onClick={() => router.push("/api/auth/signout")}
+                    onClick={() => router.push("/auth/signout")}
                   >
                     Sign Out
                   </MenuItem>

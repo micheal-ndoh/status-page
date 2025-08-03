@@ -1,73 +1,54 @@
 "use client";
 
-import { useColorMode, IconButton, IconButtonProps, Icon } from "@chakra-ui/react";
+import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import { SunIcon, MoonIcon, SparklesIcon } from "@heroicons/react/24/outline";
 
 const MotionIconButton = motion(IconButton);
 
-export function ThemeToggle(props: Omit<IconButtonProps, "aria-label">) {
+const ThemeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-
-  const getIcon = () => {
-    if (colorMode === "light") {
-      return MoonIcon;
-    }
-    return SunIcon;
-  };
-
-  const getBgGradient = () => {
-    if (colorMode === "light") {
-      return "linear(to-r, purple.400, blue.500)";
-    }
-    return "linear(to-r, yellow.400, orange.500)";
-  };
-
-  const getHoverBgGradient = () => {
-    if (colorMode === "light") {
-      return "linear(to-r, purple.500, blue.600)";
-    }
-    return "linear(to-r, yellow.500, orange.600)";
-  };
+  const isDark = colorMode === "dark";
+  
+  const bgColor = useColorModeValue(
+    "rgba(255, 255, 255, 0.1)",
+    "rgba(0, 0, 0, 0.2)"
+  );
+  const borderColor = useColorModeValue(
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(173, 216, 230, 0.3)"
+  );
+  const iconColor = useColorModeValue(
+    "rgba(0, 0, 0, 0.8)",
+    "rgba(173, 216, 230, 1)"
+  );
 
   return (
     <MotionIconButton
-      aria-label={`Switch to ${colorMode === "light" ? "dark" : "light"} mode`}
-      icon={<Icon as={getIcon()} />}
+      aria-label="Toggle theme"
+      icon={isDark ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
       onClick={toggleColorMode}
-      bgGradient={getBgGradient()}
-      color="white"
+      size="md"
+      borderRadius="full"
+      backdropFilter="blur(20px)"
+      bg={bgColor}
+      border="1px solid"
+      borderColor={borderColor}
+      color={iconColor}
       _hover={{
-        bgGradient: getHoverBgGradient(),
-        transform: "scale(1.1) rotate(180deg)",
+        bg: useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(0, 0, 0, 0.3)"),
+        borderColor: useColorModeValue("rgba(255, 255, 255, 0.4)", "rgba(173, 216, 230, 0.6)"),
+        transform: "scale(1.05)",
       }}
       _active={{
         transform: "scale(0.95)",
       }}
-      whileHover={{
-        scale: 1.1,
-        rotate: 180,
-        transition: { duration: 0.3, ease: "easeInOut" },
-      }}
-      whileTap={{
-        scale: 0.95,
-        transition: { duration: 0.1 },
-      }}
-      animate={{
-        boxShadow: [
-          "0 0 0 0 rgba(168, 85, 247, 0.4)",
-          "0 0 0 10px rgba(168, 85, 247, 0)",
-          "0 0 0 0 rgba(168, 85, 247, 0)",
-        ],
-      }}
-      transition={{
-        boxShadow: {
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        },
-      }}
-      {...props}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition="all 0.3s ease"
+      boxShadow="0 4px 12px rgba(0, 0, 0, 0.1)"
     />
   );
-}
+};
+
+export default ThemeToggle;
