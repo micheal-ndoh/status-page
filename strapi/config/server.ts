@@ -1,6 +1,6 @@
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreConfig('server', ({ env }) => ({
+export default ({ env }: { env: any }) => ({
     host: env('HOST', '0.0.0.0'),
     port: env.int('PORT', 1337),
     app: {
@@ -9,4 +9,4 @@ export default factories.createCoreConfig('server', ({ env }) => ({
     webhooks: {
         populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
     },
-})); 
+}); 

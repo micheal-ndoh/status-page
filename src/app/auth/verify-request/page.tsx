@@ -143,15 +143,6 @@ export default function VerifyRequestPage() {
                 mx="auto"
                 mb={6}
                 boxShadow="xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
               >
                 <SparklesIcon className="w-10 h-10 text-purple-600" />
               </Box>
@@ -202,15 +193,6 @@ export default function VerifyRequestPage() {
                   alignItems="center"
                   justifyContent="center"
                   mx="auto"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, -5, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
                 >
                   <CheckCircleIcon className="w-12 h-12 text-white" />
                 </MotionBox>
@@ -299,8 +281,6 @@ export default function VerifyRequestPage() {
                         transform: "translateY(-2px)",
                         boxShadow: "md",
                       }}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
                     >
                       Back to Sign In
                     </Button>

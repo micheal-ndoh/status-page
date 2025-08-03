@@ -7,13 +7,9 @@ import {
   Box,
   Container,
   VStack,
-  HStack,
   Text,
   Input,
   Button,
-  Card,
-  CardBody,
-  Heading,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -22,6 +18,8 @@ import {
   Flex,
   Icon,
   Divider,
+  Link,
+  useTheme,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
@@ -31,8 +29,8 @@ import {
   ShieldCheckIcon,
   BoltIcon,
 } from "@heroicons/react/24/outline";
+import Logo from "@/components/Logo";
 
-const MotionCard = motion(Card);
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 const MotionInput = motion(Input);
@@ -43,71 +41,7 @@ export default function SignInPage() {
   const [error, setError] = useState("");
   const router = useRouter();
   const toast = useToast();
-
-  const cardBg = useColorModeValue("white", "gray.800");
-  const borderColor = useColorModeValue("gray.200", "gray.700");
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-    hover: {
-      scale: 1.05,
-      y: -2,
-      transition: {
-        duration: 0.2,
-        ease: "easeOut",
-      },
-    },
-    tap: {
-      scale: 0.95,
-      transition: {
-        duration: 0.1,
-      },
-    },
-  };
+  const theme = useTheme();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,25 +78,43 @@ export default function SignInPage() {
   return (
     <Box
       minH="100vh"
-      bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      bg="linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)"
       position="relative"
       overflow="hidden"
     >
       {/* Animated Background Elements */}
       <MotionBox
         position="absolute"
-        top="10%"
-        left="10%"
-        w="100px"
-        h="100px"
+        top="15%"
+        right="10%"
+        w="120px"
+        h="120px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.1)"
+        bg="rgba(173, 216, 230, 0.1)"
         animate={{
           scale: [1, 1.2, 1],
           rotate: [0, 180, 360],
         }}
         transition={{
-          duration: 8,
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <MotionBox
+        position="absolute"
+        bottom="30%"
+        left="10%"
+        w="100px"
+        h="100px"
+        borderRadius="full"
+        bg="rgba(173, 216, 230, 0.05)"
+        animate={{
+          scale: [1, 1.3, 1],
+          rotate: [360, 180, 0],
+        }}
+        transition={{
+          duration: 15,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -170,31 +122,13 @@ export default function SignInPage() {
       <MotionBox
         position="absolute"
         top="60%"
-        right="15%"
-        w="150px"
-        h="150px"
-        borderRadius="full"
-        bg="rgba(255, 255, 255, 0.05)"
-        animate={{
-          scale: [1, 1.3, 1],
-          rotate: [360, 180, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <MotionBox
-        position="absolute"
-        bottom="20%"
-        left="20%"
+        right="20%"
         w="80px"
         h="80px"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.08)"
+        bg="rgba(173, 216, 230, 0.08)"
         animate={{
-          scale: [1, 1.1, 1],
+          scale: [0.98, 1.1, 0.98],
           y: [0, -20, 0],
         }}
         transition={{
@@ -205,205 +139,211 @@ export default function SignInPage() {
       />
 
       <Container maxW="lg" py={12}>
-        <VStack spacing={8} align="stretch">
-          {/* Header */}
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          minH="100vh"
+          position="relative"
+          zIndex={10}
+        >
+          {/* Main Form Container */}
           <MotionBox
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            textAlign="center"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            w="full"
+            maxW="400px"
           >
-            <MotionBox variants={itemVariants}>
-              <Box
-                w={20}
-                h={20}
-                borderRadius="full"
-                bg="white"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                mx="auto"
-                mb={6}
-                boxShadow="xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <SparklesIcon className="w-10 h-10 text-purple-600" />
-              </Box>
-            </MotionBox>
-
-            <MotionBox variants={itemVariants}>
-              <Heading
-                size="2xl"
-                fontWeight="extrabold"
-                color="white"
-                mb={4}
-                bgGradient="linear(to-r, white, purple.100)"
-                bgClip="text"
-              >
-                Welcome Back! ✨
-              </Heading>
-            </MotionBox>
-
-            <MotionBox variants={itemVariants}>
-              <Text fontSize="lg" color="white" opacity={0.9}>
-                Sign in to access your dashboard and manage your services
-              </Text>
-            </MotionBox>
-          </MotionBox>
-
-          {/* Sign In Card */}
-          <MotionCard
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            bg={cardBg}
-            border="1px"
-            borderColor={borderColor}
-            shadow="2xl"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.3 }}
-          >
-            <CardBody p={8}>
-              <VStack spacing={6} align="stretch">
-                {/* Features */}
-                <MotionBox variants={itemVariants}>
-                  <VStack spacing={3} mb={6}>
-                    <HStack
-                      spacing={3}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                    >
-                      <Icon
-                        as={ShieldCheckIcon}
-                        w={5}
-                        h={5}
-                        color="green.500"
-                      />
-                      <Text fontSize="sm">
-                        Secure email-based authentication
-                      </Text>
-                    </HStack>
-                    <HStack
-                      spacing={3}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                    >
-                      <Icon as={BoltIcon} w={5} h={5} color="blue.500" />
-                      <Text fontSize="sm">
-                        Instant access to your dashboard
-                      </Text>
-                    </HStack>
-                  </VStack>
+            <VStack spacing={8} align="stretch">
+              {/* Logo and Header */}
+              <VStack spacing={6} textAlign="center">
+                <MotionBox
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <Logo size="lg" variant="white" />
                 </MotionBox>
 
-                <Divider />
+                <MotionBox
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Text
+                    fontSize="3xl"
+                    fontWeight="bold"
+                    color="white"
+                    letterSpacing="wider"
+                  >
+                    Welcome to Prism
+                  </Text>
+                </MotionBox>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit}>
-                  <VStack spacing={6}>
-                    <MotionBox variants={itemVariants} w="full">
-                      <FormControl isInvalid={!!error}>
-                        <FormLabel
-                          fontSize="lg"
-                          fontWeight="semibold"
-                          color={useColorModeValue("gray.700", "gray.300")}
-                        >
-                          Email Address
-                        </FormLabel>
-                        <MotionInput
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Enter your email address"
-                          size="lg"
-                          borderRadius="lg"
-                          border="2px solid"
-                          borderColor={useColorModeValue(
-                            "gray.200",
-                            "gray.600"
-                          )}
-                          _focus={{
-                            borderColor: "brand.500",
-                            boxShadow:
-                              "0 0 0 1px var(--chakra-colors-brand-500)",
-                          }}
-                          _hover={{
-                            borderColor: "brand.400",
-                          }}
-                          whileFocus={{ scale: 1.02 }}
-                          transition={{ duration: 0.2 }}
-                        />
-                        {error && <FormErrorMessage>{error}</FormErrorMessage>}
-                      </FormControl>
-                    </MotionBox>
-
-                    <MotionButton
-                      variants={buttonVariants}
-                      initial="hidden"
-                      animate="visible"
-                      whileHover="hover"
-                      whileTap="tap"
-                      type="submit"
-                      size="lg"
-                      colorScheme="brand"
-                      isLoading={isLoading}
-                      loadingText="Sending magic link..."
-                      rightIcon={<ArrowRightIcon />}
-                      w="full"
-                      h="12"
-                      fontSize="lg"
-                      fontWeight="semibold"
-                      borderRadius="lg"
-                      bgGradient="linear(to-r, brand.500, brand.600)"
-                      _hover={{
-                        bgGradient: "linear(to-r, brand.600, brand.700)",
-                        transform: "translateY(-2px)",
-                        boxShadow: "lg",
-                      }}
-                      _active={{
-                        transform: "translateY(0px)",
-                      }}
-                    >
-                      Send Magic Link ✨
-                    </MotionButton>
-                  </VStack>
-                </form>
-
-                {/* Footer */}
-                <MotionBox variants={itemVariants}>
-                  <VStack spacing={3}>
-                    <Divider />
-                    <Text
-                      fontSize="sm"
-                      color={useColorModeValue("gray.500", "gray.500")}
-                      textAlign="center"
-                    >
-                      No password required • Secure and instant
-                    </Text>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => router.push("/")}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                      _hover={{
-                        color: "brand.500",
-                        bg: useColorModeValue("gray.50", "gray.700"),
-                      }}
-                    >
-                      ← Back to Status Page
-                    </Button>
-                  </VStack>
+                <MotionBox
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <Text fontSize="lg" color="rgba(255, 255, 255, 0.8)">
+                    Sign in to access your dashboard
+                  </Text>
                 </MotionBox>
               </VStack>
-            </CardBody>
-          </MotionCard>
-        </VStack>
+
+              {/* Glassmorphism Form Container */}
+              <MotionBox
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                p={8}
+                borderRadius="2xl"
+                backdropFilter="blur(20px)"
+                bg="rgba(255, 255, 255, 0.1)"
+                border="1px solid"
+                borderColor="rgba(173, 216, 230, 0.3)"
+                boxShadow="0 8px 32px rgba(0, 0, 0, 0.3)"
+                _hover={{
+                  borderColor: "rgba(173, 216, 230, 0.5)",
+                  boxShadow: "0 12px 40px rgba(0, 0, 0, 0.4)",
+                }}
+                transition="all 0.3s ease"
+              >
+                <form onSubmit={handleSubmit}>
+                  <VStack spacing={6}>
+                    {/* Email Input */}
+                    <FormControl isInvalid={!!error}>
+                      <FormLabel
+                        fontSize="lg"
+                        fontWeight="semibold"
+                        color="white"
+                        mb={3}
+                      >
+                        Email Address
+                      </FormLabel>
+                      <MotionInput
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address"
+                        size="lg"
+                        borderRadius="xl"
+                        border="2px solid"
+                        borderColor="rgba(173, 216, 230, 0.3)"
+                        bg="rgba(255, 255, 255, 0.05)"
+                        color="white"
+                        _placeholder={{
+                          color: "rgba(255, 255, 255, 0.5)",
+                        }}
+                        _focus={{
+                          borderColor: "rgba(173, 216, 230, 0.8)",
+                          boxShadow: "0 0 0 3px rgba(173, 216, 230, 0.2)",
+                          bg: "rgba(255, 255, 255, 0.1)",
+                        }}
+                        _hover={{
+                          borderColor: "rgba(173, 216, 230, 0.5)",
+                          bg: "rgba(255, 255, 255, 0.08)",
+                        }}
+                        transition="all 0.2s"
+                      />
+                      {error && (
+                        <FormErrorMessage color="red.300" fontSize="sm">
+                          {error}
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
+
+                    {/* Sign In Button */}
+                    <MotionButton
+                      type="submit"
+                      size="lg"
+                      w="full"
+                      bg="rgba(173, 216, 230, 0.9)"
+                      color="gray.800"
+                      fontSize="lg"
+                      fontWeight="semibold"
+                      borderRadius="xl"
+                      py={4}
+                      isLoading={isLoading}
+                      loadingText="Sending magic link..."
+                      rightIcon={<ArrowRightIcon className="w-5 h-5" />}
+                      _hover={{
+                        bg: "rgba(173, 216, 230, 1)",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 8px 25px rgba(173, 216, 230, 0.4)",
+                      }}
+                      _active={{
+                        transform: "translateY(0)",
+                      }}
+                      _disabled={{
+                        bg: "rgba(173, 216, 230, 0.5)",
+                        cursor: "not-allowed",
+                      }}
+                      transition="all 0.2s"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Sign In with Email
+                    </MotionButton>
+
+                    {/* Instructions */}
+                    <Text
+                      fontSize="sm"
+                      color="rgba(255, 255, 255, 0.6)"
+                      textAlign="center"
+                      lineHeight="tall"
+                    >
+                      We'll send a magic link to your inbox. No password
+                      required.
+                    </Text>
+                  </VStack>
+                </form>
+              </MotionBox>
+
+              {/* Features */}
+              <MotionBox
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                <VStack spacing={3}>
+                  <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
+                    <Icon as={ShieldCheckIcon} w={4} h={4} color="green.400" />
+                    <Text fontSize="sm">
+                      Secure passwordless authentication
+                    </Text>
+                  </HStack>
+                  <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
+                    <Icon as={BoltIcon} w={4} h={4} color="blue.400" />
+                    <Text fontSize="sm">Instant access to your dashboard</Text>
+                  </HStack>
+                </VStack>
+              </MotionBox>
+
+              {/* Back to Home */}
+              <MotionBox
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                textAlign="center"
+              >
+                <Link
+                  href="/"
+                  color="rgba(173, 216, 230, 0.8)"
+                  fontSize="sm"
+                  _hover={{
+                    color: "rgba(173, 216, 230, 1)",
+                    textDecoration: "underline",
+                  }}
+                  transition="color 0.2s"
+                >
+                  ← Back to Homepage
+                </Link>
+              </MotionBox>
+            </VStack>
+          </MotionBox>
+        </Flex>
       </Container>
     </Box>
   );

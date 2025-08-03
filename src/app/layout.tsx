@@ -1,12 +1,9 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 import theme from "@/theme";
-
-const inter = Inter({ subsets: ["latin"] });
 
 // Metadata is handled in the page components
 
@@ -17,8 +14,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider>
+      <head>
+        <link rel="icon" href="/Gemini_Generated_Image_ir9gbrir9gbrir9g__1_-removebg-preview.png" />
+        <title>Prism - Get ready for downtime</title>
+      </head>
+      <body>
+        <SessionProvider 
+          refetchInterval={0} 
+          refetchOnWindowFocus={false}
+          refetchWhenOffline={false}
+        >
           <ChakraProvider theme={theme}>
             {children}
             <Toaster

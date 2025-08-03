@@ -58,17 +58,25 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const borderColor = useColorModeValue("gray.200", "gray.700");
 
   useEffect(() => {
+    console.log('Dashboard Layout - Session Status:', status);
+    console.log('Dashboard Layout - Session Data:', session);
+    
     if (status === "loading") return;
     if (!session) {
+      console.log('No session found, redirecting to signin');
       router.push("/auth/signin");
+    } else {
+      console.log('Session found, user:', session.user?.email);
     }
   }, [session, status, router]);
 
   if (status === "loading") {
+    console.log('Dashboard Layout - Loading session...');
     return <StatusLoading variant="dashboard" />;
   }
 
   if (!session) {
+    console.log('Dashboard Layout - No session, returning null');
     return null;
   }
 

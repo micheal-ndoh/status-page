@@ -1,6 +1,6 @@
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreConfig('database', ({ env }) => ({
+export default ({ env }: { env: any }) => ({
     connection: {
         client: env('DATABASE_CLIENT', 'sqlite'),
         connection: {
@@ -8,4 +8,4 @@ export default factories.createCoreConfig('database', ({ env }) => ({
         },
         useNullAsDefault: true,
     },
-})); 
+}); 

@@ -324,35 +324,38 @@ export default function DashboardPage() {
 
             <VStack spacing={3} align="stretch">
               {recentActivity.length > 0 ? (
-                recentActivity.map((activity, index) => (
-                  <HStack
-                    key={activity.id}
-                    p={3}
-                    bg={useColorModeValue("gray.50", "gray.700")}
-                    borderRadius="md"
-                    spacing={3}
-                  >
-                    <Box
-                      p={2}
-                      borderRadius="full"
-                      bg={`${getStatusColor(activity.status)}.100`}
+                recentActivity.map((activity, index) => {
+                  const StatusIcon = getStatusIcon(activity.status);
+                  return (
+                    <HStack
+                      key={activity.id}
+                      p={3}
+                      bg={useColorModeValue("gray.50", "gray.700")}
+                      borderRadius="md"
+                      spacing={3}
                     >
-                      <activity.icon className="w-4 h-4" />
-                    </Box>
-                    <VStack align="start" spacing={1} flex={1}>
-                      <Text fontWeight="semibold">{activity.title}</Text>
-                      <Text fontSize="sm" color="gray.600">
-                        {activity.description}
-                      </Text>
-                      <Text fontSize="xs" color="gray.500">
-                        {new Date(activity.timestamp).toLocaleString()}
-                      </Text>
-                    </VStack>
-                    <Badge colorScheme={getStatusColor(activity.status)}>
-                      {activity.status}
-                    </Badge>
-                  </HStack>
-                ))
+                      <Box
+                        p={2}
+                        borderRadius="full"
+                        bg={`${getStatusColor(activity.status)}.100`}
+                      >
+                        <StatusIcon className="w-4 h-4" />
+                      </Box>
+                      <VStack align="start" spacing={1} flex={1}>
+                        <Text fontWeight="semibold">{activity.title}</Text>
+                        <Text fontSize="sm" color="gray.600">
+                          {activity.description}
+                        </Text>
+                        <Text fontSize="xs" color="gray.500">
+                          {new Date(activity.timestamp).toLocaleString()}
+                        </Text>
+                      </VStack>
+                      <Badge colorScheme={getStatusColor(activity.status)}>
+                        {activity.status}
+                      </Badge>
+                    </HStack>
+                  );
+                })
               ) : (
                 <Text color="gray.500" textAlign="center" py={8}>
                   No recent activity
