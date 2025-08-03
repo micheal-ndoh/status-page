@@ -1,10 +1,11 @@
 "use client";
 
-import { useTranslate } from '@tolgee/react';
+import { useTranslate, useTolgee } from '@tolgee/react';
 import { TranslationKey } from '@/i18n';
 
 export function useTranslation() {
-  const { t, isLoading, error } = useTranslate();
+  const { t, isLoading } = useTranslate();
+  const tolgee = useTolgee();
 
   const translate = (key: TranslationKey, params?: Record<string, string | number>) => {
     try {
@@ -15,9 +16,16 @@ export function useTranslation() {
     }
   };
 
+  const changeLanguage = (language: string) => {
+    tolgee.changeLanguage(language);
+  };
+
+  const currentLanguage = tolgee.getLanguage();
+
   return {
     t: translate,
     isLoading,
-    error,
+    changeLanguage,
+    currentLanguage,
   };
 } 

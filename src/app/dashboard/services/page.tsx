@@ -159,7 +159,7 @@ export default function ServicesPage() {
   };
 
   const handleDelete = async (serviceId: string) => {
-    if (!confirm("Are you sure you want to delete this service?")) return;
+    if (!confirm(t("services.deleteConfirm"))) return;
 
     try {
       const response = await fetch(`/api/services/${serviceId}`, {
@@ -168,22 +168,22 @@ export default function ServicesPage() {
 
       if (response.ok) {
         toast({
-          title: "Service deleted",
-          description: "The service has been deleted successfully.",
+          title: t("services.serviceDeleted"),
+          description: t("services.serviceDeletedDesc"),
           status: "success",
         });
         fetchServices();
       } else {
         toast({
-          title: "Error",
-          description: "Failed to delete service",
+          title: t("services.error"),
+          description: t("services.deleteError"),
           status: "error",
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "An unexpected error occurred",
+        title: t("services.error"),
+        description: t("services.unexpectedError"),
         status: "error",
       });
     }
@@ -202,6 +202,23 @@ export default function ServicesPage() {
         return "blue";
       default:
         return "gray";
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "OPERATIONAL":
+        return t("services.statusOperational");
+      case "DEGRADED_PERFORMANCE":
+        return t("services.statusDegraded");
+      case "PARTIAL_OUTAGE":
+        return t("services.statusPartial");
+      case "MAJOR_OUTAGE":
+        return t("services.statusMajor");
+      case "MAINTENANCE":
+        return t("services.statusMaintenance");
+      default:
+        return status.replace("_", " ");
     }
   };
 
@@ -275,7 +292,7 @@ export default function ServicesPage() {
                   </Td>
                   <Td>
                     <Badge colorScheme={getStatusColor(service.status)}>
-                      {service.status.replace("_", " ")}
+                      {getStatusText(service.status)}
                     </Badge>
                   </Td>
                   <Td>
@@ -318,14 +335,14 @@ export default function ServicesPage() {
                           icon={<PencilIcon className="w-4 h-4" />}
                           onClick={() => handleEdit(service)}
                         >
-                          Edit
+                          {t("services.editService")}
                         </MenuItem>
                         <MenuItem
                           icon={<TrashIcon className="w-4 h-4" />}
                           onClick={() => handleDelete(service.id)}
                           color="red.500"
                         >
-                          Delete
+                          {t("services.deleteService")}
                         </MenuItem>
                       </MenuList>
                     </Menu>
@@ -340,7 +357,7 @@ export default function ServicesPage() {
               <Cog6ToothIcon className="w-12 h-12 mx-auto text-gray-400 mb-4" />
               <Text color="gray.500">{t("services.noServices")}</Text>
               <Text fontSize="sm" color="gray.400">
-                Create your first service to get started
+                {t("services.getStarted")}
               </Text>
             </Box>
           )}
@@ -353,16 +370,18 @@ export default function ServicesPage() {
         <ModalContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ModalHeader>
-              {editingService ? "Edit Service" : "Create New Service"}
+              {editingService
+                ? t("services.editService")
+                : t("services.createService")}
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <VStack spacing={4}>
                 <FormControl isInvalid={!!errors.name}>
-                  <FormLabel>Service Name</FormLabel>
+                  <FormLabel>{t("services.serviceName")}</FormLabel>
                   <Input
                     {...register("name")}
-                    placeholder="Enter service name"
+                    placeholder={t("services.serviceNamePlaceholder")}
                   />
                   {errors.name && (
                     <Text color="red.500" fontSize="sm">
@@ -372,10 +391,10 @@ export default function ServicesPage() {
                 </FormControl>
 
                 <FormControl isInvalid={!!errors.description}>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t("services.description")}</FormLabel>
                   <Textarea
                     {...register("description")}
-                    placeholder="Enter service description"
+                    placeholder={t("services.descriptionPlaceholder")}
                     rows={3}
                   />
                   {errors.description && (
@@ -386,10 +405,10 @@ export default function ServicesPage() {
                 </FormControl>
 
                 <FormControl isInvalid={!!errors.url}>
-                  <FormLabel>Service URL</FormLabel>
+                  <FormLabel>{t("services.serviceUrlLabel")}</FormLabel>
                   <Input
                     {...register("url")}
-                    placeholder="https://example.com"
+                    placeholder={t("services.serviceUrlPlaceholder")}
                     type="url"
                   />
                   {errors.url && (
@@ -400,10 +419,10 @@ export default function ServicesPage() {
                 </FormControl>
 
                 <FormControl isInvalid={!!errors.logo}>
-                  <FormLabel>Logo URL</FormLabel>
+                  <FormLabel>{t("services.logoUrl")}</FormLabel>
                   <Input
                     {...register("logo")}
-                    placeholder="https://example.com/logo.png"
+                    placeholder={t("services.logoUrlPlaceholder")}
                     type="url"
                   />
                   {errors.logo && (
@@ -417,14 +436,16 @@ export default function ServicesPage() {
 
             <ModalFooter>
               <Button variant="ghost" mr={3} onClick={onClose}>
-                Cancel
+                {t("services.cancel")}
               </Button>
               <Button
                 colorScheme="brand"
                 type="submit"
                 isLoading={isSubmitting}
               >
-                {editingService ? "Update Service" : "Create Service"}
+                {editingService
+                  ? t("services.updateService")
+                  : t("services.addService")}
               </Button>
             </ModalFooter>
           </form>

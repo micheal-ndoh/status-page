@@ -42,6 +42,7 @@ import {
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import DashboardLanguageSwitcher from "@/components/DashboardLanguageSwitcher";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 
@@ -54,6 +55,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { t } = useTranslation();
 
   const bgColor = useColorModeValue("gray.50", "gray.900");
   const sidebarBg = useColorModeValue("white", "gray.800");
@@ -83,13 +85,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   const navItems = [
-    { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
     {
-      name: "Incidents",
+      name: t("dashboard.navigation.dashboard"),
+      href: "/dashboard",
+      icon: HomeIcon,
+    },
+    {
+      name: t("dashboard.navigation.incidents"),
       href: "/dashboard/incidents",
       icon: ExclamationTriangleIcon,
     },
-    { name: "Services", href: "/dashboard/services", icon: Cog6ToothIcon },
+    {
+      name: t("dashboard.navigation.services"),
+      href: "/dashboard/services",
+      icon: Cog6ToothIcon,
+    },
   ];
 
   return (
@@ -186,7 +196,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                     <Avatar size="sm" name={session.user?.name || ""} />
                     <VStack align="start" spacing={0} flex={1}>
                       <Text fontSize="sm" fontWeight="medium">
-                        {session.user?.name || "User"}
+                        {session.user?.name || t("dashboard.user.account")}
                       </Text>
                       <Text fontSize="xs" color="gray.500">
                         {session.user?.email}
@@ -195,15 +205,18 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   </HStack>
                 </MenuButton>
                 <MenuList>
-                  <MenuItem icon={<UserIcon className="w-4 h-4" />}>
-                    Profile
+                  <MenuItem
+                    icon={<UserIcon className="w-4 h-4" />}
+                    onClick={() => router.push("/dashboard/profile")}
+                  >
+                    {t("dashboard.user.profile")}
                   </MenuItem>
                   <MenuDivider />
                   <MenuItem
                     icon={<ArrowRightOnRectangleIcon className="w-4 h-4" />}
                     onClick={() => router.push("/auth/signout")}
                   >
-                    Sign Out
+                    {t("dashboard.user.signOut")}
                   </MenuItem>
                 </MenuList>
               </Menu>
@@ -234,7 +247,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   variant="ghost"
                 />
                 <Text fontSize="lg" fontWeight="semibold">
-                  Dashboard
+                  {t("dashboard.title")}
                 </Text>
               </HStack>
 

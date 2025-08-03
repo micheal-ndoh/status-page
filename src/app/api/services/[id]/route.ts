@@ -84,6 +84,17 @@ export async function DELETE(
             )
         }
 
+        // First, disconnect the service from all incidents
+        await prisma.service.update({
+            where: { id: params.id },
+            data: {
+                incidents: {
+                    set: [] // Disconnect all incidents
+                }
+            }
+        })
+
+        // Then delete the service
         await prisma.service.delete({
             where: { id: params.id },
         })

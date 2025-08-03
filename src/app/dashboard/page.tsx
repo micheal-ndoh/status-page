@@ -226,13 +226,13 @@ export default function DashboardPage() {
         >
           <CardBody>
             <Stat>
-              <StatLabel>Uptime</StatLabel>
+              <StatLabel>{t("dashboard.stats.uptime")}</StatLabel>
               <StatNumber color="success.500">
                 {stats.uptimePercentage}%
               </StatNumber>
               <StatHelpText>
                 <StatArrow type="increase" />
-                99.9% target
+                99.9% {t("dashboard.stats.target")}
               </StatHelpText>
             </Stat>
           </CardBody>
@@ -250,11 +250,11 @@ export default function DashboardPage() {
       >
         <CardBody>
           <VStack align="stretch" spacing={4}>
-            <Heading size="md">Service Status Overview</Heading>
+            <Heading size="md">{t("dashboard.serviceStatusOverview")}</Heading>
 
             <VStack spacing={3} align="stretch">
               <HStack justify="space-between">
-                <Text>Operational Services</Text>
+                <Text>{t("services.statusOperational")}</Text>
                 <HStack spacing={2}>
                   <Text fontWeight="semibold">{stats.operationalServices}</Text>
                   <Progress
@@ -272,7 +272,7 @@ export default function DashboardPage() {
               </HStack>
 
               <HStack justify="space-between">
-                <Text>Degraded Services</Text>
+                <Text>{t("services.statusDegraded")}</Text>
                 <HStack spacing={2}>
                   <Text fontWeight="semibold">{stats.degradedServices}</Text>
                   <Progress
@@ -289,7 +289,7 @@ export default function DashboardPage() {
               </HStack>
 
               <HStack justify="space-between">
-                <Text>Outage Services</Text>
+                <Text>{t("services.statusMajor")}</Text>
                 <HStack spacing={2}>
                   <Text fontWeight="semibold">{stats.outageServices}</Text>
                   <Progress
@@ -320,7 +320,7 @@ export default function DashboardPage() {
       >
         <CardBody>
           <VStack align="stretch" spacing={4}>
-            <Heading size="md">Recent Activity</Heading>
+            <Heading size="md">{t("dashboard.recentActivity")}</Heading>
 
             <VStack spacing={3} align="stretch">
               {recentActivity.length > 0 ? (
@@ -358,7 +358,7 @@ export default function DashboardPage() {
                 })
               ) : (
                 <Text color="gray.500" textAlign="center" py={8}>
-                  No recent activity
+                  {t("dashboard.noRecentActivity")}
                 </Text>
               )}
             </VStack>
