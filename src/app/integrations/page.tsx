@@ -38,23 +38,23 @@ const integrations = [
       >
         <rect width="60" height="60" rx="12" fill="#4A154B" />
         <path
-          d="M18 28C18 26.3431 19.3431 25 21 25C22.6569 25 24 26.3431 24 28V32C24 33.6569 22.6569 35 21 35C19.3431 35 18 33.6569 18 32V28Z"
+          d="M20 25C20 23.3431 21.3431 22 23 22C24.6569 22 26 23.3431 26 25V35C26 36.6569 24.6569 38 23 38C21.3431 38 20 36.6569 20 35V25Z"
           fill="white"
         />
         <path
-          d="M28 22C28 20.3431 29.3431 19 31 19C32.6569 19 34 20.3431 34 22V38C34 39.6569 32.6569 41 31 41C29.3431 41 28 39.6569 28 38V22Z"
+          d="M30 20C30 18.3431 31.3431 17 33 17C34.6569 17 36 18.3431 36 20V35C36 36.6569 34.6569 38 33 38C31.3431 38 30 36.6569 30 35V20Z"
           fill="white"
         />
         <path
-          d="M38 28C38 26.3431 39.3431 25 41 25C42.6569 25 44 26.3431 44 28V32C44 33.6569 42.6569 35 41 35C39.3431 35 38 33.6569 38 32V28Z"
+          d="M40 25C40 23.3431 41.3431 22 43 22C44.6569 22 46 23.3431 46 25V35C46 36.6569 44.6569 38 43 38C41.3431 38 40 36.6569 40 35V25Z"
           fill="white"
         />
         <path
-          d="M28 18C28 16.3431 29.3431 15 31 15C32.6569 15 34 16.3431 34 18V22C34 23.6569 32.6569 25 31 25C29.3431 25 28 23.6569 28 22V18Z"
+          d="M30 15C30 13.3431 31.3431 12 33 12C34.6569 12 36 13.3431 36 15V20C36 21.6569 34.6569 23 33 23C31.3431 23 30 21.6569 30 20V15Z"
           fill="white"
         />
         <path
-          d="M28 38C28 36.3431 29.3431 35 31 35C32.6569 35 34 36.3431 34 38V42C34 43.6569 32.6569 45 31 45C29.3431 45 28 43.6569 28 42V38Z"
+          d="M30 40C30 38.3431 31.3431 37 33 37C34.6569 37 36 38.3431 36 40V45C36 46.6569 34.6569 48 33 48C31.3431 48 30 46.6569 30 45V40Z"
           fill="white"
         />
       </svg>
@@ -88,6 +88,12 @@ const integrations = [
           strokeWidth="1"
           strokeLinecap="round"
         />
+        <path
+          d="M26 26L34 34M34 26L26 34"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     color: "#5865F2",
@@ -104,9 +110,10 @@ const integrations = [
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="60" height="60" rx="12" fill="#06AD56" />
-        <path d="M20 20H40V40H20V20Z" fill="white" />
-        <path d="M25 25H35V35H25V25Z" fill="#06AD56" />
-        <path d="M27 27H33V33H27V27Z" fill="white" />
+        <path d="M18 18H42V42H18V18Z" fill="white" />
+        <path d="M22 22H38V38H22V22Z" fill="#06AD56" />
+        <path d="M25 25H35V35H25V25Z" fill="white" />
+        <path d="M28 28H32V32H28V28Z" fill="#06AD56" />
       </svg>
     ),
     color: "#06AD56",
@@ -123,13 +130,19 @@ const integrations = [
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="60" height="60" rx="12" fill="#6264A7" />
-        <path d="M20 20H40V40H20V20Z" fill="white" />
-        <path d="M25 25H35V35H25V25Z" fill="#6264A7" />
-        <circle cx="30" cy="30" r="3" fill="white" />
+        <path d="M18 18H42V42H18V18Z" fill="white" />
+        <path d="M22 22H38V38H22V22Z" fill="#6264A7" />
+        <circle cx="30" cy="30" r="4" fill="white" />
+        <path
+          d="M26 26L34 34M34 26L26 34"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
         <path
           d="M28 28L32 32M32 28L28 32"
           stroke="white"
-          strokeWidth="1"
+          strokeWidth="2"
           strokeLinecap="round"
         />
       </svg>
@@ -165,6 +178,20 @@ const integrations = [
           stroke="white"
           strokeWidth="2"
         />
+        <path
+          d="M15 20L15 40L45 40L45 20"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M15 20L45 20"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
     color: "#EA4335",
@@ -195,6 +222,13 @@ const integrations = [
           stroke="white"
           strokeWidth="2"
         />
+        <path
+          d="M15 15L45 45M45 15L15 45"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+        <circle cx="30" cy="30" r="3" fill="white" />
       </svg>
     ),
     color: "#173,216,230",
@@ -214,6 +248,12 @@ const integrations = [
         <rect x="18" y="15" width="24" height="30" rx="3" fill="white" />
         <rect x="20" y="17" width="20" height="26" rx="1" fill="#F22F46" />
         <circle cx="30" cy="45" r="2" fill="white" />
+        <path
+          d="M25 25H35M25 28H35M25 31H32"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     color: "#F22F46",
@@ -245,6 +285,12 @@ const integrations = [
           strokeLinejoin="round"
         />
         <circle cx="30" cy="30" r="2" fill="white" />
+        <path
+          d="M20 20L40 40M40 20L20 40"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     color: "#0088CC",
@@ -281,11 +327,12 @@ const integrations = [
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="60" height="60" rx="12" fill="#0052CC" />
-        <path d="M20 20H40V40H20V20Z" fill="white" />
-        <path d="M25 25H35V35H25V25Z" fill="#0052CC" />
-        <circle cx="30" cy="30" r="3" fill="white" />
+        <path d="M18 18H42V42H18V18Z" fill="white" />
+        <path d="M22 22H38V38H22V22Z" fill="#0052CC" />
+        <path d="M25 25H35V35H25V25Z" fill="white" />
+        <path d="M28 28H32V32H28V28Z" fill="#0052CC" />
         <path
-          d="M28 28L32 32M32 28L28 32"
+          d="M30 30L32 32M32 30L30 32"
           stroke="white"
           strokeWidth="1"
           strokeLinecap="round"
@@ -321,6 +368,18 @@ const integrations = [
           strokeWidth="2"
         />
         <circle cx="30" cy="30" r="3" fill="white" />
+        <path
+          d="M15 15L45 45M45 15L15 45"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+        <path
+          d="M25 25L35 35M35 25L25 35"
+          stroke="white"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     color: "#FF4A00",
