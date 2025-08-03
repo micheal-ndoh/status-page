@@ -139,7 +139,7 @@ export default function PricingSection() {
             <motion.div variants={itemVariants}>
               <VStack spacing={4} textAlign="center">
                 <Heading size="2xl" fontWeight="bold">
-                  Simple, transparent pricing
+                  Pricing
                 </Heading>
                 <Text fontSize="lg" color={textColor} maxW="2xl">
                   Choose the plan that fits your needs. All plans include our
