@@ -52,24 +52,18 @@ export default function SignInPage() {
     try {
       const result = await signIn("email", {
         email,
-        redirect: false,
+        callbackUrl: "/dashboard",
+        redirect: true,
       });
 
+      // The redirect will be handled by NextAuth
+      // If we reach here, there was an error
       if (result?.error) {
         setError("Failed to send sign-in email. Please try again.");
-      } else {
-        toast({
-          title: "Magic link sent! ✨",
-          description: "Check your email for the sign-in link.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        router.push("/auth/verify-request");
+        setIsLoading(false);
       }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
-    } finally {
       setIsLoading(false);
     }
   };
