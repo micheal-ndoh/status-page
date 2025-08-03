@@ -21,55 +21,52 @@ import {
   CogIcon,
   ClockIcon,
 } from "@heroicons/react/24/outline";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 
-const features = [
-  {
-    icon: ChartBarIcon,
-    title: "Monitor everything",
-    description:
-      "Check all your services and track availability and performance with real-time alerts across all channels.",
-    color: "blue.500",
-  },
-  {
-    icon: ShieldCheckIcon,
-    title: "Fix incidents with your team",
-    description:
-      "Integrate with tools you already use and collaborate on incidents with your team from Slack & Teams.",
-    color: "green.500",
-  },
-  {
-    icon: GlobeAltIcon,
-    title: "Publish to Status Page",
-    description:
-      "Make it yours, make it private, or share to the world! Publish updates to your custom status page.",
-    color: "purple.500",
-  },
-  {
-    icon: BellIcon,
-    title: "Real-time alerts",
-    description:
-      "Get instant notifications when issues arise. Never miss a critical incident with our smart alerting system.",
-    color: "orange.500",
-  },
-  {
-    icon: CogIcon,
-    title: "Easy integrations",
-    description:
-      "Connect with your existing tools and workflows. We integrate with all major platforms and services.",
-    color: "teal.500",
-  },
-  {
-    icon: ClockIcon,
-    title: "24/7 monitoring",
-    description:
-      "Continuous monitoring ensures you catch issues before they impact your users. Always be one step ahead.",
-    color: "red.500",
-  },
-];
-
 const FeaturesSection = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: ChartBarIcon,
+      title: t("homepage.features.monitorEverything.title"),
+      description: t("homepage.features.monitorEverything.description"),
+      color: "blue.500",
+    },
+    {
+      icon: ShieldCheckIcon,
+      title: t("homepage.features.fixIncidents.title"),
+      description: t("homepage.features.fixIncidents.description"),
+      color: "green.500",
+    },
+    {
+      icon: GlobeAltIcon,
+      title: t("homepage.features.publishStatus.title"),
+      description: t("homepage.features.publishStatus.description"),
+      color: "purple.500",
+    },
+    {
+      icon: BellIcon,
+      title: t("homepage.features.realTimeAlerts.title"),
+      description: t("homepage.features.realTimeAlerts.description"),
+      color: "orange.500",
+    },
+    {
+      icon: CogIcon,
+      title: t("homepage.features.easyIntegrations.title"),
+      description: t("homepage.features.easyIntegrations.description"),
+      color: "teal.500",
+    },
+    {
+      icon: ClockIcon,
+      title: t("homepage.features.continuousMonitoring.title"),
+      description: t("homepage.features.continuousMonitoring.description"),
+      color: "red.500",
+    },
+  ];
+
   const bgColor = useColorModeValue("white", "gray.900");
   const textColor = useColorModeValue("gray.600", "gray.400");
 
@@ -114,11 +111,10 @@ const FeaturesSection = () => {
               bgGradient="linear(to-r, brand.500, purple.600)"
               bgClip="text"
             >
-              Monitor everything
+              {t("homepage.features.title")}
             </Heading>
             <Text fontSize="lg" color={textColor} maxW="2xl" mx="auto">
-              Houston, we have a problem. But with Prism, you'll always know
-              about it first.
+              {t("homepage.features.subtitle")}
             </Text>
           </MotionBox>
         </MotionBox>

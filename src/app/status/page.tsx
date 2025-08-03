@@ -31,6 +31,7 @@ import {
   BellIcon,
 } from "@heroicons/react/24/outline";
 import Navigation from "@/components/Navigation";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
@@ -86,6 +87,7 @@ const getOverallStatus = (services: Service[]) => {
 };
 
 export default function StatusPage() {
+  const { t } = useTranslation();
   const [services, setServices] = useState<Service[]>([]);
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [loading, setLoading] = useState(true);
@@ -209,15 +211,15 @@ export default function StatusPage() {
                 <VStack spacing={2}>
                   <Heading size="2xl" fontWeight="bold">
                     {overallStatus === "operational" &&
-                      "All Systems Operational"}
-                    {overallStatus === "degraded" && "Degraded Performance"}
-                    {overallStatus === "outage" && "Major Outage"}
+                      t("status.allSystemsOperational")}
+                    {overallStatus === "degraded" && t("status.degradedPerformance")}
+                    {overallStatus === "outage" && t("status.majorOutage")}
                   </Heading>
                   <Text
                     color={useColorModeValue("gray.600", "gray.400")}
                     fontSize="lg"
                   >
-                    Last updated: {new Date().toLocaleString()}
+                    {t("status.lastUpdated")}: {new Date().toLocaleString()}
                   </Text>
                 </VStack>
               </VStack>
@@ -227,7 +229,7 @@ export default function StatusPage() {
             <MotionBox variants={itemVariants}>
               <VStack spacing={6} align="stretch">
                 <Heading size="xl" fontWeight="bold">
-                  Services
+                  {t("status.services")}
                 </Heading>
                 <Grid
                   templateColumns={{
@@ -281,9 +283,9 @@ export default function StatusPage() {
             {incidents.length > 0 && (
               <MotionBox variants={itemVariants}>
                 <VStack spacing={6} align="stretch">
-                  <Heading size="xl" fontWeight="bold">
-                    Recent Incidents
-                  </Heading>
+                                  <Heading size="xl" fontWeight="bold">
+                  {t("status.recentIncidents")}
+                </Heading>
                   <VStack spacing={4} align="stretch">
                     {incidents.slice(0, 5).map((incident) => (
                       <MotionCard

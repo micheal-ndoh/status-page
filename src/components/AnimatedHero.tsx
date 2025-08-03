@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, Text, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface DetectionDot {
   angle: number;
@@ -13,6 +14,7 @@ interface DetectionDot {
 }
 
 const AnimatedHero = () => {
+  const { t } = useTranslation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [detectionDots, setDetectionDots] = useState<DetectionDot[]>([]);
   const lastTimeRef = useRef(performance.now());
@@ -254,7 +256,7 @@ const AnimatedHero = () => {
               fontFamily="mono"
               mt={20}
             >
-              MONITOR EVERYTHING
+              {t("homepage.hero.title")}
             </Text>
           </motion.div>
           <motion.div
@@ -268,7 +270,7 @@ const AnimatedHero = () => {
               maxW="600px"
               lineHeight="tall"
             >
-              Real-time monitoring with intelligent detection and instant alerts
+              {t("homepage.hero.subtitle")}
             </Text>
           </motion.div>
         </VStack>

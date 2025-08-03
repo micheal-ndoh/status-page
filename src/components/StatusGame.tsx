@@ -29,6 +29,7 @@ import {
   ArrowPathIcon,
 } from "@heroicons/react/24/outline";
 import Logo from "./Logo";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
@@ -49,6 +50,7 @@ const initialServices: Service[] = [
 ];
 
 export default function StatusGame() {
+  const { t } = useTranslation();
   const [services, setServices] = useState<Service[]>(initialServices);
   const [isRunning, setIsRunning] = useState(false);
   const [score, setScore] = useState(0);
@@ -238,7 +240,7 @@ export default function StatusGame() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Start Game
+                {t("game.startGame")}
               </MotionButton>
             ) : (
               <MotionButton
@@ -249,7 +251,7 @@ export default function StatusGame() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Pause Game
+                {t("game.pauseGame")}
               </MotionButton>
             )}
             <MotionButton
@@ -260,7 +262,7 @@ export default function StatusGame() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Reset
+              {t("game.reset")}
             </MotionButton>
           </HStack>
 
@@ -293,7 +295,7 @@ export default function StatusGame() {
                                 {service.name}
                               </Text>
                               <Text fontSize="sm" color="gray.500">
-                                Uptime: {service.uptime}%
+                                {t("game.uptime")}: {service.uptime}%
                               </Text>
                             </VStack>
                           </HStack>
@@ -320,7 +322,7 @@ export default function StatusGame() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
-                            Fix Service
+                            {t("game.fixService")}
                           </MotionButton>
                         )}
                       </VStack>
@@ -335,23 +337,13 @@ export default function StatusGame() {
           <Card>
             <CardBody>
               <VStack spacing={4} align="start">
-                <Heading size="md">How to Play</Heading>
+                <Heading size="md">{t("game.howToPlay")}</Heading>
                 <VStack align="start" spacing={2}>
-                  <Text fontSize="sm">
-                    • Click "Start Game" to begin monitoring
-                  </Text>
-                  <Text fontSize="sm">
-                    • Services will randomly experience issues
-                  </Text>
-                  <Text fontSize="sm">
-                    • Click "Fix Service" to resolve incidents
-                  </Text>
-                  <Text fontSize="sm">
-                    • Earn points for each service you fix
-                  </Text>
-                  <Text fontSize="sm">
-                    • Try to maintain the highest uptime possible!
-                  </Text>
+                  <Text fontSize="sm">• {t("game.instruction1")}</Text>
+                  <Text fontSize="sm">• {t("game.instruction2")}</Text>
+                  <Text fontSize="sm">• {t("game.instruction3")}</Text>
+                  <Text fontSize="sm">• {t("game.instruction4")}</Text>
+                  <Text fontSize="sm">• {t("game.instruction5")}</Text>
                 </VStack>
               </VStack>
             </CardBody>
