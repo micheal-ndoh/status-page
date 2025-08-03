@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
             sendVerificationRequest: async ({ identifier, url, provider }) => {
                 // Get user's language preference from localStorage or default to 'en'
                 let userLanguage = 'en';
-                
+
                 // Try to get language from localStorage (this will be set by the frontend)
                 if (typeof window !== 'undefined') {
                     const storedLanguage = localStorage.getItem('user_language');
@@ -132,12 +132,38 @@ export const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (token.sub && session.user) {
                 session.user.id = token.sub
+
+                // Fetch user data from database to include latest profile info
+                try {
+                    const user = await prisma.user.findUnique({
+                        where: { id: token.sub },
+                        select: {
+                            id: true,
+                            name: true,
+                            email: true,
+                            image: true,
+                            role: true,
+                        },
+                    });
+
+                    if (user) {
+                        session.user.name = user.name;
+                        session.user.email = user.email;
+                        session.user.image = user.image;
+                        session.user.role = user.role;
+                    }
+                } catch (error) {
+                    console.error('Error fetching user data for session:', error);
+                }
             }
             return session
         },
         async jwt({ token, user }) {
             if (user) {
                 token.role = user.role
+                token.name = user.name
+                token.email = user.email
+                token.image = user.image
             }
             return token
         },

@@ -84,11 +84,45 @@ export default function ProfilePage() {
     }
   }, [session, setValue]);
 
+  // Fetch user profile data
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("/api/profile");
+        if (response.ok) {
+          const userData = await response.json();
+          setValue("name", userData.name || "");
+          setValue("email", userData.email || "");
+          setAvatarUrl(userData.image || null);
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    if (session?.user) {
+      fetchProfile();
+    }
+  }, [session, setValue]);
+
   const handleProfileUpdate = async (data: ProfileFormData) => {
     setIsLoading(true);
     try {
-      // Here you would typically make an API call to update the user profile
-      // For now, we'll just show a success message
+      const response = await fetch("/api/profile", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to update profile");
+      }
+
+      const result = await response.json();
+
       toast({
         title: t("notifications.success"),
         description: t("profile.profileUpdated"),
@@ -103,14 +137,16 @@ export default function ProfilePage() {
         ...session,
         user: {
           ...session?.user,
-          name: data.name,
-          email: data.email,
+          name: result.user.name,
+          email: result.user.email,
         },
       });
     } catch (error) {
+      console.error("Profile update error:", error);
       toast({
         title: t("notifications.error"),
-        description: t("profile.uploadError"),
+        description:
+          error instanceof Error ? error.message : t("profile.uploadError"),
         status: "error",
         position: "top-right",
         duration: 3000,
@@ -155,10 +191,30 @@ export default function ProfilePage() {
     }
 
     try {
-      // Here you would typically upload to your storage bucket
-      // For now, we'll create a local URL
-      const url = URL.createObjectURL(file);
-      setAvatarUrl(url);
+      const formData = new FormData();
+      formData.append("avatar", file);
+
+      const response = await fetch("/api/profile/avatar", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to upload avatar");
+      }
+
+      const result = await response.json();
+      setAvatarUrl(result.user.image);
+
+      // Update the session with new avatar
+      await update({
+        ...session,
+        user: {
+          ...session?.user,
+          image: result.user.image,
+        },
+      });
 
       toast({
         title: t("notifications.success"),
@@ -169,9 +225,11 @@ export default function ProfilePage() {
         isClosable: true,
       });
     } catch (error) {
+      console.error("Avatar upload error:", error);
       toast({
         title: t("notifications.error"),
-        description: t("profile.uploadError"),
+        description:
+          error instanceof Error ? error.message : t("profile.uploadError"),
         status: "error",
         position: "top-right",
         duration: 3000,
@@ -180,16 +238,49 @@ export default function ProfilePage() {
     }
   };
 
-  const handleRemoveAvatar = () => {
-    setAvatarUrl(null);
-    toast({
-      title: t("notifications.success"),
-      description: t("profile.profileUpdated"),
-      status: "success",
-      position: "top-right",
-      duration: 3000,
-      isClosable: true,
-    });
+  const handleRemoveAvatar = async () => {
+    try {
+      const response = await fetch("/api/profile/avatar", {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to remove avatar");
+      }
+
+      const result = await response.json();
+      setAvatarUrl(null);
+
+      // Update the session with removed avatar
+      await update({
+        ...session,
+        user: {
+          ...session?.user,
+          image: null,
+        },
+      });
+
+      toast({
+        title: t("notifications.success"),
+        description: t("profile.profileUpdated"),
+        status: "success",
+        position: "top-right",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error("Avatar removal error:", error);
+      toast({
+        title: t("notifications.error"),
+        description:
+          error instanceof Error ? error.message : t("profile.uploadError"),
+        status: "error",
+        position: "top-right",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   if (!session?.user) {
