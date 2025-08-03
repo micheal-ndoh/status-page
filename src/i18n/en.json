@@ -1,0 +1,531 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "update": "Update",
+    "back": "Go Back",
+    "home": "Go Home",
+    "close": "Close",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view": "View",
+    "more": "More",
+    "less": "Less",
+    "all": "All",
+    "none": "None",
+    "select": "Select",
+    "choose": "Choose",
+    "upload": "Upload",
+    "download": "Download",
+    "export": "Export",
+    "import": "Import",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout",
+    "signout": "Sign Out",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "description": "Description",
+    "title": "Title",
+    "status": "Status",
+    "severity": "Severity",
+    "priority": "Priority",
+    "date": "Date",
+    "time": "Time",
+    "created": "Created",
+    "updated": "Updated",
+    "actions": "Actions",
+    "details": "Details",
+    "information": "Information",
+    "notification": "Notification",
+    "alert": "Alert",
+    "warning": "Warning",
+    "info": "Info",
+    "help": "Help",
+    "support": "Support",
+    "contact": "Contact",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "auto": "Auto"
+  },
+  "navigation": {
+    "product": "Product",
+    "customers": "Customers",
+    "integrations": "Integrations",
+    "pricing": "Pricing",
+    "dashboard": "Dashboard",
+    "services": "Services",
+    "incidents": "Incidents",
+    "activity": "Activity",
+    "stats": "Statistics",
+    "home": "Home",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "profile": "Profile",
+    "user": "User"
+  },
+  "homepage": {
+    "hero": {
+      "title": "MONITOR EVERYTHING",
+      "subtitle": "Real-time monitoring with intelligent detection and instant alerts"
+    },
+    "features": {
+      "title": "Everything you need to monitor your services",
+      "subtitle": "Powerful features to keep your services running smoothly",
+      "monitorEverything": {
+        "title": "Monitor everything",
+        "description": "Check all your services and track availability and performance with real-time alerts across all channels."
+      },
+      "fixIncidents": {
+        "title": "Fix incidents with your team",
+        "description": "Integrate with tools you already use and collaborate on incidents with your team from Slack & Teams."
+      },
+      "publishStatus": {
+        "title": "Publish to Status Page",
+        "description": "Make it yours, make it private, or share to the world! Publish updates to your custom status page."
+      },
+      "realTimeAlerts": {
+        "title": "Real-time alerts",
+        "description": "Get instant notifications when issues arise. Never miss a critical incident with our smart alerting system."
+      },
+      "easyIntegrations": {
+        "title": "Easy integrations",
+        "description": "Connect with your existing tools and workflows. We integrate with all major platforms and services."
+      },
+      "continuousMonitoring": {
+        "title": "24/7 monitoring",
+        "description": "Continuous monitoring ensures you catch issues before they impact your users. Always be one step ahead."
+      }
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Welcome to Prism! ✨",
+      "subtitle": "Sign in to access your dashboard and manage your services",
+      "features": [
+        "Secure email-based authentication",
+        "Instant access to your dashboard"
+      ],
+      "emailPlaceholder": "Enter your email address",
+      "submitButton": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign up",
+      "forgotPassword": "Forgot your password?",
+      "emailSent": "Check your email",
+      "emailSentMessage": "We've sent you a magic link to sign in to your account."
+    },
+    "signout": {
+      "title": "Sign Out",
+      "confirmation": "Are you sure you want to sign out? You'll need to sign in again to access your dashboard.",
+      "signingOut": "Signing Out...",
+      "signedOut": "Signed Out Successfully!",
+      "signingOutMessage": "Please wait while we sign you out securely.",
+      "signedOutMessage": "You have been successfully signed out. Redirecting to homepage...",
+      "goHomeButton": "Go to Homepage"
+    },
+    "verifyRequest": {
+      "title": "Check your email",
+      "subtitle": "A sign in link has been sent to your email address.",
+      "message": "If you don't see it, check your spam folder.",
+      "resendButton": "Resend email",
+      "backToSignin": "Back to sign in"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "quickActions": "Quick Actions",
+    "recentActivity": "Recent Activity",
+    "systemStatus": "System Status",
+    "uptime": "Uptime",
+    "responseTime": "Response Time",
+    "incidents": "Incidents",
+    "services": "Services",
+    "alerts": "Alerts",
+    "notifications": "Notifications",
+    "stats": {
+      "totalServices": "Total Services",
+      "operationalServices": "Operational",
+      "degradedServices": "Degraded",
+      "outageServices": "Outage",
+      "totalIncidents": "Total Incidents",
+      "resolvedIncidents": "Resolved",
+      "openIncidents": "Open",
+      "uptime": "Uptime",
+      "responseTime": "Response Time"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "noActivity": "No recent activity",
+      "serviceCreated": "Service created",
+      "serviceUpdated": "Service updated",
+      "serviceDeleted": "Service deleted",
+      "incidentCreated": "Incident created",
+      "incidentUpdated": "Incident updated",
+      "incidentResolved": "Incident resolved",
+      "statusChanged": "Status changed"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "addService": "Add Service",
+    "editService": "Edit Service",
+    "deleteService": "Delete Service",
+    "serviceName": "Service Name",
+    "serviceDescription": "Service Description",
+    "serviceUrl": "Service URL",
+    "serviceLogo": "Service Logo",
+    "serviceStatus": "Service Status",
+    "operational": "Operational",
+    "degraded": "Degraded",
+    "outage": "Outage",
+    "uptime": "Uptime",
+    "responseTime": "Response Time",
+    "lastChecked": "Last Checked",
+    "createdAt": "Created",
+    "updatedAt": "Updated",
+    "actions": "Actions",
+    "noServices": "No services found",
+    "loadingServices": "Loading services...",
+    "errorLoadingServices": "Error loading services",
+    "serviceCreated": "Service created successfully",
+    "serviceUpdated": "Service updated successfully",
+    "serviceDeleted": "Service deleted successfully",
+    "confirmDelete": "Are you sure you want to delete this service?",
+    "form": {
+      "nameRequired": "Service name is required",
+      "nameMaxLength": "Service name must be less than 100 characters",
+      "urlInvalid": "Please enter a valid URL",
+      "descriptionPlaceholder": "Enter service description",
+      "urlPlaceholder": "Enter service URL (optional)",
+      "logoPlaceholder": "Enter logo URL (optional)"
+    }
+  },
+  "incidents": {
+    "title": "Incidents",
+    "addIncident": "Add Incident",
+    "editIncident": "Edit Incident",
+    "deleteIncident": "Delete Incident",
+    "incidentTitle": "Incident Title",
+    "incidentDescription": "Incident Description",
+    "incidentStatus": "Incident Status",
+    "incidentSeverity": "Incident Severity",
+    "affectedServices": "Affected Services",
+    "author": "Author",
+    "createdAt": "Created",
+    "updatedAt": "Updated",
+    "resolvedAt": "Resolved",
+    "investigating": "Investigating",
+    "identified": "Identified",
+    "monitoring": "Monitoring",
+    "resolved": "Resolved",
+    "minor": "Minor",
+    "major": "Major",
+    "critical": "Critical",
+    "noIncidents": "No incidents found",
+    "loadingIncidents": "Loading incidents...",
+    "errorLoadingIncidents": "Error loading incidents",
+    "incidentCreated": "Incident created successfully",
+    "incidentUpdated": "Incident updated successfully",
+    "incidentDeleted": "Incident deleted successfully",
+    "confirmDelete": "Are you sure you want to delete this incident?",
+    "form": {
+      "titleRequired": "Title is required",
+      "titleMaxLength": "Title must be less than 200 characters",
+      "descriptionRequired": "Description is required",
+      "descriptionMaxLength": "Description must be less than 2000 characters",
+      "severityRequired": "Severity is required",
+      "servicesRequired": "At least one service must be selected",
+      "titlePlaceholder": "Enter incident title",
+      "descriptionPlaceholder": "Enter incident description"
+    }
+  },
+  "status": {
+    "title": "System Status",
+    "overallStatus": "Overall System Status",
+    "allSystemsOperational": "All Systems Operational",
+    "partialSystemOutage": "Partial System Outage",
+    "majorOutage": "Major Outage",
+    "degradedPerformance": "Degraded Performance",
+    "operational": "Operational",
+    "degraded": "Degraded",
+    "outage": "Outage",
+    "uptime": "Uptime",
+    "responseTime": "Response Time",
+    "lastUpdated": "Last Updated",
+    "incidentHistory": "Incident History",
+    "noIncidents": "No incidents reported",
+    "subscribe": "Subscribe to updates",
+    "unsubscribe": "Unsubscribe",
+    "emailPlaceholder": "Enter your email address",
+    "subscribeButton": "Subscribe",
+    "unsubscribeButton": "Unsubscribe",
+    "subscribed": "Successfully subscribed",
+    "unsubscribed": "Successfully unsubscribed",
+    "subscriptionError": "Error updating subscription",
+    "loadingStatus": "Loading status...",
+    "services": "Services",
+    "recentIncidents": "Recent Incidents",
+    "created": "Created",
+    "updated": "Updated",
+    "needToManage": "Need to manage incidents?",
+    "accessDashboard": "Access Dashboard",
+    "copyright": "© 2024 Prism. All rights reserved."
+  },
+  "game": {
+    "title": "Status Monitoring Game",
+    "subtitle": "Test your incident response skills",
+    "startGame": "Start Game",
+    "stopGame": "Stop Game",
+    "resetGame": "Reset Game",
+    "score": "Score",
+    "time": "Time",
+    "gameOver": "Game Over",
+    "incidentDetected": "🚨 Incident Detected!",
+    "incidentDescription": "is experiencing {status} performance.",
+    "fixService": "Fix Service",
+    "serviceFixed": "Service fixed! +10 points",
+    "gameInstructions": "Monitor services and fix incidents as they occur. Earn points for quick responses!",
+    "webServer": "Web Server",
+    "database": "Database",
+    "apiGateway": "API Gateway",
+    "cdn": "CDN",
+    "statusGame": "Status Game",
+    "gameSubtitle": "Monitor your services and fix incidents as they occur!",
+    "score": "Score",
+    "time": "Time",
+    "status": "Status",
+    "running": "Running",
+    "stopped": "Stopped",
+    "startGame": "Start Game",
+    "pauseGame": "Pause Game",
+    "reset": "Reset",
+    "uptime": "Uptime",
+    "fixService": "Fix Service",
+    "howToPlay": "How to Play",
+    "instructions": [
+      "Click \"Start Game\" to begin monitoring",
+      "Services will randomly experience issues",
+      "Click \"Fix Service\" to resolve incidents",
+      "Earn points for each service you fix",
+      "Try to maintain the highest uptime possible!"
+    ],
+    "serviceFixed": "✅ Service Fixed!",
+    "serviceFixedMessage": "Great job! You've resolved the incident."
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "Choose the plan that's right for your team",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save25": "Save 25%",
+    "starter": {
+      "name": "Starter",
+      "price": "$9",
+      "period": "/month",
+      "description": "Perfect for small teams and startups",
+      "features": [
+        "Up to 5 services",
+        "Basic monitoring",
+        "Email notifications",
+        "Status page",
+        "Basic integrations"
+      ],
+      "cta": "Get Started"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$29",
+      "period": "/month",
+      "description": "Best for growing businesses",
+      "features": [
+        "Up to 25 services",
+        "Advanced monitoring",
+        "Slack & Teams integration",
+        "Custom status page",
+        "Priority support",
+        "Advanced analytics"
+      ],
+      "cta": "Start Free Trial",
+      "popular": "Most Popular"
+    },
+    "business": {
+      "name": "Business",
+      "price": "$99",
+      "period": "/month",
+      "description": "For enterprise teams",
+      "features": [
+        "Unlimited services",
+        "Enterprise monitoring",
+        "Custom integrations",
+        "White-label status page",
+        "24/7 support",
+        "Advanced reporting"
+      ],
+      "cta": "Contact Sales"
+    }
+  },
+  "customers": {
+    "title": "Trusted by teams worldwide",
+    "subtitle": "See how companies are using Prism to keep their services running smoothly",
+    "testimonials": {
+      "title": "What our customers say",
+      "subtitle": "Real stories from real teams",
+      "next": "Next",
+      "prev": "Previous"
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "subtitle": "Join thousands of teams already using Prism",
+      "primaryButton": "Start Free Trial",
+      "secondaryButton": "View Pricing"
+    }
+  },
+  "integrations": {
+    "title": "Connect with your favorite tools",
+    "subtitle": "Integrate Prism with your existing workflow and get notified where you work",
+    "createIncident": {
+      "title": "Create New Incident",
+      "description": "Quickly create and manage incidents from your dashboard",
+      "form": {
+        "title": "Incident Title",
+        "description": "Description",
+        "severity": "Severity",
+        "services": "Affected Services",
+        "submit": "Create Incident"
+      }
+    }
+  },
+  "product": {
+    "hero": {
+      "title": "Monitor everything, everywhere",
+      "subtitle": "Get real-time insights into your services with intelligent monitoring and instant alerts",
+      "primaryCta": "Start Free Trial",
+      "secondaryCta": "View Demo",
+      "stats": {
+        "uptime": "99.9%",
+        "uptimeLabel": "Average Uptime",
+        "responseTime": "<50ms",
+        "responseTimeLabel": "Response Time",
+        "customers": "10K+",
+        "customersLabel": "Happy Customers"
+      }
+    },
+    "features": {
+      "title": "Everything you need to monitor your services",
+      "subtitle": "Powerful features designed for modern teams",
+      "monitoring": {
+        "title": "Real-time Monitoring",
+        "description": "Monitor your services 24/7 with intelligent detection and instant alerts"
+      },
+      "alerts": {
+        "title": "Smart Alerts",
+        "description": "Get notified instantly when issues arise across all your channels"
+      },
+      "integrations": {
+        "title": "Easy Integrations",
+        "description": "Connect with your existing tools and workflows seamlessly"
+      },
+      "analytics": {
+        "title": "Advanced Analytics",
+        "description": "Get deep insights into your service performance and uptime"
+      },
+      "collaboration": {
+        "title": "Team Collaboration",
+        "description": "Work together to resolve incidents quickly and efficiently"
+      },
+      "customization": {
+        "title": "Custom Status Pages",
+        "description": "Create beautiful, branded status pages for your customers"
+      }
+    },
+    "demo": {
+      "title": "See Prism in action",
+      "subtitle": "Explore our interactive demo to see how Prism works",
+      "tabs": {
+        "dashboard": "Dashboard",
+        "monitoring": "Monitoring",
+        "alerts": "Alerts",
+        "analytics": "Analytics"
+      }
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "subtitle": "Join thousands of teams already using Prism to monitor their services",
+      "primaryButton": "Start Free Trial",
+      "secondaryButton": "Schedule Demo",
+      "trustBadges": "Trusted by 10,000+ teams worldwide"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+      "goBack": "Go Back",
+      "goHome": "Go Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "message": "Something went wrong on our end. Please try again later.",
+      "retry": "Try Again"
+    },
+    "unauthorized": {
+      "title": "Unauthorized",
+      "message": "You don't have permission to access this resource.",
+      "signin": "Sign In"
+    },
+    "notFound": {
+      "title": "Not Found",
+      "message": "The requested resource was not found.",
+      "goBack": "Go Back"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "url": "Please enter a valid URL",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "invalidFormat": "Invalid format"
+  },
+  "notifications": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information",
+    "serviceCreated": "Service created successfully",
+    "serviceUpdated": "Service updated successfully",
+    "serviceDeleted": "Service deleted successfully",
+    "incidentCreated": "Incident created successfully",
+    "incidentUpdated": "Incident updated successfully",
+    "incidentDeleted": "Incident deleted successfully",
+    "updateCreated": "Update created successfully",
+    "statusUpdated": "Status updated successfully"
+  }
+}

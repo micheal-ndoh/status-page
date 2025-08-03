@@ -1,332 +1,483 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Box,
   Container,
   VStack,
+  HStack,
   Text,
-  Card,
-  CardBody,
-  Heading,
   Button,
   useColorModeValue,
-  HStack,
-  Icon,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   EnvelopeIcon,
   ArrowLeftIcon,
   CheckCircleIcon,
   SparklesIcon,
+  ShieldCheckIcon,
+  ClockIcon,
 } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Logo from "@/components/Logo";
 
-const MotionCard = motion(Card);
 const MotionBox = motion(Box);
-const MotionButton = motion(Button);
+const MotionVStack = motion(VStack);
 
 export default function VerifyRequestPage() {
-  const cardBg = useColorModeValue("white", "gray.800");
-  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const router = useRouter();
+  const [emailSent, setEmailSent] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+  const bgColor = useColorModeValue(
+    "rgba(255, 255, 255, 0.1)",
+    "rgba(0, 0, 0, 0.2)"
+  );
+  const borderColor = useColorModeValue(
+    "rgba(255, 255, 255, 0.2)",
+    "rgba(173, 216, 230, 0.3)"
+  );
+
+  useEffect(() => {
+    // Simulate email sending process
+    const timer = setTimeout(() => {
+      setEmailSent(true);
+      setTimeout(() => setShowSuccess(true), 500);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleBackToSignIn = () => {
+    router.push("/auth/signin");
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
+  const handleBackToHome = () => {
+    router.push("/");
   };
 
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
+  const handleResendEmail = () => {
+    setEmailSent(false);
+    setShowSuccess(false);
+    setTimeout(() => {
+      setEmailSent(true);
+      setTimeout(() => setShowSuccess(true), 500);
+    }, 1000);
   };
 
   return (
     <Box
       minH="100vh"
-      bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      bg="linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)"
       position="relative"
       overflow="hidden"
     >
-      {/* Animated Background Elements */}
-      <MotionBox
-        position="absolute"
-        top="15%"
-        right="10%"
-        w="120px"
-        h="120px"
-        borderRadius="full"
-        bg="rgba(255, 255, 255, 0.1)"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <MotionBox
-        position="absolute"
-        bottom="30%"
-        left="10%"
-        w="100px"
-        h="100px"
-        borderRadius="full"
-        bg="rgba(255, 255, 255, 0.05)"
-        animate={{
-          scale: [1, 1.3, 1],
-          rotate: [360, 180, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <Container maxW="lg" py={12}>
-        <VStack spacing={8} align="stretch">
-          {/* Header */}
+      {/* Animated Background Particles */}
+      <Box position="absolute" top={0} left={0} right={0} bottom={0}>
+        {[...Array(25)].map((_, i) => (
           <MotionBox
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            textAlign="center"
+            key={i}
+            position="absolute"
+            w="2px"
+            h="2px"
+            bg="rgba(173, 216, 230, 0.6)"
+            borderRadius="full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              opacity: 0,
+            }}
+            animate={{
+              y: [null, -100],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </Box>
+
+      {/* Floating Email Icons */}
+      <MotionBox
+        position="absolute"
+        top="20%"
+        left="15%"
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 5, -5, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Box
+          w="60px"
+          h="60px"
+          borderRadius="full"
+          bg="rgba(173, 216, 230, 0.1)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          border="2px solid"
+          borderColor="rgba(173, 216, 230, 0.3)"
+        >
+          <EnvelopeIcon
+            className="w-8 h-8"
+            style={{ color: "rgba(173, 216, 230, 0.8)" }}
+          />
+        </Box>
+      </MotionBox>
+
+      <MotionBox
+        position="absolute"
+        top="60%"
+        right="20%"
+        animate={{
+          y: [0, 15, 0],
+          rotate: [0, -3, 3, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      >
+        <Box
+          w="50px"
+          h="50px"
+          borderRadius="full"
+          bg="rgba(173, 216, 230, 0.1)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          border="2px solid"
+          borderColor="rgba(173, 216, 230, 0.3)"
+        >
+          <ShieldCheckIcon
+            className="w-6 h-6"
+            style={{ color: "rgba(173, 216, 230, 0.8)" }}
+          />
+        </Box>
+      </MotionBox>
+
+      <Container maxW="container.sm" pt={32} pb={20}>
+        <VStack spacing={12} textAlign="center">
+          {/* Logo */}
+          <MotionBox
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
           >
-            <MotionBox variants={itemVariants}>
-              <Box
-                w={20}
-                h={20}
-                borderRadius="full"
-                bg="white"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                mx="auto"
-                mb={6}
-                boxShadow="xl"
-              >
-                <SparklesIcon className="w-10 h-10 text-purple-600" />
-              </Box>
-            </MotionBox>
-
-            <MotionBox variants={itemVariants}>
-              <Heading
-                size="2xl"
-                fontWeight="extrabold"
-                color="white"
-                mb={4}
-                bgGradient="linear(to-r, white, purple.100)"
-                bgClip="text"
-              >
-                Magic Link Sent! ✨
-              </Heading>
-            </MotionBox>
-
-            <MotionBox variants={itemVariants}>
-              <Text fontSize="lg" color="white" opacity={0.9}>
-                Check your email for the secure sign-in link
-              </Text>
-            </MotionBox>
+            <Logo size="lg" variant="white" />
           </MotionBox>
 
-          {/* Main Card */}
-          <MotionCard
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            bg={cardBg}
-            border="1px"
-            borderColor={borderColor}
-            shadow="2xl"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.3 }}
-          >
-            <CardBody p={8}>
-              <VStack spacing={6} align="stretch" textAlign="center">
-                {/* Success Icon */}
+          {/* Main Content */}
+          <AnimatePresence mode="wait">
+            {!emailSent ? (
+              <MotionVStack
+                key="sending"
+                spacing={8}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+              >
                 <MotionBox
-                  variants={iconVariants}
-                  w={24}
-                  h={24}
-                  borderRadius="full"
-                  bg="success.500"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  mx="auto"
+                  p={8}
+                  borderRadius="2xl"
+                  backdropFilter="blur(20px)"
+                  bg={bgColor}
+                  border="1px solid"
+                  borderColor={borderColor}
+                  boxShadow="0 8px 32px rgba(0, 0, 0, 0.1)"
+                  position="relative"
+                  overflow="hidden"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                  <CheckCircleIcon className="w-12 h-12 text-white" />
-                </MotionBox>
+                  {/* Glowing border effect */}
+                  <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    borderRadius="2xl"
+                    border="1px solid"
+                    borderColor="rgba(173, 216, 230, 0.3)"
+                    boxShadow="0 0 30px rgba(173, 216, 230, 0.2)"
+                    pointerEvents="none"
+                  />
 
-                {/* Content */}
-                <VStack spacing={4}>
-                  <MotionBox variants={itemVariants}>
-                    <Heading
-                      size="lg"
-                      color={useColorModeValue("gray.800", "white")}
+                  <VStack spacing={6}>
+                    <MotionBox
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     >
-                      Check your email 📧
-                    </Heading>
-                  </MotionBox>
-                  <MotionBox variants={itemVariants}>
-                    <Text
-                      color={useColorModeValue("gray.600", "gray.400")}
-                      fontSize="lg"
-                    >
-                      We've sent a secure magic link to your email address.
-                    </Text>
-                  </MotionBox>
-                  <MotionBox variants={itemVariants}>
-                    <Text color={useColorModeValue("gray.500", "gray.500")}>
-                      Click the link in the email to instantly sign in to your
-                      account. The link will expire in 24 hours for security.
-                    </Text>
-                  </MotionBox>
-                </VStack>
+                      <Box
+                        w="80px"
+                        h="80px"
+                        borderRadius="full"
+                        bg="rgba(173, 216, 230, 0.1)"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        border="2px solid"
+                        borderColor="rgba(173, 216, 230, 0.3)"
+                      >
+                        <MotionBox
+                          w="40px"
+                          h="40px"
+                          borderRadius="full"
+                          border="3px solid"
+                          borderColor="rgba(173, 216, 230, 0.3)"
+                          borderTopColor="rgba(173, 216, 230, 1)"
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                      </Box>
+                    </MotionBox>
 
-                {/* Features */}
-                <MotionBox variants={itemVariants}>
-                  <VStack spacing={3} mt={4}>
-                    <HStack
-                      spacing={3}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                    >
-                      <Icon
-                        as={CheckCircleIcon}
-                        w={5}
-                        h={5}
-                        color="green.500"
-                      />
-                      <Text fontSize="sm">No password required</Text>
-                    </HStack>
-                    <HStack
-                      spacing={3}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                    >
-                      <Icon
-                        as={CheckCircleIcon}
-                        w={5}
-                        h={5}
-                        color="green.500"
-                      />
-                      <Text fontSize="sm">Secure and encrypted</Text>
-                    </HStack>
-                    <HStack
-                      spacing={3}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                    >
-                      <Icon
-                        as={CheckCircleIcon}
-                        w={5}
-                        h={5}
-                        color="green.500"
-                      />
-                      <Text fontSize="sm">Instant access to dashboard</Text>
-                    </HStack>
+                    <VStack spacing={4}>
+                      <Text
+                        fontSize={{ base: "2xl", md: "3xl" }}
+                        fontWeight="bold"
+                        color="white"
+                        textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
+                      >
+                        Sending Magic Link...
+                      </Text>
+                      <Text
+                        fontSize="lg"
+                        color="rgba(173, 216, 230, 0.8)"
+                        maxW="400px"
+                        lineHeight="tall"
+                      >
+                        Preparing your secure authentication link. This will
+                        only take a moment.
+                      </Text>
+                    </VStack>
                   </VStack>
                 </MotionBox>
+              </MotionVStack>
+            ) : (
+              <MotionVStack
+                key="sent"
+                spacing={8}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+              >
+                <MotionBox
+                  p={8}
+                  borderRadius="2xl"
+                  backdropFilter="blur(20px)"
+                  bg={bgColor}
+                  border="1px solid"
+                  borderColor={borderColor}
+                  boxShadow="0 8px 32px rgba(0, 0, 0, 0.1)"
+                  position="relative"
+                  overflow="hidden"
+                >
+                  {/* Glowing border effect */}
+                  <Box
+                    position="absolute"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    borderRadius="2xl"
+                    border="1px solid"
+                    borderColor="rgba(173, 216, 230, 0.3)"
+                    boxShadow="0 0 30px rgba(173, 216, 230, 0.2)"
+                    pointerEvents="none"
+                  />
 
-                {/* Actions */}
-                <VStack spacing={4}>
-                  <MotionBox variants={itemVariants} w="full">
-                    <Button
-                      as={Link}
-                      href="/auth/signin"
-                      leftIcon={<ArrowLeftIcon className="w-4 h-4" />}
-                      variant="outline"
-                      w="full"
-                      size="lg"
-                      borderRadius="lg"
-                      _hover={{
-                        bg: useColorModeValue("gray.50", "gray.700"),
-                        transform: "translateY(-2px)",
-                        boxShadow: "md",
-                      }}
+                  <VStack spacing={6}>
+                    <MotionBox
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
                     >
-                      Back to Sign In
-                    </Button>
-                  </MotionBox>
+                      <Box
+                        w="80px"
+                        h="80px"
+                        borderRadius="full"
+                        bg="rgba(173, 216, 230, 0.1)"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        border="2px solid"
+                        borderColor="rgba(173, 216, 230, 0.3)"
+                      >
+                        <AnimatePresence mode="wait">
+                          {showSuccess ? (
+                            <MotionBox
+                              key="success"
+                              initial={{ scale: 0, rotate: -180 }}
+                              animate={{ scale: 1, rotate: 0 }}
+                              transition={{ duration: 0.5, type: "spring" }}
+                            >
+                              <CheckCircleIcon
+                                className="w-10 h-10"
+                                style={{ color: "rgba(40, 167, 69, 1)" }}
+                              />
+                            </MotionBox>
+                          ) : (
+                            <MotionBox
+                              key="sending"
+                              animate={{ rotate: 360 }}
+                              transition={{
+                                duration: 1,
+                                repeat: Infinity,
+                                ease: "linear",
+                              }}
+                            >
+                              <EnvelopeIcon
+                                className="w-10 h-10"
+                                style={{ color: "rgba(173, 216, 230, 1)" }}
+                              />
+                            </MotionBox>
+                          )}
+                        </AnimatePresence>
+                      </Box>
+                    </MotionBox>
 
-                  <MotionBox variants={itemVariants}>
-                    <VStack spacing={2}>
+                    <VStack spacing={4}>
                       <Text
-                        fontSize="sm"
-                        color={useColorModeValue("gray.500", "gray.500")}
+                        fontSize={{ base: "2xl", md: "3xl" }}
+                        fontWeight="bold"
+                        color="white"
+                        textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
                       >
-                        Didn't receive the email?
+                        Magic Link Sent! ✨
                       </Text>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        color="brand.500"
-                        onClick={() => window.location.reload()}
-                        _hover={{
-                          bg: useColorModeValue("brand.50", "brand.900"),
-                          textDecoration: "underline",
-                        }}
+                      <Text
+                        fontSize="lg"
+                        color="rgba(173, 216, 230, 0.8)"
+                        maxW="400px"
+                        lineHeight="tall"
                       >
-                        Try again
-                      </Button>
+                        We've sent a secure magic link to your email address.
+                        Click the link to instantly sign in to your Prism
+                        dashboard.
+                      </Text>
                     </VStack>
-                  </MotionBox>
 
-                  <MotionBox variants={itemVariants}>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => (window.location.href = "/")}
-                      color={useColorModeValue("gray.600", "gray.400")}
-                      _hover={{
-                        color: "brand.500",
-                        bg: useColorModeValue("gray.50", "gray.700"),
-                      }}
-                    >
-                      ← Back to Status Page
-                    </Button>
-                  </MotionBox>
-                </VStack>
-              </VStack>
-            </CardBody>
-          </MotionCard>
+                    {/* Security Features */}
+                    <VStack spacing={3} pt={4}>
+                      <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
+                        <ShieldCheckIcon className="w-5 h-5" />
+                        <Text fontSize="sm">No password required</Text>
+                      </HStack>
+                      <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
+                        <ClockIcon className="w-5 h-5" />
+                        <Text fontSize="sm">Link expires in 24 hours</Text>
+                      </HStack>
+                      <HStack spacing={3} color="rgba(173, 216, 230, 0.8)">
+                        <SparklesIcon className="w-5 h-5" />
+                        <Text fontSize="sm">Instant access to dashboard</Text>
+                      </HStack>
+                    </VStack>
+
+                    {/* Action Buttons */}
+                    <VStack spacing={4} pt={4}>
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Button
+                          variant="outline"
+                          borderColor="rgba(173, 216, 230, 0.4)"
+                          color="rgba(173, 216, 230, 0.8)"
+                          fontSize="lg"
+                          fontWeight="semibold"
+                          px={8}
+                          py={4}
+                          borderRadius="full"
+                          onClick={handleBackToSignIn}
+                          _hover={{
+                            borderColor: "rgba(173, 216, 230, 0.8)",
+                            color: "rgba(173, 216, 230, 1)",
+                            bg: "rgba(173, 216, 230, 0.1)",
+                          }}
+                          transition="all 0.3s ease"
+                        >
+                          <HStack spacing={2}>
+                            <ArrowLeftIcon className="w-5 h-5" />
+                            <Text>Back to Sign In</Text>
+                          </HStack>
+                        </Button>
+                      </motion.div>
+
+                      <VStack spacing={2}>
+                        <Text fontSize="sm" color="rgba(173, 216, 230, 0.6)">
+                          Didn't receive the email?
+                        </Text>
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            color="rgba(173, 216, 230, 0.8)"
+                            onClick={handleResendEmail}
+                            _hover={{
+                              color: "rgba(173, 216, 230, 1)",
+                              bg: "rgba(173, 216, 230, 0.1)",
+                            }}
+                            transition="all 0.3s ease"
+                          >
+                            Resend Email
+                          </Button>
+                        </motion.div>
+                      </VStack>
+
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleBackToHome}
+                          color="rgba(173, 216, 230, 0.6)"
+                          _hover={{
+                            color: "rgba(173, 216, 230, 1)",
+                            bg: "rgba(173, 216, 230, 0.1)",
+                          }}
+                          transition="all 0.3s ease"
+                        >
+                          ← Back to Homepage
+                        </Button>
+                      </motion.div>
+                    </VStack>
+                  </VStack>
+                </MotionBox>
+              </MotionVStack>
+            )}
+          </AnimatePresence>
         </VStack>
       </Container>
     </Box>
