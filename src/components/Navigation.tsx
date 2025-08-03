@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ThemeToggle } from "./ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 import Logo from "./Logo";
 
 const MotionButton = motion(Button);
@@ -64,7 +64,6 @@ export default function Navigation({
         left={0}
         right={0}
         zIndex={1000}
-        bg={useColorModeValue("white", "gray.800")}
         borderBottom="1px"
         borderColor={useColorModeValue("gray.100", "gray.700")}
         backdropFilter="blur(10px)"
