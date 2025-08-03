@@ -39,10 +39,10 @@ const GlassmorphismNavbar = () => {
   );
 
   const navItems = [
-    { name: "Product", href: "#" },
-    { name: "Customers", href: "#" },
-    { name: "Integrations", href: "#" },
-    { name: "Pricing", href: "#" },
+    { name: "Product", href: "/product" },
+    { name: "Customers", href: "/customers" },
+    { name: "Integrations", href: "/integrations" },
+    { name: "Pricing", href: "/pricing" },
   ];
 
   const handleLogin = () => {
@@ -57,6 +57,10 @@ const GlassmorphismNavbar = () => {
     router.push("/dashboard");
   };
 
+  const handleNavClick = (href: string) => {
+    router.push(href);
+  };
+
   const NavLinks = () => (
     <HStack spacing={8}>
       {navItems.map((item) => (
@@ -68,6 +72,7 @@ const GlassmorphismNavbar = () => {
           cursor="pointer"
           _hover={{ color: "rgba(173, 216, 230, 1)" }}
           transition="color 0.2s"
+          onClick={() => handleNavClick(item.href)}
         >
           {item.name}
         </Text>
@@ -209,7 +214,13 @@ const GlassmorphismNavbar = () => {
             borderBottomWidth="1px"
             borderColor="rgba(255, 255, 255, 0.1)"
           >
-            <Box cursor="pointer" onClick={() => { router.push("/"); onClose(); }}>
+            <Box
+              cursor="pointer"
+              onClick={() => {
+                router.push("/");
+                onClose();
+              }}
+            >
               <Logo size="md" variant="white" />
             </Box>
           </DrawerHeader>
@@ -226,7 +237,10 @@ const GlassmorphismNavbar = () => {
                     cursor="pointer"
                     _hover={{ color: "rgba(173, 216, 230, 1)" }}
                     transition="color 0.2s"
-                    onClick={onClose}
+                    onClick={() => {
+                      handleNavClick(item.href);
+                      onClose();
+                    }}
                   >
                     {item.name}
                   </Text>
@@ -246,7 +260,10 @@ const GlassmorphismNavbar = () => {
                     py={3}
                     borderRadius="full"
                     w="full"
-                    onClick={() => { handleDashboard(); onClose(); }}
+                    onClick={() => {
+                      handleDashboard();
+                      onClose();
+                    }}
                     _hover={{
                       bg: "rgba(173, 216, 230, 1)",
                       transform: "translateY(-1px)",
@@ -269,7 +286,10 @@ const GlassmorphismNavbar = () => {
                       cursor="pointer"
                       _hover={{ color: "rgba(173, 216, 230, 1)" }}
                       transition="color 0.2s"
-                      onClick={() => { handleLogin(); onClose(); }}
+                      onClick={() => {
+                        handleLogin();
+                        onClose();
+                      }}
                     >
                       Login
                     </Text>
@@ -282,7 +302,10 @@ const GlassmorphismNavbar = () => {
                       py={3}
                       borderRadius="full"
                       w="full"
-                      onClick={() => { handleSignUp(); onClose(); }}
+                      onClick={() => {
+                        handleSignUp();
+                        onClose();
+                      }}
                       _hover={{
                         bg: "rgba(173, 216, 230, 1)",
                         transform: "translateY(-1px)",
