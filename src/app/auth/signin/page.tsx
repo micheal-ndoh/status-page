@@ -38,7 +38,7 @@ const MotionButton = motion(Button);
 const MotionInput = motion(Input);
 
 export default function SignInPage() {
-  const { t } = useTranslation();
+  const { t, currentLanguage } = useTranslation();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -52,6 +52,9 @@ export default function SignInPage() {
     setError("");
 
     try {
+      // Store the current language in localStorage for the email service to access
+      localStorage.setItem('user_language', currentLanguage);
+      
       const result = await signIn("email", {
         email,
         callbackUrl: "/dashboard",

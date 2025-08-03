@@ -36,6 +36,17 @@ export const tolgee = Tolgee()
             key: 'tolgee_language',
         },
 
+        // Language detection
+        observerOptions: {
+            observerType: 'text',
+        },
+
+        // Cache settings
+        cache: {
+            enabled: true,
+            maxAge: 1000 * 60 * 60 * 24, // 24 hours
+        },
+
         // Enable development mode for better debugging
         observerOptions: {
             observerType: 'text',

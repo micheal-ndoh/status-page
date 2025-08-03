@@ -41,6 +41,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import DashboardLanguageSwitcher from "@/components/DashboardLanguageSwitcher";
 
 const MotionBox = motion(Box);
 
@@ -238,6 +239,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               </HStack>
 
               <HStack spacing={2}>
+                <DashboardLanguageSwitcher />
                 <IconButton
                   aria-label="Toggle color mode"
                   icon={
