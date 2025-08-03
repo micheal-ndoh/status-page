@@ -23,10 +23,13 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MotionBox = motion(Box);
 
 const GlassmorphismNavbar = () => {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -40,10 +43,10 @@ const GlassmorphismNavbar = () => {
   );
 
   const navItems = [
-    { name: "Product", href: "/product" },
-    { name: "Customers", href: "/customers" },
-    { name: "Integrations", href: "/integrations" },
-    { name: "Pricing", href: "/pricing" },
+    { name: t("navigation.product"), href: "/product" },
+    { name: t("navigation.customers"), href: "/customers" },
+    { name: t("navigation.integrations"), href: "/integrations" },
+    { name: t("navigation.pricing"), href: "/pricing" },
   ];
 
   const handleLogin = () => {
@@ -126,6 +129,7 @@ const GlassmorphismNavbar = () => {
 
           {/* Right - Auth Buttons */}
           <HStack spacing={4} display={{ base: "none", md: "flex" }}>
+            <LanguageSwitcher />
             <ThemeToggle />
             {session ? (
               // User is logged in - show dashboard button
@@ -148,7 +152,7 @@ const GlassmorphismNavbar = () => {
                 }}
                 transition="all 0.2s"
               >
-                Dashboard
+                {t("navigation.dashboard")}
               </Button>
             ) : (
               // User is not logged in - show login/signup buttons
@@ -162,7 +166,7 @@ const GlassmorphismNavbar = () => {
                   transition="color 0.2s"
                   onClick={handleLogin}
                 >
-                  Login
+                  {t("common.login")}
                 </Text>
                 <Button
                   bg="rgba(173, 216, 230, 0.9)"
@@ -183,7 +187,7 @@ const GlassmorphismNavbar = () => {
                   }}
                   transition="all 0.2s"
                 >
-                  Sign up
+                  {t("common.signup")}
                 </Button>
               </>
             )}
@@ -251,6 +255,7 @@ const GlassmorphismNavbar = () => {
 
               {/* Mobile Auth Buttons */}
               <VStack spacing={4} pt={4}>
+                <LanguageSwitcher />
                 <ThemeToggle />
                 {session ? (
                   // User is logged in - show dashboard button
@@ -277,7 +282,7 @@ const GlassmorphismNavbar = () => {
                     }}
                     transition="all 0.2s"
                   >
-                    Dashboard
+                    {t("navigation.dashboard")}
                   </Button>
                 ) : (
                   // User is not logged in - show login/signup buttons
@@ -294,7 +299,7 @@ const GlassmorphismNavbar = () => {
                         onClose();
                       }}
                     >
-                      Login
+                      {t("common.login")}
                     </Text>
                     <Button
                       bg="rgba(173, 216, 230, 0.9)"
@@ -319,7 +324,7 @@ const GlassmorphismNavbar = () => {
                       }}
                       transition="all 0.2s"
                     >
-                      Sign up
+                      {t("common.signup")}
                     </Button>
                   </>
                 )}
