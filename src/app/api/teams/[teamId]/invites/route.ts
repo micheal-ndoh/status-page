@@ -159,7 +159,20 @@ export async function POST(
             inviter?.name || 'A team member',
             team?.name || 'Team',
             inviteUrl,
-            validatedData.role
+            validatedData.role,
+            (key: string) => {
+                // Simple translation mapping for email templates
+                const translations: Record<string, string> = {
+                    'teams.youAreInvited': 'You\'re Invited! 🎉',
+                    'teams.invitationDescription': 'has invited you to join their team on Prism, the modern status page platform.',
+                    'teams.acceptInvitation': 'Accept Invitation',
+                    'teams.securityNote': 'Security Note',
+                    'teams.securityNoteText': 'This invitation link is unique to you and will expire in 7 days. If you didn\'t expect this invitation, please ignore this email.',
+                    'teams.invitationSentFrom': 'This invitation was sent from Prism Status Page Platform',
+                    'teams.contactAdmin': 'If you have any questions, please contact your team administrator'
+                };
+                return translations[key] || key;
+            }
         );
 
         // Send email using Resend

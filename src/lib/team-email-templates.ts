@@ -1,7 +1,7 @@
 export const teamInviteEmailTemplates = {
   en: {
     subject: "You've been invited to join a team on Prism",
-    generateHTML: (inviterName: string, teamName: string, inviteUrl: string, role: string) => `
+    generateHTML: (inviterName: string, teamName: string, inviteUrl: string, role: string, t: any) => `
       <!DOCTYPE html>
       <html>
       <head>
@@ -123,9 +123,9 @@ export const teamInviteEmailTemplates = {
           </div>
           
           <div class="card">
-            <div class="title">You're Invited! 🎉</div>
+            <div class="title">${t("teams.youAreInvited")}</div>
             <div class="description">
-              ${inviterName} has invited you to join their team on Prism, the modern status page platform.
+              ${inviterName} ${t("teams.invitationDescription")}
             </div>
             
             <div class="team-info">
@@ -135,19 +135,18 @@ export const teamInviteEmailTemplates = {
             
             <div style="text-align: center;">
               <a href="${inviteUrl}" class="cta-button">
-                Accept Invitation
+                ${t("teams.acceptInvitation")}
               </a>
             </div>
             
             <div class="security-note">
-              <strong>🔒 Security Note:</strong> This invitation link is unique to you and will expire in 7 days. 
-              If you didn't expect this invitation, please ignore this email.
+              <strong>🔒 ${t("teams.securityNote")}:</strong> ${t("teams.securityNoteText")}
             </div>
           </div>
           
           <div class="footer">
-            <p>This invitation was sent from Prism Status Page Platform</p>
-            <p>If you have any questions, please contact your team administrator</p>
+            <p>${t("teams.invitationSentFrom")}</p>
+            <p>${t("teams.contactAdmin")}</p>
           </div>
         </div>
       </body>
@@ -352,13 +351,14 @@ export const generateTeamInviteEmail = (
   inviterName: string,
   teamName: string,
   inviteUrl: string,
-  role: string
+  role: string,
+  t: any
 ) => {
   const template = teamInviteEmailTemplates[language as keyof typeof teamInviteEmailTemplates] || teamInviteEmailTemplates.en;
 
   return {
     subject: template.subject,
-    html: template.generateHTML(inviterName, teamName, inviteUrl, role),
-    text: template.generateText(inviterName, teamName, inviteUrl, role),
+    html: template.generateHTML(inviterName, teamName, inviteUrl, role, t),
+    text: template.generateText(inviterName, teamName, inviteUrl, role, t),
   };
 }; 

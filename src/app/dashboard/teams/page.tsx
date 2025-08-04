@@ -233,10 +233,10 @@ export default function TeamsPage() {
             <HStack justify="space-between" align="center">
               <VStack align="start" spacing={2}>
                 <Heading size="lg" color="white" fontFamily="mono">
-                  Team Management
+                  {t("teams.title")}
                 </Heading>
                 <Text color="rgba(173, 216, 230, 0.8)" fontSize="lg">
-                  Manage your teams and collaborate with members
+                  {t("teams.subtitle")}
                 </Text>
               </VStack>
               <MotionButton
@@ -247,7 +247,7 @@ export default function TeamsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Create Team
+                {t("teams.createTeam")}
               </MotionButton>
             </HStack>
           </MotionBox>
@@ -266,7 +266,7 @@ export default function TeamsPage() {
               <CardBody>
                 <VStack spacing={4} align="stretch">
                   <Heading size="md" color="white" fontFamily="mono">
-                    Your Teams
+                    {t("teams.yourTeams")}
                   </Heading>
                   <VStack spacing={3} align="stretch">
                     {teams.map((team) => (
@@ -295,12 +295,12 @@ export default function TeamsPage() {
                             {team.name}
                           </Text>
                           <Text fontSize="sm" color="gray.400">
-                            {team._count.services} services •{" "}
-                            {team._count.incidents} incidents
+                            {team._count.services} {t("teams.servicesCount")} •{" "}
+                            {team._count.incidents} {t("teams.incidentsCount")}
                           </Text>
                           <HStack spacing={1}>
                             <Badge size="sm" colorScheme="blue">
-                              {team.members.length} members
+                              {team.members.length} {t("teams.membersCount")}
                             </Badge>
                           </HStack>
                         </VStack>
@@ -334,7 +334,7 @@ export default function TeamsPage() {
                           </Heading>
                           <Text color="rgba(173, 216, 230, 0.8)">
                             {selectedTeam.description ||
-                              "No description provided"}
+                              t("teams.noDescription")}
                           </Text>
                           <Badge colorScheme="blue">{selectedTeam.slug}</Badge>
                         </VStack>
@@ -346,7 +346,7 @@ export default function TeamsPage() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          Invite Member
+                          {t("teams.inviteMember")}
                         </MotionButton>
                       </HStack>
                     </CardBody>
@@ -363,10 +363,11 @@ export default function TeamsPage() {
                       <VStack spacing={4} align="stretch">
                         <HStack justify="space-between">
                           <Heading size="md" color="white" fontFamily="mono">
-                            Team Members
+                            {t("teams.teamMembers")}
                           </Heading>
                           <Text color="gray.400">
-                            {selectedTeam.members.length} members
+                            {selectedTeam.members.length}{" "}
+                            {t("teams.membersCount")}
                           </Text>
                         </HStack>
                         <VStack spacing={3} align="stretch">
@@ -422,17 +423,17 @@ export default function TeamsPage() {
         <ModalOverlay backdropFilter="blur(10px)" />
         <ModalContent bg="gray.800" border="1px solid" borderColor="gray.700">
           <ModalHeader color="white" fontFamily="mono">
-            Create New Team
+            {t("teams.createNewTeam")}
           </ModalHeader>
           <ModalCloseButton color="white" />
           <form onSubmit={handleTeamSubmit(onCreateTeam)}>
             <ModalBody>
               <VStack spacing={4}>
                 <FormControl isInvalid={!!teamErrors.name}>
-                  <FormLabel color="white">Team Name</FormLabel>
+                  <FormLabel color="white">{t("teams.teamName")}</FormLabel>
                   <Input
                     {...registerTeam("name")}
-                    placeholder="Enter team name"
+                    placeholder={t("teams.teamName")}
                     bg="gray.700"
                     borderColor="gray.600"
                     color="white"
@@ -440,10 +441,12 @@ export default function TeamsPage() {
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel color="white">Description</FormLabel>
+                  <FormLabel color="white">
+                    {t("teams.teamDescription")}
+                  </FormLabel>
                   <Textarea
                     {...registerTeam("description")}
-                    placeholder="Enter team description"
+                    placeholder={t("teams.teamDescription")}
                     bg="gray.700"
                     borderColor="gray.600"
                     color="white"
@@ -459,15 +462,15 @@ export default function TeamsPage() {
                 onClick={onCreateClose}
                 color="white"
               >
-                Cancel
+                {t("common.cancel")}
               </Button>
               <Button
                 type="submit"
                 colorScheme="blue"
                 isLoading={isTeamSubmitting}
-                loadingText="Creating..."
+                loadingText={t("common.loading")}
               >
-                Create Team
+                {t("teams.createTeam")}
               </Button>
             </ModalFooter>
           </form>
@@ -479,17 +482,17 @@ export default function TeamsPage() {
         <ModalOverlay backdropFilter="blur(10px)" />
         <ModalContent bg="gray.800" border="1px solid" borderColor="gray.700">
           <ModalHeader color="white" fontFamily="mono">
-            Invite Team Member
+            {t("teams.inviteTeamMember")}
           </ModalHeader>
           <ModalCloseButton color="white" />
           <form onSubmit={handleInviteSubmit(onSendInvite)}>
             <ModalBody>
               <VStack spacing={4}>
                 <FormControl isInvalid={!!inviteErrors.email}>
-                  <FormLabel color="white">Email Address</FormLabel>
+                  <FormLabel color="white">{t("teams.emailAddress")}</FormLabel>
                   <Input
                     {...registerInvite("email")}
-                    placeholder="Enter email address"
+                    placeholder={t("teams.emailAddress")}
                     bg="gray.700"
                     borderColor="gray.600"
                     color="white"
@@ -497,16 +500,16 @@ export default function TeamsPage() {
                   />
                 </FormControl>
                 <FormControl>
-                  <FormLabel color="white">Role</FormLabel>
+                  <FormLabel color="white">{t("teams.role")}</FormLabel>
                   <Select
                     {...registerInvite("role")}
                     bg="gray.700"
                     borderColor="gray.600"
                     color="white"
                   >
-                    <option value="MEMBER">Member</option>
-                    <option value="ADMIN">Admin</option>
-                    <option value="OWNER">Owner</option>
+                    <option value="MEMBER">{t("teams.member")}</option>
+                    <option value="ADMIN">{t("teams.admin")}</option>
+                    <option value="OWNER">{t("teams.owner")}</option>
                   </Select>
                 </FormControl>
               </VStack>
@@ -518,15 +521,15 @@ export default function TeamsPage() {
                 onClick={onInviteClose}
                 color="white"
               >
-                Cancel
+                {t("common.cancel")}
               </Button>
               <Button
                 type="submit"
                 colorScheme="green"
                 isLoading={isInviteSubmitting}
-                loadingText="Sending..."
+                loadingText={t("common.loading")}
               >
-                Send Invite
+                {t("teams.inviteMember")}
               </Button>
             </ModalFooter>
           </form>
