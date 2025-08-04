@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import {
   Box,
   Container,
@@ -26,7 +26,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
 
-export default function VerifyRequestPage() {
+function VerifyRequestContent() {
   const { t } = useTranslation();
   const router = useRouter();
   const [emailSent, setEmailSent] = useState(false);
@@ -486,5 +486,27 @@ export default function VerifyRequestPage() {
         </VStack>
       </Container>
     </Box>
+  );
+}
+
+export default function VerifyRequestPage() {
+  return (
+    <Suspense
+      fallback={
+        <Box
+          minH="100vh"
+          bg="linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text color="white" fontSize="lg">
+            Loading...
+          </Text>
+        </Box>
+      }
+    >
+      <VerifyRequestContent />
+    </Suspense>
   );
 }

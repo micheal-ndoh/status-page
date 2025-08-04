@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import {
@@ -23,7 +23,7 @@ import Logo from "@/components/Logo";
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
 
-const SignOutPage = () => {
+const SignOutContent = () => {
   const router = useRouter();
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [isSignedOut, setIsSignedOut] = useState(false);
@@ -393,6 +393,28 @@ const SignOutPage = () => {
         </VStack>
       </Container>
     </Box>
+  );
+};
+
+const SignOutPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <Box
+          minH="100vh"
+          bg="linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text color="white" fontSize="lg">
+            Loading...
+          </Text>
+        </Box>
+      }
+    >
+      <SignOutContent />
+    </Suspense>
   );
 };
 

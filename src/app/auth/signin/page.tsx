@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import {
@@ -37,7 +37,7 @@ const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 const MotionInput = motion(Input);
 
-export default function SignInPage() {
+function SignInContent() {
   const { t, currentLanguage } = useTranslation();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -53,8 +53,8 @@ export default function SignInPage() {
 
     try {
       // Store the current language in localStorage for the email service to access
-      localStorage.setItem('user_language', currentLanguage);
-      
+      localStorage.setItem("user_language", currentLanguage);
+
       const result = await signIn("email", {
         email,
         callbackUrl: "/dashboard",
@@ -343,5 +343,27 @@ export default function SignInPage() {
         </Flex>
       </Container>
     </Box>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense
+      fallback={
+        <Box
+          minH="100vh"
+          bg="linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text color="white" fontSize="lg">
+            Loading...
+          </Text>
+        </Box>
+      }
+    >
+      <SignInContent />
+    </Suspense>
   );
 }
