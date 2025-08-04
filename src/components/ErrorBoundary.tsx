@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Box, Text, Button, VStack } from '@chakra-ui/react';
+import { Box, Text, Button, VStack, Code } from '@chakra-ui/react';
 
 interface Props {
   children: ReactNode;
@@ -10,6 +10,7 @@ interface Props {
 interface State {
   hasError: boolean;
   error?: Error;
+  errorInfo?: ErrorInfo;
 }
 
 class ErrorBoundary extends Component<Props, State> {
@@ -23,6 +24,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
+    this.setState({ errorInfo });
   }
 
   public render() {
@@ -37,7 +39,7 @@ class ErrorBoundary extends Component<Props, State> {
           color="white"
           p={8}
         >
-          <VStack spacing={6} textAlign="center">
+          <VStack spacing={6} textAlign="center" maxW="800px">
             <Text fontSize="2xl" fontWeight="bold">
               Something went wrong
             </Text>
@@ -46,10 +48,10 @@ class ErrorBoundary extends Component<Props, State> {
             </Text>
             <Button
               onClick={() => {
-          if (typeof window !== 'undefined') {
-            window.location.reload();
-          }
-        }}
+                if (typeof window !== 'undefined') {
+                  window.location.reload();
+                }
+              }}
               colorScheme="blue"
               size="lg"
             >
@@ -67,9 +69,24 @@ class ErrorBoundary extends Component<Props, State> {
               <Text as="summary" cursor="pointer" mb={2}>
                 Error Details
               </Text>
-              <Text fontSize="sm" fontFamily="mono" whiteSpace="pre-wrap">
-                {this.state.error?.stack}
-              </Text>
+              <VStack align="start" spacing={2}>
+                <Text fontSize="sm" fontWeight="bold">Error Message:</Text>
+                <Code fontSize="xs" whiteSpace="pre-wrap" w="full">
+                  {this.state.error?.message}
+                </Code>
+                <Text fontSize="sm" fontWeight="bold">Error Stack:</Text>
+                <Code fontSize="xs" whiteSpace="pre-wrap" w="full">
+                  {this.state.error?.stack}
+                </Code>
+                {this.state.errorInfo && (
+                  <>
+                    <Text fontSize="sm" fontWeight="bold">Component Stack:</Text>
+                    <Code fontSize="xs" whiteSpace="pre-wrap" w="full">
+                      {this.state.errorInfo.componentStack}
+                    </Code>
+                  </>
+                )}
+              </VStack>
             </Box>
           </VStack>
         </Box>

@@ -52,6 +52,14 @@ export function useTranslation() {
         'navigation.pricing': 'Pricing',
         'navigation.dashboard': 'Dashboard',
         'auth.signin.emailSent': 'Email sent successfully',
+        'dashboard.title': 'Dashboard',
+        'dashboard.overview': 'Monitor your services and incidents',
+        'dashboard.recentActivity': 'Recent Activity',
+        'dashboard.noRecentActivity': 'No recent activity',
+        'services.statusOperational': 'Operational',
+        'services.statusDegraded': 'Degraded',
+        'services.statusMajor': 'Major Outage',
+        'teams.membersCount': 'members',
       };
 
       return fallbackTranslations[key] || key;
