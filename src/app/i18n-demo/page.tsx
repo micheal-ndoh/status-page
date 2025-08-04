@@ -1,14 +1,11 @@
 "use client";
 
-import { Box, Container, VStack, HStack, Text, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { useTranslation } from "@/hooks/useTranslation";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { useTolgee } from "@tolgee/react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function I18nDemoPage() {
-  const { t } = useTranslation();
-  const { getLanguage, changeLanguage } = useTolgee();
-  const currentLanguage = getLanguage();
+  const { t, currentLanguage, changeLanguage } = useTranslation();
 
   const handleLanguageChange = async (lang: string) => {
     try {
@@ -109,44 +106,9 @@ export default function I18nDemoPage() {
                       {t('navigation.dashboard')}
                     </Button>
                   </HStack>
-
-                  <Text color="rgba(173, 216, 230, 0.8)" fontWeight="semibold" mt={4}>
-                    Auth:
-                  </Text>
-                  <HStack spacing={4} flexWrap="wrap">
-                    <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('auth.signin.title')}
-                    </Button>
-                    <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('auth.signin.subtitle')}
-                    </Button>
-                    <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('common.signout')}
-                    </Button>
-                  </HStack>
                 </VStack>
               </VStack>
             </Box>
-          </VStack>
-
-          {/* Quick Language Buttons */}
-          <VStack spacing={4}>
-            <Text color="white" fontSize="lg" fontWeight="semibold">
-              Quick Language Switch:
-            </Text>
-            <HStack spacing={3} flexWrap="wrap" justify="center">
-              {['en', 'fr', 'de', 'zh', 'es'].map((lang) => (
-                <Button
-                  key={lang}
-                  size="sm"
-                  variant={currentLanguage === lang ? "solid" : "outline"}
-                  colorScheme="blue"
-                  onClick={() => handleLanguageChange(lang)}
-                >
-                  {lang.toUpperCase()}
-                </Button>
-              ))}
-            </HStack>
           </VStack>
         </VStack>
       </Container>

@@ -1,27 +1,37 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": [
-            "dist/**",
-            "package.json",
-            "package-lock.json",
-            "yarn.lock"
-          ]
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/strapi.js",
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "npm run build",
+        "includeFiles": [
+          "dist/**",
+          "public/**",
+          "config/**",
+          "package.json",
+          "package-lock.json",
+          "node_modules/**"
+        ],
+        "maxLambdaSize": "50mb"
       }
-    ],
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/server.js"
-      }
-    ],
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "outputDirectory": "dist"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/strapi"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "HOST": "0.0.0.0",
+    "PORT": "1337"
+  },
+  "functions": {
+    "api/strapi.js": {
+      "maxDuration": 30
+    }
   }
+}

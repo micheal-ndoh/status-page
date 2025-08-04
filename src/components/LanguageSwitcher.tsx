@@ -1,8 +1,8 @@
 "use client";
 
-import { useTolgee } from '@tolgee/react';
 import { Box, Select, Text } from '@chakra-ui/react';
 import { useColorModeValue } from '@chakra-ui/react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -13,8 +13,7 @@ const languages = [
 ];
 
 export function LanguageSwitcher() {
-  const { getLanguage, changeLanguage } = useTolgee();
-  const currentLanguage = getLanguage();
+  const { currentLanguage, changeLanguage } = useTranslation();
   
   const bgColor = useColorModeValue('rgba(255, 255, 255, 0.1)', 'rgba(0, 0, 0, 0.2)');
   const borderColor = useColorModeValue('rgba(255, 255, 255, 0.2)', 'rgba(173, 216, 230, 0.3)');
