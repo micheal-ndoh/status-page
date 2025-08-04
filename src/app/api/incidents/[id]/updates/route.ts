@@ -6,7 +6,7 @@ import { z } from 'zod'
 
 const updateSchema = z.object({
     message: z.string().min(1, 'Update message is required'),
-    status: z.enum(['investigating', 'identified', 'monitoring', 'resolved']),
+    status: z.enum(['INVESTIGATING', 'IDENTIFIED', 'MONITORING', 'RESOLVED']),
 })
 
 export async function POST(

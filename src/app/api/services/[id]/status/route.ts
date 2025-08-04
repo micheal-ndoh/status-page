@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 
 const statusUpdateSchema = z.object({
-    status: z.enum(['operational', 'degraded', 'outage']),
+    status: z.enum(['OPERATIONAL', 'DEGRADED_PERFORMANCE', 'PARTIAL_OUTAGE', 'MAJOR_OUTAGE', 'MAINTENANCE']),
 })
 
 export async function PUT(

@@ -16,7 +16,7 @@ export const incidentSchema = z.object({
 
 export const incidentUpdateSchema = z.object({
     message: z.string().min(1, 'Update message is required').max(1000),
-    status: z.enum(['investigating', 'identified', 'monitoring', 'resolved']),
+    status: z.enum(['INVESTIGATING', 'IDENTIFIED', 'MONITORING', 'RESOLVED']),
 })
 
 export const userSchema = z.object({
