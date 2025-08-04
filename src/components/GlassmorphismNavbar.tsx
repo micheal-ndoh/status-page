@@ -36,24 +36,14 @@ import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
-// Custom hook to safely use useDisclosure
-function useSafeDisclosure() {
+const GlassmorphismNavbar = () => {
+  const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isClient, setIsClient] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  const onOpen = () => setIsOpen(true);
-  const onClose = () => setIsOpen(false);
-
-  return { isOpen, onOpen, onClose };
-}
-
-const GlassmorphismNavbar = () => {
-  const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useSafeDisclosure();
 
   const router = useRouter();
   const { data: session, status } = useSession();
