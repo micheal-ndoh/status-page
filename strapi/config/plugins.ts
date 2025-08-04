@@ -6,12 +6,6 @@ export default ({ env }: { env: any }) => ({
       },
     },
   },
-  upload: {
-    config: {
-      provider: 'local',
-      sizeLimit: 100000,
-    },
-  },
   documentation: {
     config: {
       openapi: '3.0.0',

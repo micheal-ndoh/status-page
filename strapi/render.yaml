@@ -9,6 +9,10 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: DATABASE_CLIENT
+        value: sqlite
+      - key: DATABASE_FILENAME
+        value: .tmp/data.db
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_JWT_SECRET
