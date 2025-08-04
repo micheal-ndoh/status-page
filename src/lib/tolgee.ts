@@ -46,17 +46,6 @@ export const tolgee = Tolgee()
             enabled: true,
             maxAge: 1000 * 60 * 60 * 24, // 24 hours
         },
-
-        // Enable development mode for better debugging
-        observerOptions: {
-            observerType: 'text',
-        },
-
-        // Cache settings
-        cache: {
-            enabled: true,
-            maxAge: 1000 * 60 * 60 * 24, // 24 hours
-        },
     });
 
 // Export the Tolgee instance

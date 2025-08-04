@@ -4,6 +4,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 import { TolgeeProvider } from "@/components/TolgeeProvider";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import DebugInfo from "@/components/DebugInfo";
 import theme from "@/theme";
 
 // Metadata is handled in the page components
@@ -20,27 +22,30 @@ export default function RootLayout({
         <title>Prism - Get ready for downtime</title>
       </head>
       <body>
-        <TolgeeProvider>
-          <SessionProvider 
-            refetchInterval={0} 
-            refetchOnWindowFocus={false}
-            refetchWhenOffline={false}
-          >
-            <ChakraProvider theme={theme}>
-              {children}
-              <Toaster
-                position="top-right"
-                toastOptions={{
-                  duration: 4000,
-                  style: {
-                    background: "#363636",
-                    color: "#fff",
-                  },
-                }}
-              />
-            </ChakraProvider>
-          </SessionProvider>
-        </TolgeeProvider>
+        <ErrorBoundary>
+          <TolgeeProvider>
+            <SessionProvider 
+              refetchInterval={0} 
+              refetchOnWindowFocus={false}
+              refetchWhenOffline={false}
+            >
+              <ChakraProvider theme={theme}>
+                {children}
+                <Toaster
+                  position="top-right"
+                  toastOptions={{
+                    duration: 4000,
+                    style: {
+                      background: "#363636",
+                      color: "#fff",
+                    },
+                  }}
+                />
+                <DebugInfo />
+              </ChakraProvider>
+            </SessionProvider>
+          </TolgeeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
