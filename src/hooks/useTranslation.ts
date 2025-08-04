@@ -7,11 +7,11 @@ import { useEffect, useState } from 'react';
 export function useTranslation() {
   const [isClient, setIsClient] = useState(false);
   const [isTolgeeAvailable, setIsTolgeeAvailable] = useState(false);
-  
+
   // Try to use Tolgee, but provide fallbacks if it's not available
   let translateInstance: any = null;
   let tolgeeInstance: any = null;
-  
+
   try {
     translateInstance = useTranslate();
     tolgeeInstance = useTolgee();
@@ -44,7 +44,7 @@ export function useTranslation() {
         'navigation.dashboard': 'Dashboard',
         'auth.signin.emailSent': 'Email sent successfully',
       };
-      
+
       return fallbackTranslations[key] || key;
     }
 

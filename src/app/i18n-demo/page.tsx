@@ -1,8 +1,16 @@
 "use client";
 
-import { Box, Button, Container, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useTranslation } from "@/hooks/useTranslation";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default function I18nDemoPage() {
   const { t, currentLanguage, changeLanguage } = useTranslation();
@@ -11,11 +19,11 @@ export default function I18nDemoPage() {
     try {
       await changeLanguage(lang);
       // Force a re-render by updating localStorage
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('tolgee_language', lang);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("tolgee_language", lang);
       }
     } catch (error) {
-      console.error('Failed to change language:', error);
+      console.error("Failed to change language:", error);
     }
   };
 
@@ -35,14 +43,14 @@ export default function I18nDemoPage() {
               color="white"
               textShadow="0 0 20px rgba(173, 216, 230, 0.5)"
             >
-              {t('homepage.hero.title')}
+              {t("homepage.hero.title")}
             </Heading>
             <Text
               fontSize={{ base: "lg", md: "xl" }}
               color="rgba(173, 216, 230, 0.8)"
               maxW="600px"
             >
-              {t('homepage.hero.subtitle')}
+              {t("homepage.hero.subtitle")}
             </Text>
           </VStack>
 
@@ -69,41 +77,45 @@ export default function I18nDemoPage() {
                 <Heading size="lg" color="white">
                   Translation Examples
                 </Heading>
-                
+
                 <VStack spacing={4} align="start" w="full">
                   <Text color="rgba(173, 216, 230, 0.8)" fontWeight="semibold">
                     Common Actions:
                   </Text>
                   <HStack spacing={4} flexWrap="wrap">
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('common.save')}
+                      {t("common.save")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('common.cancel')}
+                      {t("common.cancel")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('common.delete')}
+                      {t("common.delete")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('common.edit')}
+                      {t("common.edit")}
                     </Button>
                   </HStack>
 
-                  <Text color="rgba(173, 216, 230, 0.8)" fontWeight="semibold" mt={4}>
+                  <Text
+                    color="rgba(173, 216, 230, 0.8)"
+                    fontWeight="semibold"
+                    mt={4}
+                  >
                     Navigation:
                   </Text>
                   <HStack spacing={4} flexWrap="wrap">
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('navigation.product')}
+                      {t("navigation.product")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('navigation.customers')}
+                      {t("navigation.customers")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('navigation.pricing')}
+                      {t("navigation.pricing")}
                     </Button>
                     <Button size="sm" variant="outline" colorScheme="blue">
-                      {t('navigation.dashboard')}
+                      {t("navigation.dashboard")}
                     </Button>
                   </HStack>
                 </VStack>
@@ -114,4 +126,4 @@ export default function I18nDemoPage() {
       </Container>
     </Box>
   );
-} 
+}
