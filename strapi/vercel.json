@@ -5,7 +5,8 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/**", "public/**", "config/**"]
+        "includeFiles": ["dist/**", "public/**", "config/**"],
+        "maxLambdaSize": "50mb"
       }
     }
   ],
@@ -24,6 +25,13 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "HOST": "0.0.0.0",
+    "PORT": "1337"
+  },
+  "functions": {
+    "server.js": {
+      "maxDuration": 30
+    }
   }
 }
