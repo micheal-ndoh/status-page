@@ -1,36 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": [
-            "dist/**"
-          ]
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"]
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "server.js"
-      }
-    ],
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "crons": [
-      {
-        "path": "/api/cron",
-        "schedule": "0 0 * * *"
-      }
-    ],
-    "rewrites": [
-      {
-        "source": "/_next/:path*",
-        "destination": "/_next/:path*"
-      }
-    ],
-    "outputDirectory": "dist"
-  }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "outputDirectory": "dist"
+}
