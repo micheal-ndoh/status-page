@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
@@ -14,6 +14,9 @@ COPY . .
 
 # Build the application
 RUN npm run build
+
+# Create public folder if it doesn't exist and ensure proper permissions
+RUN mkdir -p public && chmod 755 public
 
 # Remove dev dependencies after build
 RUN npm prune --production

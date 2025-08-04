@@ -3,7 +3,7 @@ services:
     name: strapi-cms
     env: node
     plan: free
-    buildCommand: npm install && node scripts/build.js
+    buildCommand: npm install && npm run setup && npm run build
     startCommand: npm start
     rootDir: strapi
     envVars:
