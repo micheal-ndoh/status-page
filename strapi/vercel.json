@@ -29,10 +29,5 @@
     "NODE_ENV": "production",
     "HOST": "0.0.0.0",
     "PORT": "1337"
-  },
-  "functions": {
-    "api/strapi.js": {
-      "maxDuration": 30
-    }
   }
 }
