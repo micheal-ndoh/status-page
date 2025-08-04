@@ -4,12 +4,17 @@ const path = require('path');
 // Set the working directory to the Strapi folder
 process.chdir(path.join(__dirname, '..'));
 
-// Initialize Strapi
+// Initialize Strapi with minimal configuration
 let app;
 
 async function initStrapi() {
   if (!app) {
-    app = await strapi().load();
+    try {
+      app = await strapi().load();
+    } catch (error) {
+      console.error('Failed to initialize Strapi:', error);
+      throw error;
+    }
   }
   return app;
 }
@@ -18,11 +23,15 @@ async function initStrapi() {
 module.exports = async (req, res) => {
   try {
     const strapiApp = await initStrapi();
-    
+
     // Handle the request through Strapi
     return strapiApp.handleRequest(req, res);
   } catch (error) {
     console.error('Strapi error:', error);
-    res.status(500).json({ error: 'Internal server error', details: error.message });
+    res.status(500).json({
+      error: 'Internal server error',
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
   }
 }; 

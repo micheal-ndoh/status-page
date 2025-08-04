@@ -3,12 +3,7 @@
   "builds": [
     {
       "src": "api/strapi.js",
-      "use": "@vercel/node",
-      "config": {
-        "buildCommand": "npm run build",
-        "includeFiles": ["dist/**", "config/**", "package.json"],
-        "maxLambdaSize": "250mb"
-      }
+      "use": "@vercel/node"
     }
   ],
   "rewrites": [
