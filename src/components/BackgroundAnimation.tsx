@@ -151,7 +151,10 @@ export default function BackgroundAnimation() {
         w="600px"
         h="600px"
         borderRadius="full"
-        bg={useColorModeValue("rgba(168, 85, 247, 0.08)", "rgba(168, 85, 247, 0.03)")}
+        bg={useColorModeValue(
+          "rgba(168, 85, 247, 0.08)",
+          "rgba(168, 85, 247, 0.03)"
+        )}
         transform="scale(0.85) translate(-50%, -50%)"
         mixBlendMode="overlay"
         animate={{
@@ -220,7 +223,10 @@ export default function BackgroundAnimation() {
         w="200px"
         h="200px"
         borderRadius="full"
-        bg={useColorModeValue("rgba(173, 216, 230, 0.03)", "rgba(173, 216, 230, 0.01)")}
+        bg={useColorModeValue(
+          "rgba(173, 216, 230, 0.03)",
+          "rgba(173, 216, 230, 0.01)"
+        )}
         transform="scale(0.8) translate(-50%, -50%)"
         mixBlendMode="overlay"
         animate={{
@@ -241,7 +247,10 @@ export default function BackgroundAnimation() {
         w="150px"
         h="150px"
         borderRadius="full"
-        bg={useColorModeValue("rgba(255, 182, 193, 0.03)", "rgba(255, 182, 193, 0.01)")}
+        bg={useColorModeValue(
+          "rgba(255, 182, 193, 0.03)",
+          "rgba(255, 182, 193, 0.01)"
+        )}
         transform="scale(0.85) translate(50%, 50%)"
         mixBlendMode="screen"
         animate={{
@@ -256,4 +265,4 @@ export default function BackgroundAnimation() {
       />
     </Box>
   );
-} 
+}
