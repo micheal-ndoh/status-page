@@ -19,8 +19,15 @@ import {
   Text,
   Avatar,
   VStack,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslation } from "@/hooks/useTranslation";
