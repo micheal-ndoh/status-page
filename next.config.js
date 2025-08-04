@@ -13,6 +13,8 @@ const nextConfig = {
     experimental: {
         serverComponentsExternalPackages: ['@prisma/client'],
     },
+    // Disable static generation for pages that use translations
+    trailingSlash: false,
     images: {
         domains: [
             'localhost',

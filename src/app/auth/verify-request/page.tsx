@@ -23,6 +23,9 @@ import { useRouter } from "next/navigation";
 import Logo from "@/components/Logo";
 import { useTranslation } from "@/hooks/useTranslation";
 
+// Force dynamic rendering to avoid SSR issues with translations
+export const dynamic = "force-dynamic";
+
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
 

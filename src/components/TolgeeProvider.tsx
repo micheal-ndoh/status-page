@@ -10,6 +10,7 @@ interface TolgeeProviderProps {
 
 export function TolgeeProvider({ children }: TolgeeProviderProps) {
   const [isClient, setIsClient] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -25,13 +26,16 @@ export function TolgeeProvider({ children }: TolgeeProviderProps) {
           // Set default language if no saved language
           await tolgee.changeLanguage('en');
         }
+        setIsInitialized(true);
       } catch (error) {
         console.error('Failed to initialize Tolgee:', error);
         // Fallback to default language on error
         try {
           await tolgee.changeLanguage('en');
+          setIsInitialized(true);
         } catch (fallbackError) {
           console.error('Failed to set fallback language:', fallbackError);
+          setIsInitialized(true); // Still set as initialized to prevent infinite loading
         }
       }
     };
@@ -39,8 +43,8 @@ export function TolgeeProvider({ children }: TolgeeProviderProps) {
     initTolgee();
   }, []);
 
-  // Don't render TolgeeProvider until client-side
-  if (!isClient) {
+  // Don't render TolgeeProvider until client-side and initialized
+  if (!isClient || !isInitialized) {
     return <>{children}</>;
   }
 

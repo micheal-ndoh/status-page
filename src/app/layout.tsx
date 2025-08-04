@@ -5,7 +5,6 @@ import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 import { TolgeeProvider } from "@/components/TolgeeProvider";
 import ErrorBoundary from "@/components/ErrorBoundary";
-import DebugInfo from "@/components/DebugInfo";
 import theme from "@/theme";
 
 // Metadata is handled in the page components
@@ -18,14 +17,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/Gemini_Generated_Image_ir9gbrir9gbrir9g__1_-removebg-preview.png" />
+        <link
+          rel="icon"
+          href="/Gemini_Generated_Image_ir9gbrir9gbrir9g__1_-removebg-preview.png"
+        />
         <title>Prism - Get ready for downtime</title>
       </head>
       <body>
         <ErrorBoundary>
           <TolgeeProvider>
-            <SessionProvider 
-              refetchInterval={0} 
+            <SessionProvider
+              refetchInterval={0}
               refetchOnWindowFocus={false}
               refetchWhenOffline={false}
             >
@@ -41,7 +43,6 @@ export default function RootLayout({
                     },
                   }}
                 />
-                <DebugInfo />
               </ChakraProvider>
             </SessionProvider>
           </TolgeeProvider>

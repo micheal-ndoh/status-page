@@ -33,6 +33,9 @@ import {
 import Logo from "@/components/Logo";
 import { useTranslation } from "@/hooks/useTranslation";
 
+// Force dynamic rendering to avoid SSR issues with translations
+export const dynamic = "force-dynamic";
+
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 const MotionInput = motion(Input);
