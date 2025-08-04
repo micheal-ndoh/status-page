@@ -5,11 +5,19 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/**"]
+        "includeFiles": ["dist/**", "public/**", "config/**"]
       }
     }
   ],
   "rewrites": [
+    {
+      "source": "/admin/(.*)",
+      "destination": "/admin/$1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
     {
       "source": "/(.*)",
       "destination": "/server.js"
@@ -17,6 +25,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "outputDirectory": "dist"
+  }
 }
