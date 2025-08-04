@@ -11,7 +11,6 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
@@ -38,12 +37,15 @@ import { useEffect, useState } from "react";
 
 const GlassmorphismNavbar = () => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isClient, setIsClient] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
 
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -209,100 +211,52 @@ const GlassmorphismNavbar = () => {
           </HStack>
 
           {/* Mobile Menu Button */}
-          <IconButton
-            display={{ base: "flex", md: "none" }}
-            aria-label="Open menu"
-            icon={<Bars3Icon className="w-6 h-6" />}
-            onClick={onOpen}
-            variant="ghost"
-            color="white"
-            _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
-          />
+          {isClient && (
+            <IconButton
+              display={{ base: "flex", md: "none" }}
+              aria-label="Open menu"
+              icon={<Bars3Icon className="w-6 h-6" />}
+              onClick={onOpen}
+              variant="ghost"
+              color="white"
+              _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
+            />
+          )}
         </Flex>
       </Box>
 
       {/* Mobile Drawer */}
-      <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent
-          bg="rgba(0, 0, 0, 0.95)"
-          backdropFilter="blur(20px)"
-          borderBottom="1px solid"
-          borderColor="rgba(255, 255, 255, 0.1)"
-        >
-          <DrawerCloseButton color="white" />
-          <DrawerHeader
-            borderBottomWidth="1px"
+      {isClient && (
+        <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
+          <DrawerOverlay />
+          <DrawerContent
+            bg="rgba(0, 0, 0, 0.95)"
+            backdropFilter="blur(20px)"
+            borderBottom="1px solid"
             borderColor="rgba(255, 255, 255, 0.1)"
           >
-            <Box
-              cursor="pointer"
-              onClick={() => {
-                router.push("/");
-                onClose();
-              }}
+            <DrawerCloseButton color="white" />
+            <DrawerHeader
+              borderBottomWidth="1px"
+              borderColor="rgba(255, 255, 255, 0.1)"
             >
-              <Logo size="md" variant="white" />
-            </Box>
-          </DrawerHeader>
-          <DrawerBody py={8}>
-            <VStack spacing={6} align="stretch">
-              {/* Mobile Navigation Links */}
-              <VStack spacing={4} align="stretch">
-                {navItems.map((item) => (
-                  <Text
-                    key={item.name}
-                    color="white"
-                    fontSize="lg"
-                    fontWeight="medium"
-                    cursor="pointer"
-                    _hover={{ color: "rgba(173, 216, 230, 1)" }}
-                    transition="color 0.2s"
-                    onClick={() => {
-                      handleNavClick(item.href);
-                      onClose();
-                    }}
-                  >
-                    {item.name}
-                  </Text>
-                ))}
-              </VStack>
-
-              {/* Mobile Auth Buttons */}
-              <VStack spacing={4} pt={4}>
-                <LanguageSwitcher />
-                <ThemeToggle />
-                {session ? (
-                  // User is logged in - show dashboard button
-                  <Button
-                    bg="rgba(173, 216, 230, 0.9)"
-                    color="gray.800"
-                    fontSize="lg"
-                    fontWeight="semibold"
-                    px={8}
-                    py={3}
-                    borderRadius="full"
-                    w="full"
-                    onClick={() => {
-                      handleDashboard();
-                      onClose();
-                    }}
-                    _hover={{
-                      bg: "rgba(173, 216, 230, 1)",
-                      transform: "translateY(-1px)",
-                      boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
-                    }}
-                    _active={{
-                      transform: "translateY(0)",
-                    }}
-                    transition="all 0.2s"
-                  >
-                    {t("navigation.dashboard")}
-                  </Button>
-                ) : (
-                  // User is not logged in - show login/signup buttons
-                  <>
+              <Box
+                cursor="pointer"
+                onClick={() => {
+                  router.push("/");
+                  onClose();
+                }}
+              >
+                <Logo size="md" variant="white" />
+              </Box>
+            </DrawerHeader>
+            <DrawerBody py={8}>
+              <VStack spacing={6} align="stretch">
+                {/* Mobile Navigation Links */}
+                <VStack spacing={4} align="stretch">
+                  {navItems.map((item) => (
                     <Text
+                      key={item.name}
                       color="white"
                       fontSize="lg"
                       fontWeight="medium"
@@ -310,12 +264,21 @@ const GlassmorphismNavbar = () => {
                       _hover={{ color: "rgba(173, 216, 230, 1)" }}
                       transition="color 0.2s"
                       onClick={() => {
-                        handleLogin();
+                        handleNavClick(item.href);
                         onClose();
                       }}
                     >
-                      {t("common.login")}
+                      {item.name}
                     </Text>
+                  ))}
+                </VStack>
+
+                {/* Mobile Auth Buttons */}
+                <VStack spacing={4} pt={4}>
+                  <LanguageSwitcher />
+                  <ThemeToggle />
+                  {session ? (
+                    // User is logged in - show dashboard button
                     <Button
                       bg="rgba(173, 216, 230, 0.9)"
                       color="gray.800"
@@ -326,7 +289,7 @@ const GlassmorphismNavbar = () => {
                       borderRadius="full"
                       w="full"
                       onClick={() => {
-                        handleSignUp();
+                        handleDashboard();
                         onClose();
                       }}
                       _hover={{
@@ -339,15 +302,58 @@ const GlassmorphismNavbar = () => {
                       }}
                       transition="all 0.2s"
                     >
-                      {t("common.signup")}
+                      {t("navigation.dashboard")}
                     </Button>
-                  </>
-                )}
+                  ) : (
+                    // User is not logged in - show login/signup buttons
+                    <>
+                      <Text
+                        color="white"
+                        fontSize="lg"
+                        fontWeight="medium"
+                        cursor="pointer"
+                        _hover={{ color: "rgba(173, 216, 230, 1)" }}
+                        transition="color 0.2s"
+                        onClick={() => {
+                          handleLogin();
+                          onClose();
+                        }}
+                      >
+                        {t("common.login")}
+                      </Text>
+                      <Button
+                        bg="rgba(173, 216, 230, 0.9)"
+                        color="gray.800"
+                        fontSize="lg"
+                        fontWeight="semibold"
+                        px={8}
+                        py={3}
+                        borderRadius="full"
+                        w="full"
+                        onClick={() => {
+                          handleSignUp();
+                          onClose();
+                        }}
+                        _hover={{
+                          bg: "rgba(173, 216, 230, 1)",
+                          transform: "translateY(-1px)",
+                          boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
+                        }}
+                        _active={{
+                          transform: "translateY(0)",
+                        }}
+                        transition="all 0.2s"
+                      >
+                        {t("common.signup")}
+                      </Button>
+                    </>
+                  )}
+                </VStack>
               </VStack>
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      )}
     </>
   );
 };
