@@ -87,9 +87,24 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Generate a unique slug from the team name
+        const baseSlug = name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+        
+        // Check if slug already exists and make it unique
+        let slug = baseSlug;
+        let counter = 1;
+        while (await prisma.team.findUnique({ where: { slug } })) {
+            slug = `${baseSlug}-${counter}`;
+            counter++;
+        }
+
         const team = await prisma.team.create({
             data: {
                 name,
+                slug,
                 description,
                 ownerId: session.user.id,
                 members: {
