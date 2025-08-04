@@ -11,7 +11,7 @@
     "build": "strapi build",
     "develop": "strapi develop",
     "setup": "node scripts/setup.js",
-    "start": "strapi start",
+    "start": "node scripts/start.js",
     "strapi": "strapi"
   },
   "dependencies": {

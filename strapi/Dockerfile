@@ -15,8 +15,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Create public folder if it doesn't exist and ensure proper permissions
-RUN mkdir -p public && chmod 755 public
+# Create public and uploads folders with proper permissions
+RUN mkdir -p public/uploads && chmod -R 755 public
 
 # Remove dev dependencies after build
 RUN npm prune --production

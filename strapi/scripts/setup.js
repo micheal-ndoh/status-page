@@ -10,11 +10,20 @@ if (!fs.existsSync(publicPath)) {
     fs.mkdirSync(publicPath, { recursive: true });
 }
 
-// Ensure uploads folder exists
+// Ensure uploads folder exists with proper permissions
 const uploadsPath = path.join(publicPath, 'uploads');
 if (!fs.existsSync(uploadsPath)) {
     console.log('📁 Creating uploads folder...');
     fs.mkdirSync(uploadsPath, { recursive: true });
+}
+
+// Set proper permissions for public and uploads folders
+try {
+    fs.chmodSync(publicPath, 0o755);
+    fs.chmodSync(uploadsPath, 0o755);
+    console.log('🔐 Set proper permissions for public and uploads folders');
+} catch (error) {
+    console.log('⚠️ Could not set permissions (this is normal on some systems)');
 }
 
 // Ensure .tmp folder exists for database

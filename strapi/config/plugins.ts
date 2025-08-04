@@ -6,6 +6,14 @@ export default ({ env }: { env: any }) => ({
       },
     },
   },
+  upload: {
+    config: {
+      provider: 'strapi-provider-upload-local',
+      providerOptions: {
+        sizeLimit: 100000,
+      },
+    },
+  },
   documentation: {
     config: {
       openapi: '3.0.0',
