@@ -1,34 +1,34 @@
 {
   "name": "strapi-cms",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application for status page CMS",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
   "scripts": {
-    "setup": "node scripts/setup.js",
+    "build": "strapi build",
     "develop": "strapi develop",
+    "setup": "node scripts/setup.js",
     "start": "strapi start",
-    "build": "node scripts/build.js",
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/strapi": "4.15.0",
-    "@strapi/plugin-users-permissions": "4.15.0",
     "@strapi/plugin-i18n": "4.15.0",
+    "@strapi/plugin-users-permissions": "4.15.0",
+    "@strapi/strapi": "4.15.0",
     "better-sqlite3": "8.6.0"
   },
   "devDependencies": {
     "@strapi/typescript-utils": "4.15.0",
     "typescript": "5.0.4"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "strapi-cms-uuid"
-  },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "strapi-cms-uuid"
+  }
 }
