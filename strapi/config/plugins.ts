@@ -9,9 +9,7 @@ export default ({ env }: { env: any }) => ({
   upload: {
     config: {
       provider: 'local',
-      providerOptions: {
-        sizeLimit: 100000,
-      },
+      sizeLimit: 100000,
     },
   },
   documentation: {
