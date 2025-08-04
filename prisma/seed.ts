@@ -5,7 +5,56 @@ const prisma = new PrismaClient()
 async function main() {
     console.log('🌱 Starting database seed...')
 
-    // Create sample services
+    // Create sample users
+    const adminUser = await prisma.user.create({
+        data: {
+            name: 'Admin User',
+            email: 'admin@example.com',
+            role: 'ADMIN',
+        },
+    })
+
+    const teamMember = await prisma.user.create({
+        data: {
+            name: 'Team Member',
+            email: 'member@example.com',
+            role: 'USER',
+        },
+    })
+
+    console.log('✅ Created users')
+
+    // Create a sample team
+    const team = await prisma.team.create({
+        data: {
+            name: 'Example Team',
+            slug: 'example-team',
+            description: 'A sample team for demonstration',
+            ownerId: adminUser.id,
+        },
+    })
+
+    console.log('✅ Created team')
+
+    // Add team members
+    await prisma.teamMember.createMany({
+        data: [
+            {
+                teamId: team.id,
+                userId: adminUser.id,
+                role: 'OWNER',
+            },
+            {
+                teamId: team.id,
+                userId: teamMember.id,
+                role: 'MEMBER',
+            },
+        ],
+    })
+
+    console.log('✅ Added team members')
+
+    // Create sample services for the team
     const services = await Promise.all([
         prisma.service.create({
             data: {
@@ -14,6 +63,7 @@ async function main() {
                 status: 'OPERATIONAL',
                 url: 'https://app.example.com',
                 logo: 'https://via.placeholder.com/64/3B82F6/FFFFFF?text=Web',
+                teamId: team.id,
             },
         }),
         prisma.service.create({
@@ -23,6 +73,7 @@ async function main() {
                 status: 'OPERATIONAL',
                 url: 'https://db.example.com',
                 logo: 'https://via.placeholder.com/64/10B981/FFFFFF?text=DB',
+                teamId: team.id,
             },
         }),
         prisma.service.create({
@@ -32,6 +83,7 @@ async function main() {
                 status: 'OPERATIONAL',
                 url: 'https://cdn.example.com',
                 logo: 'https://via.placeholder.com/64/F59E0B/FFFFFF?text=CDN',
+                teamId: team.id,
             },
         }),
         prisma.service.create({
@@ -41,6 +93,7 @@ async function main() {
                 status: 'DEGRADED_PERFORMANCE',
                 url: 'https://email.example.com',
                 logo: 'https://via.placeholder.com/64/EF4444/FFFFFF?text=Email',
+                teamId: team.id,
             },
         }),
         prisma.service.create({
@@ -50,22 +103,12 @@ async function main() {
                 status: 'OPERATIONAL',
                 url: 'https://api.example.com',
                 logo: 'https://via.placeholder.com/64/8B5CF6/FFFFFF?text=API',
+                teamId: team.id,
             },
         }),
     ])
 
     console.log(`✅ Created ${services.length} services`)
-
-    // Create a sample user
-    const user = await prisma.user.create({
-        data: {
-            name: 'Admin User',
-            email: 'admin@example.com',
-            role: 'ADMIN',
-        },
-    })
-
-    console.log('✅ Created admin user')
 
     // Create sample incidents
     const incidents = await Promise.all([
@@ -75,7 +118,8 @@ async function main() {
                 description: 'We are experiencing slower than usual email delivery times. Our team is investigating the root cause.',
                 status: 'INVESTIGATING',
                 severity: 'MINOR',
-                authorId: user.id,
+                authorId: adminUser.id,
+                teamId: team.id,
                 services: {
                     connect: [{ id: services[3].id }], // Email Service
                 },
@@ -87,7 +131,8 @@ async function main() {
                 description: 'We will be performing routine maintenance on our database infrastructure. Expected downtime: 30 minutes.',
                 status: 'MONITORING',
                 severity: 'MAJOR',
-                authorId: user.id,
+                authorId: adminUser.id,
+                teamId: team.id,
                 services: {
                     connect: [{ id: services[1].id }], // Database
                 },

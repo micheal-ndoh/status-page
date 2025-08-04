@@ -38,6 +38,7 @@ import {
   Cog6ToothIcon,
   UserIcon,
   ArrowRightOnRectangleIcon,
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Logo from "@/components/Logo";
@@ -89,6 +90,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       name: t("dashboard.navigation.dashboard"),
       href: "/dashboard",
       icon: HomeIcon,
+    },
+    {
+      name: "Teams",
+      href: "/dashboard/teams",
+      icon: UsersIcon,
     },
     {
       name: t("dashboard.navigation.incidents"),

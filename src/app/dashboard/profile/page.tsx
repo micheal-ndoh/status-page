@@ -48,6 +48,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getImageUrl } from "@/lib/storage";
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
@@ -93,7 +94,8 @@ export default function ProfilePage() {
           const userData = await response.json();
           setValue("name", userData.name || "");
           setValue("email", userData.email || "");
-          setAvatarUrl(userData.image || null);
+          // Use utility function to handle both URL and base64 data
+          setAvatarUrl(getImageUrl(userData.image));
         }
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -205,9 +207,11 @@ export default function ProfilePage() {
       }
 
       const result = await response.json();
+
+      // The image is now a URL from Cubbit, not base64
       setAvatarUrl(result.user.image);
 
-      // Update the session with new avatar
+      // Update the session with new avatar URL
       await update({
         ...session,
         user: {

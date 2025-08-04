@@ -1,154 +1,73 @@
-import AWS from 'aws-sdk'
+import { S3Client, PutObjectCommand, DeleteObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
-// AWS S3 Configuration
-const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION,
-})
+// Initialize S3 client for Cubbit
+export const cubbitClient = new S3Client({
+  region: 'eu-west-1', // Cubbit uses EU region
+  endpoint: process.env.CUBBIT_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.CUBBIT_ACCESS_KEY!,
+    secretAccessKey: process.env.CUBBIT_SECRET_KEY!,
+  },
+  forcePathStyle: true, // Required for S3-compatible services
+});
 
-// Cubbit Configuration (S3-compatible)
-const cubbit = new AWS.S3({
-    accessKeyId: process.env.CUBBIT_ACCESS_KEY,
-    secretAccessKey: process.env.CUBBIT_SECRET_KEY,
-    endpoint: process.env.CUBBIT_ENDPOINT,
-    s3ForcePathStyle: true,
-    signatureVersion: 'v4',
-})
+export const CUBBIT_BUCKET = process.env.CUBBIT_BUCKET!;
 
-export interface UploadResult {
-    s3Url?: string
-    cubbitUrl?: string
-    success: boolean
-    error?: string
-}
+// Utility functions for image handling
+export const isImageUrl = (url: string): boolean => {
+  return Boolean(url && (url.startsWith('http') || url.startsWith('https')));
+};
 
-export async function uploadToBothServices(
-    file: Buffer,
-    filename: string,
-    contentType: string
-): Promise<UploadResult> {
-    const result: UploadResult = { success: false }
+export const isBase64Image = (data: string): boolean => {
+  return Boolean(data && data.startsWith('data:image/'));
+};
 
-    try {
-        // Upload to both services simultaneously
-        const [s3Result, cubbitResult] = await Promise.allSettled([
-            s3.upload({
-                Bucket: process.env.AWS_S3_BUCKET!,
-                Key: filename,
-                Body: file,
-                ContentType: contentType,
-                ACL: 'public-read',
-            }).promise(),
-            cubbit.upload({
-                Bucket: process.env.CUBBIT_BUCKET!,
-                Key: filename,
-                Body: file,
-                ContentType: contentType,
-                ACL: 'public-read',
-            }).promise(),
-        ])
+export const getImageUrl = (imageData: string | null): string | null => {
+  if (!imageData) return null;
+  
+  if (isImageUrl(imageData)) {
+    return imageData; // Already a URL
+  }
+  
+  if (isBase64Image(imageData)) {
+    return imageData; // Base64 data URL
+  }
+  
+  return null;
+};
 
-        if (s3Result.status === 'fulfilled') {
-            result.s3Url = s3Result.value.Location
-        }
+// Generate unique filename for avatar
+export const generateAvatarFileName = (userId: string, originalName: string): string => {
+  const fileExtension = originalName.split('.').pop() || 'jpg';
+  return `avatars/${userId}-${Date.now()}.${fileExtension}`;
+};
 
-        if (cubbitResult.status === 'fulfilled') {
-            result.cubbitUrl = cubbitResult.value.Location
-        }
+// Check if file exists in Cubbit
+export const checkFileExists = async (key: string): Promise<boolean> => {
+  try {
+    await cubbitClient.send(new HeadObjectCommand({
+      Bucket: CUBBIT_BUCKET,
+      Key: key,
+    }));
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
 
-        result.success = s3Result.status === 'fulfilled' || cubbitResult.status === 'fulfilled'
-    } catch (error) {
-        result.error = error instanceof Error ? error.message : 'Unknown error'
+// Extract key from Cubbit URL
+export const extractKeyFromUrl = (url: string): string | null => {
+  if (!url || !url.includes('avatars/')) return null;
+  
+  try {
+    const urlParts = url.split('/');
+    const keyIndex = urlParts.findIndex(part => part === 'avatars');
+    if (keyIndex !== -1 && keyIndex + 1 < urlParts.length) {
+      return `${urlParts[keyIndex]}/${urlParts[keyIndex + 1]}`;
     }
-
-    return result
-}
-
-export async function getFileUrl(filename: string): Promise<string | null> {
-    try {
-        // Try Cubbit first
-        try {
-            await cubbit.headObject({
-                Bucket: process.env.CUBBIT_BUCKET!,
-                Key: filename,
-            }).promise()
-
-            return `${process.env.CUBBIT_ENDPOINT}/${process.env.CUBBIT_BUCKET}/${filename}`
-        } catch {
-            // If Cubbit fails, try S3
-            try {
-                await s3.headObject({
-                    Bucket: process.env.AWS_S3_BUCKET!,
-                    Key: filename,
-                }).promise()
-
-                return `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${filename}`
-            } catch {
-                return null
-            }
-        }
-    } catch (error) {
-        console.error('Error getting file URL:', error)
-        return null
-    }
-}
-
-export async function syncBuckets(): Promise<void> {
-    try {
-        // List files in both buckets
-        const [s3Files, cubbitFiles] = await Promise.all([
-            s3.listObjectsV2({ Bucket: process.env.AWS_S3_BUCKET! }).promise(),
-            cubbit.listObjectsV2({ Bucket: process.env.CUBBIT_BUCKET! }).promise(),
-        ])
-
-        const s3Keys = new Set(s3Files.Contents?.map(obj => obj.Key) || [])
-        const cubbitKeys = new Set(cubbitFiles.Contents?.map(obj => obj.Key) || [])
-
-        // Find files missing in Cubbit
-        const missingInCubbit = Array.from(s3Keys).filter(key => !cubbitKeys.has(key))
-
-        // Find files missing in S3
-        const missingInS3 = Array.from(cubbitKeys).filter(key => !s3Keys.has(key))
-
-        // Copy missing files to Cubbit
-        for (const key of missingInCubbit) {
-            if (key) {
-                const file = await s3.getObject({
-                    Bucket: process.env.AWS_S3_BUCKET!,
-                    Key: key,
-                }).promise()
-
-                await cubbit.upload({
-                    Bucket: process.env.CUBBIT_BUCKET!,
-                    Key: key,
-                    Body: file.Body,
-                    ContentType: file.ContentType,
-                    ACL: 'public-read',
-                }).promise()
-            }
-        }
-
-        // Copy missing files to S3
-        for (const key of missingInS3) {
-            if (key) {
-                const file = await cubbit.getObject({
-                    Bucket: process.env.CUBBIT_BUCKET!,
-                    Key: key,
-                }).promise()
-
-                await s3.upload({
-                    Bucket: process.env.AWS_S3_BUCKET!,
-                    Key: key,
-                    Body: file.Body,
-                    ContentType: file.ContentType,
-                    ACL: 'public-read',
-                }).promise()
-            }
-        }
-
-        console.log(`Sync completed: ${missingInCubbit.length} files copied to Cubbit, ${missingInS3.length} files copied to S3`)
-    } catch (error) {
-        console.error('Error syncing buckets:', error)
-    }
-} 
+  } catch (error) {
+    console.error('Error extracting key from URL:', error);
+  }
+  
+  return null;
+}; 
