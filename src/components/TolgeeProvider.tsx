@@ -19,13 +19,21 @@ export function TolgeeProvider({ children }: TolgeeProviderProps) {
     const initTolgee = async () => {
       try {
         await tolgee.load();
-        const savedLanguage = localStorage.getItem('tolgee_language');
-        if (savedLanguage && tolgee.getAvailableLanguages().includes(savedLanguage)) {
-          await tolgee.changeLanguage(savedLanguage);
+        
+        // Check if we're in a browser environment before accessing localStorage
+        if (typeof window !== 'undefined') {
+          const savedLanguage = localStorage.getItem('tolgee_language');
+          if (savedLanguage && tolgee.getAvailableLanguages().includes(savedLanguage)) {
+            await tolgee.changeLanguage(savedLanguage);
+          } else {
+            // Set default language if no saved language
+            await tolgee.changeLanguage('en');
+          }
         } else {
-          // Set default language if no saved language
+          // Server-side fallback
           await tolgee.changeLanguage('en');
         }
+        
         setIsInitialized(true);
       } catch (error) {
         console.error('Failed to initialize Tolgee:', error);

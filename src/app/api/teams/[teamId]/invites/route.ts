@@ -6,6 +6,9 @@ import { z } from 'zod';
 import crypto from 'crypto';
 import { generateTeamInviteEmail } from '@/lib/team-email-templates';
 
+// Force dynamic rendering to prevent static generation errors
+export const dynamic = 'force-dynamic'
+
 const inviteSchema = z.object({
     email: z.string().email("Please enter a valid email address"),
     role: z.enum(['OWNER', 'ADMIN', 'MEMBER']).default('MEMBER'),

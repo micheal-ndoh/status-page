@@ -23,8 +23,11 @@ export function LanguageSwitcher() {
     const newLanguage = event.target.value;
     try {
       await changeLanguage(newLanguage);
+      
       // Force a re-render by updating localStorage
-      localStorage.setItem('tolgee_language', newLanguage);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('tolgee_language', newLanguage);
+      }
     } catch (error) {
       console.error('Failed to change language:', error);
     }

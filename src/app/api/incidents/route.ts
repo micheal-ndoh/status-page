@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { incidentSchema } from '@/lib/validations'
 
+// Force dynamic rendering to prevent static generation errors
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
     try {
         const incidents = await prisma.incident.findMany({

@@ -56,7 +56,9 @@ function SignInContent() {
 
     try {
       // Store the current language in localStorage for the email service to access
-      localStorage.setItem("user_language", currentLanguage);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("user_language", currentLanguage);
+      }
 
       const result = await signIn("email", {
         email,

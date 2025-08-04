@@ -14,7 +14,9 @@ export default function I18nDemoPage() {
     try {
       await changeLanguage(lang);
       // Force a re-render by updating localStorage
-      localStorage.setItem('tolgee_language', lang);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('tolgee_language', lang);
+      }
     } catch (error) {
       console.error('Failed to change language:', error);
     }

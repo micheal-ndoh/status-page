@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 
+// Force dynamic rendering to prevent static generation errors
+export const dynamic = 'force-dynamic'
+
 const updateSchema = z.object({
     message: z.string().min(1, 'Update message is required'),
     status: z.enum(['INVESTIGATING', 'IDENTIFIED', 'MONITORING', 'RESOLVED']),

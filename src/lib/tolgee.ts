@@ -30,11 +30,11 @@ export const tolgee = Tolgee()
         // Fallback to server if key not found locally
         fallbackLanguage: 'en',
 
-        // Language persistence
-        persistence: {
+        // Language persistence - only use localStorage in browser environment
+        persistence: typeof window !== 'undefined' ? {
             type: 'localStorage',
             key: 'tolgee_language',
-        },
+        } : undefined,
 
         // Language detection
         observerOptions: {
