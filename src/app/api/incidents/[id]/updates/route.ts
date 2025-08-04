@@ -38,15 +38,6 @@ export async function POST(
                 message: validatedData.message,
                 status: validatedData.status,
                 incidentId: params.id,
-                authorId: session.user.id,
-            },
-            include: {
-                author: {
-                    select: {
-                        name: true,
-                        email: true,
-                    },
-                },
             },
         })
 
