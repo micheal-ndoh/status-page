@@ -1,0 +1,51 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Box, Text, VStack } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useTranslation } from "@/hooks/useTranslation";
+
+interface DetectionDot {
+  angle: number;
+  radius: number;
+  opacity: number;
+  size: number;
+  createdAt: number;
+}
+
+const AnimatedHero = () => {
+  const { t } = useTranslation();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [detectionDots, setDetectionDots] = useState<DetectionDot[]>([]);
+  const lastTimeRef = useRef(performance.now());
+  const animationFrameIdRef = useRef<number>();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      opacity: number;
+    }> = [];
+
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) *
