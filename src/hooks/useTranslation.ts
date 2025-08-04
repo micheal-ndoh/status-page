@@ -4,31 +4,40 @@ import { useTranslate, useTolgee } from '@tolgee/react';
 import { TranslationKey } from '@/i18n';
 import { useEffect, useState } from 'react';
 
-export function useTranslation() {
+// Create a wrapper hook that safely handles Tolgee
+function useTolgeeSafe() {
   const [isClient, setIsClient] = useState(false);
-  const [isTolgeeAvailable, setIsTolgeeAvailable] = useState(false);
-
-  // Try to use Tolgee, but provide fallbacks if it's not available
-  let translateInstance: any = null;
-  let tolgeeInstance: any = null;
-
-  try {
-    translateInstance = useTranslate();
-    tolgeeInstance = useTolgee();
-    if (isClient && tolgeeInstance) {
-      setIsTolgeeAvailable(true);
-    }
-  } catch (error) {
-    // Tolgee is not available (likely during SSR)
-    console.warn('Tolgee not available during SSR:', error);
-  }
+  const [translateInstance, setTranslateInstance] = useState<any>(null);
+  const [tolgeeInstance, setTolgeeInstance] = useState<any>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // Only call Tolgee hooks if we're on the client and haven't set them yet
+  if (isClient && !translateInstance && !tolgeeInstance) {
+    try {
+      const translate = useTranslate();
+      const tolgee = useTolgee();
+      setTranslateInstance(translate);
+      setTolgeeInstance(tolgee);
+    } catch (error) {
+      console.warn('Tolgee not available:', error);
+    }
+  }
+
+  return {
+    isClient,
+    translateInstance,
+    tolgeeInstance,
+  };
+}
+
+export function useTranslation() {
+  const { isClient, translateInstance, tolgeeInstance } = useTolgeeSafe();
+
   const translate = (key: TranslationKey, params?: Record<string, string | number>) => {
-    if (!isClient || !isTolgeeAvailable) {
+    if (!isClient || !translateInstance) {
       // Return fallback translations during SSR
       const fallbackTranslations: Record<string, string> = {
         'homepage.hero.title': 'Prism - Get ready for downtime',
@@ -49,7 +58,7 @@ export function useTranslation() {
     }
 
     try {
-      return translateInstance?.t(key, params) || key;
+      return translateInstance.t(key, params) || key;
     } catch (error) {
       console.warn(`Translation key not found: ${key}`);
       return key;
@@ -57,7 +66,7 @@ export function useTranslation() {
   };
 
   const changeLanguage = async (language: string) => {
-    if (isClient && isTolgeeAvailable && tolgeeInstance) {
+    if (isClient && tolgeeInstance) {
       try {
         await tolgeeInstance.changeLanguage(language);
         return true;
@@ -69,11 +78,11 @@ export function useTranslation() {
     return false;
   };
 
-  const currentLanguage = isClient && isTolgeeAvailable && tolgeeInstance ? tolgeeInstance.getLanguage() : 'en';
+  const currentLanguage = isClient && tolgeeInstance ? tolgeeInstance.getLanguage() : 'en';
 
   return {
     t: translate,
-    isLoading: !isClient || !isTolgeeAvailable,
+    isLoading: !isClient || !translateInstance,
     changeLanguage,
     currentLanguage,
   };
