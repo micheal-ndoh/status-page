@@ -25,6 +25,8 @@ import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
 // Custom hook to safely use useDisclosure
