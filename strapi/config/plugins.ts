@@ -8,7 +8,7 @@ export default ({ env }: { env: any }) => ({
   },
   upload: {
     config: {
-      provider: 'strapi-provider-upload-local',
+      provider: 'local',
       providerOptions: {
         sizeLimit: 100000,
       },

@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Flex,
@@ -25,7 +24,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -35,13 +33,14 @@ import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
-const GlassmorphismNavbar = () => {
+// SSR-safe component that only renders on client
+const ClientOnlyGlassmorphismNavbar = () => {
   const { t } = useTranslation();
-  const [isClient, setIsClient] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
   }, []);
 
   const onOpen = () => setIsOpen(true);
@@ -101,19 +100,15 @@ const GlassmorphismNavbar = () => {
     </HStack>
   );
 
+  // Don't render anything until mounted
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
       {/* Desktop Navigation */}
-      <Box
-        position="fixed"
-        top={0}
-        left={0}
-        right={0}
-        zIndex={1000}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <Box position="fixed" top={0} left={0} right={0} zIndex={1000}>
         <Flex
           justify="space-between"
           align="center"
@@ -130,88 +125,81 @@ const GlassmorphismNavbar = () => {
           </Box>
 
           {/* Center - Navigation Links */}
-          <Box
-            display={{ base: "none", md: "block" }}
-            px={6}
-            py={2}
-            borderRadius="full"
-            backdropFilter="blur(20px)"
-            bg="rgba(255, 255, 255, 0.1)"
-            border="1px solid"
-            borderColor="rgba(255, 255, 255, 0.2)"
-            boxShadow="0 8px 32px rgba(0, 0, 0, 0.1)"
-          >
+          <Box display={{ base: "none", md: "block" }}>
             <NavLinks />
           </Box>
 
-          {/* Right - Auth Buttons */}
-          <HStack spacing={4} display={{ base: "none", md: "flex" }}>
-            <LanguageSwitcher />
-            <ThemeToggle />
-            {session ? (
-              // User is logged in - show dashboard button
-              <Button
-                bg="rgba(173, 216, 230, 0.9)"
-                color="gray.800"
-                fontSize="sm"
-                fontWeight="semibold"
-                px={6}
-                py={2}
-                borderRadius="full"
-                onClick={handleDashboard}
-                _hover={{
-                  bg: "rgba(173, 216, 230, 1)",
-                  transform: "translateY(-1px)",
-                  boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
-                }}
-                _active={{
-                  transform: "translateY(0)",
-                }}
-                transition="all 0.2s"
-              >
-                {t("navigation.dashboard")}
-              </Button>
-            ) : (
-              // User is not logged in - show login/signup buttons
-              <>
-                <Text
-                  color="white"
-                  fontSize="sm"
-                  fontWeight="medium"
-                  cursor="pointer"
-                  _hover={{ color: "rgba(173, 216, 230, 1)" }}
-                  transition="color 0.2s"
-                  onClick={handleLogin}
-                >
-                  {t("common.login")}
-                </Text>
-                <Button
-                  bg="rgba(173, 216, 230, 0.9)"
-                  color="gray.800"
-                  fontSize="sm"
-                  fontWeight="semibold"
-                  px={6}
-                  py={2}
-                  borderRadius="full"
-                  onClick={handleSignUp}
-                  _hover={{
-                    bg: "rgba(173, 216, 230, 1)",
-                    transform: "translateY(-1px)",
-                    boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
-                  }}
-                  _active={{
-                    transform: "translateY(0)",
-                  }}
-                  transition="all 0.2s"
-                >
-                  {t("common.signup")}
-                </Button>
-              </>
-            )}
-          </HStack>
+          {/* Right - Auth & Actions */}
+          <HStack spacing={4}>
+            {/* Desktop Auth Buttons */}
+            <Box display={{ base: "none", md: "flex" }}>
+              <HStack spacing={4}>
+                <LanguageSwitcher />
+                <ThemeToggle />
+                {session ? (
+                  // User is logged in - show dashboard button
+                  <Button
+                    bg="rgba(173, 216, 230, 0.9)"
+                    color="gray.800"
+                    fontSize="sm"
+                    fontWeight="semibold"
+                    px={6}
+                    py={2}
+                    borderRadius="full"
+                    onClick={handleDashboard}
+                    _hover={{
+                      bg: "rgba(173, 216, 230, 1)",
+                      transform: "translateY(-1px)",
+                      boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
+                    }}
+                    _active={{
+                      transform: "translateY(0)",
+                    }}
+                    transition="all 0.2s"
+                  >
+                    {t("navigation.dashboard")}
+                  </Button>
+                ) : (
+                  // User is not logged in - show login/signup buttons
+                  <>
+                    <Text
+                      color="white"
+                      fontSize="sm"
+                      fontWeight="medium"
+                      cursor="pointer"
+                      _hover={{ color: "rgba(173, 216, 230, 1)" }}
+                      transition="color 0.2s"
+                      onClick={handleLogin}
+                    >
+                      {t("common.login")}
+                    </Text>
+                    <Button
+                      bg="rgba(173, 216, 230, 0.9)"
+                      color="gray.800"
+                      fontSize="sm"
+                      fontWeight="semibold"
+                      px={6}
+                      py={2}
+                      borderRadius="full"
+                      onClick={handleSignUp}
+                      _hover={{
+                        bg: "rgba(173, 216, 230, 1)",
+                        transform: "translateY(-1px)",
+                        boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
+                      }}
+                      _active={{
+                        transform: "translateY(0)",
+                      }}
+                      transition="all 0.2s"
+                    >
+                      {t("common.signup")}
+                    </Button>
+                  </>
+                )}
+              </HStack>
+            </Box>
 
-          {/* Mobile Menu Button */}
-          {isClient && (
+            {/* Mobile Menu Button */}
             <IconButton
               display={{ base: "flex", md: "none" }}
               aria-label="Open menu"
@@ -221,42 +209,92 @@ const GlassmorphismNavbar = () => {
               color="white"
               _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
             />
-          )}
+          </HStack>
         </Flex>
       </Box>
 
       {/* Mobile Drawer */}
-      {isClient && (
-        <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent
-            bg="rgba(0, 0, 0, 0.95)"
-            backdropFilter="blur(20px)"
-            borderBottom="1px solid"
+      <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent
+          bg="rgba(0, 0, 0, 0.95)"
+          backdropFilter="blur(20px)"
+          borderBottom="1px solid"
+          borderColor="rgba(255, 255, 255, 0.1)"
+        >
+          <DrawerCloseButton color="white" />
+          <DrawerHeader
+            borderBottomWidth="1px"
             borderColor="rgba(255, 255, 255, 0.1)"
           >
-            <DrawerCloseButton color="white" />
-            <DrawerHeader
-              borderBottomWidth="1px"
-              borderColor="rgba(255, 255, 255, 0.1)"
+            <Box
+              cursor="pointer"
+              onClick={() => {
+                router.push("/");
+                onClose();
+              }}
             >
-              <Box
-                cursor="pointer"
-                onClick={() => {
-                  router.push("/");
-                  onClose();
-                }}
-              >
-                <Logo size="md" variant="white" />
-              </Box>
-            </DrawerHeader>
-            <DrawerBody py={8}>
-              <VStack spacing={6} align="stretch">
-                {/* Mobile Navigation Links */}
-                <VStack spacing={4} align="stretch">
-                  {navItems.map((item) => (
+              <Logo size="md" variant="white" />
+            </Box>
+          </DrawerHeader>
+          <DrawerBody py={8}>
+            <VStack spacing={6} align="stretch">
+              {/* Mobile Navigation Links */}
+              <VStack spacing={4} align="stretch">
+                {navItems.map((item) => (
+                  <Text
+                    key={item.name}
+                    color="white"
+                    fontSize="lg"
+                    fontWeight="medium"
+                    cursor="pointer"
+                    _hover={{ color: "rgba(173, 216, 230, 1)" }}
+                    transition="color 0.2s"
+                    onClick={() => {
+                      handleNavClick(item.href);
+                      onClose();
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                ))}
+              </VStack>
+
+              {/* Mobile Auth Buttons */}
+              <VStack spacing={4} pt={4}>
+                <LanguageSwitcher />
+                <ThemeToggle />
+                {session ? (
+                  // User is logged in - show dashboard button
+                  <Button
+                    bg="rgba(173, 216, 230, 0.9)"
+                    color="gray.800"
+                    fontSize="lg"
+                    fontWeight="semibold"
+                    px={8}
+                    py={3}
+                    borderRadius="full"
+                    w="full"
+                    onClick={() => {
+                      handleDashboard();
+                      onClose();
+                    }}
+                    _hover={{
+                      bg: "rgba(173, 216, 230, 1)",
+                      transform: "translateY(-1px)",
+                      boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
+                    }}
+                    _active={{
+                      transform: "translateY(0)",
+                    }}
+                    transition="all 0.2s"
+                  >
+                    {t("navigation.dashboard")}
+                  </Button>
+                ) : (
+                  // User is not logged in - show login/signup buttons
+                  <>
                     <Text
-                      key={item.name}
                       color="white"
                       fontSize="lg"
                       fontWeight="medium"
@@ -264,21 +302,12 @@ const GlassmorphismNavbar = () => {
                       _hover={{ color: "rgba(173, 216, 230, 1)" }}
                       transition="color 0.2s"
                       onClick={() => {
-                        handleNavClick(item.href);
+                        handleLogin();
                         onClose();
                       }}
                     >
-                      {item.name}
+                      {t("common.login")}
                     </Text>
-                  ))}
-                </VStack>
-
-                {/* Mobile Auth Buttons */}
-                <VStack spacing={4} pt={4}>
-                  <LanguageSwitcher />
-                  <ThemeToggle />
-                  {session ? (
-                    // User is logged in - show dashboard button
                     <Button
                       bg="rgba(173, 216, 230, 0.9)"
                       color="gray.800"
@@ -289,7 +318,7 @@ const GlassmorphismNavbar = () => {
                       borderRadius="full"
                       w="full"
                       onClick={() => {
-                        handleDashboard();
+                        handleSignUp();
                         onClose();
                       }}
                       _hover={{
@@ -302,60 +331,32 @@ const GlassmorphismNavbar = () => {
                       }}
                       transition="all 0.2s"
                     >
-                      {t("navigation.dashboard")}
+                      {t("common.signup")}
                     </Button>
-                  ) : (
-                    // User is not logged in - show login/signup buttons
-                    <>
-                      <Text
-                        color="white"
-                        fontSize="lg"
-                        fontWeight="medium"
-                        cursor="pointer"
-                        _hover={{ color: "rgba(173, 216, 230, 1)" }}
-                        transition="color 0.2s"
-                        onClick={() => {
-                          handleLogin();
-                          onClose();
-                        }}
-                      >
-                        {t("common.login")}
-                      </Text>
-                      <Button
-                        bg="rgba(173, 216, 230, 0.9)"
-                        color="gray.800"
-                        fontSize="lg"
-                        fontWeight="semibold"
-                        px={8}
-                        py={3}
-                        borderRadius="full"
-                        w="full"
-                        onClick={() => {
-                          handleSignUp();
-                          onClose();
-                        }}
-                        _hover={{
-                          bg: "rgba(173, 216, 230, 1)",
-                          transform: "translateY(-1px)",
-                          boxShadow: "0 4px 12px rgba(173, 216, 230, 0.3)",
-                        }}
-                        _active={{
-                          transform: "translateY(0)",
-                        }}
-                        transition="all 0.2s"
-                      >
-                        {t("common.signup")}
-                      </Button>
-                    </>
-                  )}
-                </VStack>
+                  </>
+                )}
               </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      )}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
+};
+
+// Wrapper component that handles SSR
+const GlassmorphismNavbar = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return <ClientOnlyGlassmorphismNavbar />;
 };
 
 export default GlassmorphismNavbar;
