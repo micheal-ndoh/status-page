@@ -7,6 +7,7 @@ import theme from "@/theme";
 import ClientProviders from "@/components/ClientProviders";
 
 // Metadata is handled in the page components
+// Force deployment to pick up hydration fixes
 
 export default function RootLayout({
   children,
