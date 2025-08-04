@@ -3,34 +3,49 @@
 import {
   Box,
   Flex,
-  Text,
-  Button,
   HStack,
-  VStack,
   IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
   useDisclosure,
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   useColorModeValue,
+  Stack,
+  useColorMode,
+  Container,
+  Text,
+  Avatar,
+  VStack,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useSession, signOut } from "next-auth/react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useEffect, useState } from "react";
 
-const MotionBox = motion(Box);
+// Custom hook to safely use useDisclosure
+function useSafeDisclosure() {
+  const [isClient, setIsClient] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
+
+  return { isOpen, onOpen, onClose };
+}
 
 const GlassmorphismNavbar = () => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useSafeDisclosure();
+
   const router = useRouter();
   const { data: session, status } = useSession();
   const bgColor = useColorModeValue(
@@ -39,8 +54,9 @@ const GlassmorphismNavbar = () => {
   );
   const borderColor = useColorModeValue(
     "rgba(255, 255, 255, 0.2)",
-    "rgba(255, 255, 255, 0.1)"
+    "rgba(173, 216, 230, 0.3)"
   );
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const navItems = [
     { name: t("navigation.product"), href: "/product" },
@@ -87,7 +103,7 @@ const GlassmorphismNavbar = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <MotionBox
+      <Box
         position="fixed"
         top={0}
         left={0}
@@ -204,7 +220,7 @@ const GlassmorphismNavbar = () => {
             _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
           />
         </Flex>
-      </MotionBox>
+      </Box>
 
       {/* Mobile Drawer */}
       <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
