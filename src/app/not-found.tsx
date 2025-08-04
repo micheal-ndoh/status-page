@@ -32,8 +32,8 @@ export default function NotFound() {
             bg="rgba(173, 216, 230, 0.6)"
             borderRadius="full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+                      x: typeof window !== 'undefined' ? Math.random() * window.innerWidth : 0,
+        y: typeof window !== 'undefined' ? Math.random() * window.innerHeight : 0,
               opacity: 0,
             }}
             animate={{

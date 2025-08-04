@@ -9,7 +9,7 @@ export default function DebugInfo() {
   useEffect(() => {
     const info = {
       userAgent: navigator.userAgent,
-      windowSize: `${window.innerWidth}x${window.innerHeight}`,
+      windowSize: typeof window !== 'undefined' ? `${window.innerWidth}x${window.innerHeight}` : 'N/A',
       hasLocalStorage: typeof localStorage !== 'undefined',
       hasSessionStorage: typeof sessionStorage !== 'undefined',
       envVars: {

@@ -28,11 +28,15 @@ const AnimatedHero = () => {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (typeof window !== 'undefined') {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    if (typeof window !== 'undefined') {
+      window.addEventListener("resize", resizeCanvas);
+    }
 
     const particles: Array<{
       x: number;
@@ -204,7 +208,9 @@ const AnimatedHero = () => {
     animationFrameIdRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("resize", resizeCanvas);
+      }
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
       }

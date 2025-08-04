@@ -29,18 +29,54 @@ const MotionGridItem = motion(GridItem);
 
 // Customer logos data
 const customerLogos = [
-  { name: "TechCorp", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=TechCorp" },
-  { name: "DataFlow", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=DataFlow" },
-  { name: "CloudSync", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=CloudSync" },
-  { name: "SecureNet", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=SecureNet" },
-  { name: "InnovateLab", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=InnovateLab" },
-  { name: "FutureTech", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=FutureTech" },
-  { name: "DigitalCore", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=DigitalCore" },
-  { name: "SmartScale", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=SmartScale" },
-  { name: "CyberFlow", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=CyberFlow" },
-  { name: "QuantumSoft", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=QuantumSoft" },
-  { name: "NeuralNet", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=NeuralNet" },
-  { name: "AICore", logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=AICore" },
+  {
+    name: "TechCorp",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=TechCorp",
+  },
+  {
+    name: "DataFlow",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=DataFlow",
+  },
+  {
+    name: "CloudSync",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=CloudSync",
+  },
+  {
+    name: "SecureNet",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=SecureNet",
+  },
+  {
+    name: "InnovateLab",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=InnovateLab",
+  },
+  {
+    name: "FutureTech",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=FutureTech",
+  },
+  {
+    name: "DigitalCore",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=DigitalCore",
+  },
+  {
+    name: "SmartScale",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=SmartScale",
+  },
+  {
+    name: "CyberFlow",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=CyberFlow",
+  },
+  {
+    name: "QuantumSoft",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=QuantumSoft",
+  },
+  {
+    name: "NeuralNet",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=NeuralNet",
+  },
+  {
+    name: "AICore",
+    logo: "/api/placeholder/120/60/173,216,230/0a0a0a?text=AICore",
+  },
 ];
 
 // Testimonials data
@@ -51,7 +87,8 @@ const testimonials = [
     title: "CTO at TechCorp",
     company: "TechCorp",
     avatar: "/api/placeholder/80/80/173,216,230/0a0a0a?text=SC",
-    quote: "Prism has revolutionized how we monitor our infrastructure. The real-time alerts and beautiful dashboard have made our operations team 10x more efficient.",
+    quote:
+      "Prism has revolutionized how we monitor our infrastructure. The real-time alerts and beautiful dashboard have made our operations team 10x more efficient.",
     rating: 5,
   },
   {
@@ -60,7 +97,8 @@ const testimonials = [
     title: "DevOps Lead",
     company: "DataFlow",
     avatar: "/api/placeholder/80/80/173,216,230/0a0a0a?text=MR",
-    quote: "The intelligent detection system caught issues before they became problems. Prism's monitoring capabilities are simply unmatched in the industry.",
+    quote:
+      "The intelligent detection system caught issues before they became problems. Prism's monitoring capabilities are simply unmatched in the industry.",
     rating: 5,
   },
   {
@@ -69,7 +107,8 @@ const testimonials = [
     title: "VP of Engineering",
     company: "CloudSync",
     avatar: "/api/placeholder/80/80/173,216,230/0a0a0a?text=EW",
-    quote: "We've tried every monitoring solution out there. Prism's ease of use combined with its powerful features makes it our go-to choice for all our services.",
+    quote:
+      "We've tried every monitoring solution out there. Prism's ease of use combined with its powerful features makes it our go-to choice for all our services.",
     rating: 5,
   },
   {
@@ -78,7 +117,8 @@ const testimonials = [
     title: "Site Reliability Engineer",
     company: "SecureNet",
     avatar: "/api/placeholder/80/80/173,216,230/0a0a0a?text=DK",
-    quote: "The glassmorphism design and smooth animations make monitoring actually enjoyable. Our team loves the intuitive interface and reliable performance.",
+    quote:
+      "The glassmorphism design and smooth animations make monitoring actually enjoyable. Our team loves the intuitive interface and reliable performance.",
     rating: 5,
   },
 ];
@@ -90,12 +130,14 @@ const CustomersPage = () => {
   // Parallax effect for logo grid
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.pageYOffset;
+      const scrolled = typeof window !== "undefined" ? window.pageYOffset : 0;
       setParallaxOffset(scrolled * 0.1);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+          if (typeof window !== 'undefined') {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }
   }, []);
 
   // Auto-rotate testimonials
@@ -156,7 +198,8 @@ const CustomersPage = () => {
               maxW="600px"
               lineHeight="tall"
             >
-              Join thousands of companies worldwide who trust Prism to monitor their critical infrastructure with precision and style.
+              Join thousands of companies worldwide who trust Prism to monitor
+              their critical infrastructure with precision and style.
             </Text>
           </motion.div>
         </VStack>
@@ -284,13 +327,15 @@ const CustomersPage = () => {
                   <VStack spacing={6} align="stretch">
                     {/* Rating */}
                     <HStack spacing={1} justify="center">
-                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-5 h-5"
-                          style={{ color: "rgba(173, 216, 230, 1)" }}
-                        />
-                      ))}
+                      {[...Array(testimonials[currentTestimonial].rating)].map(
+                        (_, i) => (
+                          <StarIcon
+                            key={i}
+                            className="w-5 h-5"
+                            style={{ color: "rgba(173, 216, 230, 1)" }}
+                          />
+                        )
+                      )}
                     </HStack>
 
                     {/* Quote */}
@@ -316,23 +361,13 @@ const CustomersPage = () => {
                         borderColor="rgba(173, 216, 230, 0.3)"
                       />
                       <VStack spacing={1} align="start">
-                        <Text
-                          fontSize="lg"
-                          fontWeight="semibold"
-                          color="white"
-                        >
+                        <Text fontSize="lg" fontWeight="semibold" color="white">
                           {testimonials[currentTestimonial].name}
                         </Text>
-                        <Text
-                          fontSize="sm"
-                          color="rgba(173, 216, 230, 0.8)"
-                        >
+                        <Text fontSize="sm" color="rgba(173, 216, 230, 0.8)">
                           {testimonials[currentTestimonial].title}
                         </Text>
-                        <Text
-                          fontSize="sm"
-                          color="rgba(173, 216, 230, 0.6)"
-                        >
+                        <Text fontSize="sm" color="rgba(173, 216, 230, 0.6)">
                           {testimonials[currentTestimonial].company}
                         </Text>
                       </VStack>
@@ -362,7 +397,8 @@ const CustomersPage = () => {
               }}
               onClick={() =>
                 setCurrentTestimonial(
-                  (prev) => (prev - 1 + testimonials.length) % testimonials.length
+                  (prev) =>
+                    (prev - 1 + testimonials.length) % testimonials.length
                 )
               }
               display={{ base: "none", lg: "flex" }}
@@ -386,7 +422,9 @@ const CustomersPage = () => {
                 bg: "rgba(173, 216, 230, 0.1)",
               }}
               onClick={() =>
-                setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+                setCurrentTestimonial(
+                  (prev) => (prev + 1) % testimonials.length
+                )
               }
               display={{ base: "none", lg: "flex" }}
             />
@@ -464,7 +502,8 @@ const CustomersPage = () => {
                 maxW="600px"
                 lineHeight="tall"
               >
-                Experience the power of intelligent monitoring with Prism. Start your free trial today and see why industry leaders choose us.
+                Experience the power of intelligent monitoring with Prism. Start
+                your free trial today and see why industry leaders choose us.
               </Text>
 
               <motion.div
@@ -500,4 +539,4 @@ const CustomersPage = () => {
   );
 };
 
-export default CustomersPage; 
+export default CustomersPage;

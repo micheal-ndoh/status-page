@@ -5,6 +5,9 @@ import { prisma } from '@/lib/prisma';
 import { PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { cubbitClient, CUBBIT_BUCKET, generateAvatarFileName, extractKeyFromUrl } from '@/lib/storage';
 
+// Force dynamic rendering to prevent static generation errors
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);

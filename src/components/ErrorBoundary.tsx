@@ -45,7 +45,11 @@ class ErrorBoundary extends Component<Props, State> {
               {this.state.error?.message || 'An unexpected error occurred'}
             </Text>
             <Button
-              onClick={() => window.location.reload()}
+              onClick={() => {
+          if (typeof window !== 'undefined') {
+            window.location.reload();
+          }
+        }}
               colorScheme="blue"
               size="lg"
             >
