@@ -1,20 +1,27 @@
 "use client";
 
-import { TranslationKey } from '@/i18n';
+import { TranslationKey, Locale, translations, defaultLocale } from '@/i18n';
 import { useState, useEffect } from 'react';
-import en from '@/i18n/en.json';
 
 export function useTranslation() {
   const [isClient, setIsClient] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState<Locale>(defaultLocale);
 
   useEffect(() => {
     setIsClient(true);
+    
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('tolgee_language') as Locale;
+      if (savedLanguage && savedLanguage in translations) {
+        setCurrentLanguage(savedLanguage);
+      }
+    }
   }, []);
 
   const translate = (key: TranslationKey, params?: Record<string, string | number>) => {
-    // Get the translation from the JSON file
+    const translationData = translations[currentLanguage] || translations[defaultLocale];
     const keys = key.split('.');
-    let value: any = en;
+    let value: any = translationData;
 
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
@@ -34,16 +41,24 @@ export function useTranslation() {
     return value || key;
   };
 
-  const changeLanguage = async (language: string) => {
-    // For now, we only support English
-    // This can be extended later to support multiple languages
-    return language === 'en';
+  const changeLanguage = async (language: Locale) => {
+    if (language in translations) {
+      setCurrentLanguage(language);
+      
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('tolgee_language', language);
+      }
+      
+      return true;
+    }
+    
+    return false;
   };
 
   return {
     t: translate,
     isLoading: !isClient,
     changeLanguage,
-    currentLanguage: 'en',
+    currentLanguage,
   };
 }

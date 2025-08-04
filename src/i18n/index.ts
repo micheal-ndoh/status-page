@@ -1,13 +1,21 @@
 import en from './en.json';
+import fr from './fr.json';
+import de from './de.json';
+import es from './es.json';
+import zh from './zh.json';
 
-export type Locale = 'en';
+export type Locale = 'en' | 'fr' | 'de' | 'es' | 'zh';
 
-export const locales: Locale[] = ['en'];
+export const locales: Locale[] = ['en', 'fr', 'de', 'es', 'zh'];
 
 export const defaultLocale: Locale = 'en';
 
 export const translations = {
     en,
+    fr,
+    de,
+    es,
+    zh,
 };
 
 export function getTranslation(locale: Locale = defaultLocale) {

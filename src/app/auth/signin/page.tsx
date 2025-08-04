@@ -312,11 +312,11 @@ function SignInContent() {
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <VStack spacing={3}>
-                  <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
+                  <HStack spacing={3} color={useColorModeValue("gray.600", "rgba(255, 255, 255, 0.7)")}>
                     <Icon as={ShieldCheckIcon} w={4} h={4} color="green.400" />
                     <Text fontSize="sm">{t("auth.signin.secureAuth")}</Text>
                   </HStack>
-                  <HStack spacing={3} color="rgba(255, 255, 255, 0.7)">
+                  <HStack spacing={3} color={useColorModeValue("gray.600", "rgba(255, 255, 255, 0.7)")}>
                     <Icon as={BoltIcon} w={4} h={4} color="blue.400" />
                     <Text fontSize="sm">{t("auth.signin.instantAccess")}</Text>
                   </HStack>
