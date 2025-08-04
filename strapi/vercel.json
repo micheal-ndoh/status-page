@@ -2,22 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/strapi.js",
+      "src": "api/index.js",
       "use": "@vercel/node",
       "config": {
         "buildCommand": "npm run build",
-        "includeFiles": [
-          "dist/**",
-          "config/**",
-          "package.json"
-        ]
+        "includeFiles": ["dist/**", "config/**", "package.json"]
       }
+    },
+    {
+      "src": "api/health.js",
+      "use": "@vercel/node"
     }
   ],
   "rewrites": [
     {
+      "source": "/health",
+      "destination": "/api/health"
+    },
+    {
       "source": "/(.*)",
-      "destination": "/api/strapi"
+      "destination": "/api"
     }
   ],
   "env": {
