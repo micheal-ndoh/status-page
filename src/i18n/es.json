@@ -237,40 +237,6 @@
     "unexpectedError": "Ocurrió un error inesperado",
     "getStarted": "Crea tu primer servicio para comenzar"
   },
-  "dashboard": {
-    "title": "Panel de control",
-    "welcome": "Bienvenido de vuelta",
-    "overview": "Resumen",
-    "recentActivity": "Actividad reciente",
-    "quickActions": "Acciones rápidas",
-    "stats": {
-      "totalServices": "Servicios totales",
-      "activeIncidents": "Incidentes activos",
-      "uptime": "Tiempo de actividad",
-      "responseTime": "Tiempo de respuesta",
-      "operationalServices": "Servicios operacionales",
-      "ofServices": "de servicios",
-      "ofTotal": "del total",
-      "increasedBy": "aumentado en",
-      "target": "objetivo"
-    },
-    "user": {
-      "profile": "Perfil",
-      "settings": "Configuración",
-      "signOut": "Cerrar sesión",
-      "account": "Cuenta"
-    },
-    "navigation": {
-      "dashboard": "Panel de control",
-      "services": "Servicios",
-      "incidents": "Incidentes",
-      "analytics": "Análisis",
-      "settings": "Configuración"
-    },
-    "serviceStatusOverview": "Resumen del estado de servicios",
-    "recentActivity": "Actividad reciente",
-    "noRecentActivity": "Sin actividad reciente"
-  },
   "profile": {
     "title": "Perfil",
     "personalInfo": "Información personal",
@@ -606,5 +572,73 @@
     "invitationLinkText": "Para aceptar esta invitación, haz clic en el enlace de arriba o cópialo en tu navegador.",
     "invitationSecurityNote": "Nota de seguridad: Este enlace de invitación es único para ti. Si no esperabas esta invitación, por favor ignora este correo electrónico.",
     "prismPlatform": "Plataforma Prism Status Page"
+  },
+  "components": {
+    "logo": {
+      "alt": "Logo de Prism"
+    },
+    "gamePreview": {
+      "mockServices": {
+        "webServer": "Servidor Web",
+        "database": "Base de Datos",
+        "apiGateway": "API Gateway",
+        "cdn": "CDN"
+      }
+    },
+    "navbar": {
+      "openMenu": "Abrir menú"
+    },
+    "strapiIntegration": {
+      "dataLoaded": "Datos de Strapi cargados",
+      "dataLoadedDesc": "{count} plantillas y contenido estático cargados",
+      "loadError": "Error al cargar datos de Strapi",
+      "loadErrorDesc": "Verifica tu configuración de Strapi",
+      "templateSelected": "Plantilla seleccionada"
+    },
+    "loadingDemo": {
+      "statusPageLoading": "Cargando página de estado",
+      "statusPageMessage": "Verificando estado del sistema...",
+      "dashboardLoading": "Cargando panel de control",
+      "dashboardMessage": "Cargando panel de control...",
+      "authLoading": "Cargando autenticación",
+      "authMessage": "Autenticación en progreso..."
+    },
+    "statusGame": {
+      "running": "Ejecutándose",
+      "stopped": "Detenido"
+    },
+    "themeToggle": {
+      "toggleTheme": "Cambiar tema"
+    }
+  },
+  "pages": {
+    "pricing": {
+      "plans": {
+        "starter": {
+          "monitors": "5 Monitores",
+          "checks": "1 Verificación",
+          "alerts": "Alertas básicas",
+          "support": "Soporte por correo"
+        },
+        "pro": {
+          "monitors": "25 Monitores",
+          "checks": "5 Verificaciones",
+          "alerts": "Alertas avanzadas",
+          "support": "Soporte prioritario",
+          "domains": "Dominios personalizados",
+          "api": "Acceso API"
+        },
+        "business": {
+          "monitors": "Monitores ilimitados",
+          "checks": "Verificaciones ilimitadas",
+          "alerts": "Todas las alertas",
+          "support": "Soporte 24/7",
+          "domains": "Dominios personalizados",
+          "api": "Acceso API",
+          "sso": "SSO",
+          "analytics": "Análisis avanzado"
+        }
+      }
+    }
   }
 }

@@ -10,7 +10,6 @@ env.example
 
 # testing
 /coverage
-
 # next.js
 /.next/
 /out/

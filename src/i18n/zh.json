@@ -234,40 +234,6 @@
     "unexpectedError": "发生意外错误",
     "getStarted": "创建您的第一个服务开始使用"
   },
-  "dashboard": {
-    "title": "仪表板",
-    "welcome": "欢迎回来",
-    "overview": "概览",
-    "recentActivity": "最近活动",
-    "quickActions": "快速操作",
-    "stats": {
-      "totalServices": "服务总数",
-      "activeIncidents": "活跃事件",
-      "uptime": "运行时间",
-      "responseTime": "响应时间",
-      "operationalServices": "运行正常的服务",
-      "ofServices": "的服务",
-      "ofTotal": "的总数",
-      "increasedBy": "增加了",
-      "target": "目标"
-    },
-    "user": {
-      "profile": "个人资料",
-      "settings": "设置",
-      "signOut": "退出登录",
-      "account": "账户"
-    },
-    "navigation": {
-      "dashboard": "仪表板",
-      "services": "服务",
-      "incidents": "事件",
-      "analytics": "分析",
-      "settings": "设置"
-    },
-    "serviceStatusOverview": "服务状态概览",
-    "recentActivity": "最近活动",
-    "noRecentActivity": "暂无最近活动"
-  },
   "profile": {
     "title": "个人资料",
     "personalInfo": "个人信息",
@@ -603,5 +569,73 @@
     "invitationLinkText": "要接受此邀请，请点击上方链接或将其复制到浏览器中。",
     "invitationSecurityNote": "安全提示：此邀请链接专属于您。如果您没有收到此邀请，请忽略此邮件。",
     "prismPlatform": "Prism状态页面平台"
+  },
+  "components": {
+    "logo": {
+      "alt": "Prism标志"
+    },
+    "gamePreview": {
+      "mockServices": {
+        "webServer": "Web服务器",
+        "database": "数据库",
+        "apiGateway": "API网关",
+        "cdn": "CDN"
+      }
+    },
+    "navbar": {
+      "openMenu": "打开菜单"
+    },
+    "strapiIntegration": {
+      "dataLoaded": "Strapi数据已加载",
+      "dataLoadedDesc": "已加载{count}个模板和静态内容",
+      "loadError": "加载Strapi数据时出错",
+      "loadErrorDesc": "请检查您的Strapi配置",
+      "templateSelected": "模板已选择"
+    },
+    "loadingDemo": {
+      "statusPageLoading": "状态页面加载中",
+      "statusPageMessage": "正在检查系统状态...",
+      "dashboardLoading": "仪表板加载中",
+      "dashboardMessage": "仪表板加载中...",
+      "authLoading": "身份验证加载中",
+      "authMessage": "身份验证进行中..."
+    },
+    "statusGame": {
+      "running": "运行中",
+      "stopped": "已停止"
+    },
+    "themeToggle": {
+      "toggleTheme": "切换主题"
+    }
+  },
+  "pages": {
+    "pricing": {
+      "plans": {
+        "starter": {
+          "monitors": "5个监控器",
+          "checks": "1次检查",
+          "alerts": "基础警报",
+          "support": "邮件支持"
+        },
+        "pro": {
+          "monitors": "25个监控器",
+          "checks": "5次检查",
+          "alerts": "高级警报",
+          "support": "优先支持",
+          "domains": "自定义域名",
+          "api": "API访问"
+        },
+        "business": {
+          "monitors": "无限监控器",
+          "checks": "无限检查",
+          "alerts": "所有警报",
+          "support": "24/7支持",
+          "domains": "自定义域名",
+          "api": "API访问",
+          "sso": "SSO",
+          "analytics": "高级分析"
+        }
+      }
+    }
   }
 }

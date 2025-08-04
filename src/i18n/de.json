@@ -237,40 +237,6 @@
     "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
     "getStarted": "Erstellen Sie Ihren ersten Service, um zu beginnen"
   },
-  "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Willkommen zurück",
-    "overview": "Übersicht",
-    "recentActivity": "Letzte Aktivität",
-    "quickActions": "Schnellaktionen",
-    "stats": {
-      "totalServices": "Gesamte Services",
-      "activeIncidents": "Aktive Vorfälle",
-      "uptime": "Betriebszeit",
-      "responseTime": "Antwortzeit",
-      "operationalServices": "Betriebsbereite Services",
-      "ofServices": "der Services",
-      "ofTotal": "der Gesamten",
-      "increasedBy": "erhöht um",
-      "target": "Ziel"
-    },
-    "user": {
-      "profile": "Profil",
-      "settings": "Einstellungen",
-      "signOut": "Abmelden",
-      "account": "Konto"
-    },
-    "navigation": {
-      "dashboard": "Dashboard",
-      "services": "Services",
-      "incidents": "Vorfälle",
-      "analytics": "Analysen",
-      "settings": "Einstellungen"
-    },
-    "serviceStatusOverview": "Service-Status-Übersicht",
-    "recentActivity": "Letzte Aktivität",
-    "noRecentActivity": "Keine kürzliche Aktivität"
-  },
   "profile": {
     "title": "Profil",
     "personalInfo": "Persönliche Informationen",
@@ -606,5 +572,73 @@
     "invitationLinkText": "Um diese Einladung anzunehmen, klicken Sie auf den obigen Link oder kopieren Sie ihn in Ihren Browser.",
     "invitationSecurityNote": "Sicherheitshinweis: Dieser Einladungslink ist einzigartig für Sie. Wenn Sie diese Einladung nicht erwartet haben, ignorieren Sie bitte diese E-Mail.",
     "prismPlatform": "Prism Status Page Platform"
+  },
+  "components": {
+    "logo": {
+      "alt": "Prism Logo"
+    },
+    "gamePreview": {
+      "mockServices": {
+        "webServer": "Webserver",
+        "database": "Datenbank",
+        "apiGateway": "API Gateway",
+        "cdn": "CDN"
+      }
+    },
+    "navbar": {
+      "openMenu": "Menü öffnen"
+    },
+    "strapiIntegration": {
+      "dataLoaded": "Strapi-Daten geladen",
+      "dataLoadedDesc": "{count} Vorlagen und statische Inhalte geladen",
+      "loadError": "Fehler beim Laden der Strapi-Daten",
+      "loadErrorDesc": "Überprüfen Sie Ihre Strapi-Konfiguration",
+      "templateSelected": "Vorlage ausgewählt"
+    },
+    "loadingDemo": {
+      "statusPageLoading": "Statusseite wird geladen",
+      "statusPageMessage": "Systemstatus wird überprüft...",
+      "dashboardLoading": "Dashboard wird geladen",
+      "dashboardMessage": "Dashboard wird geladen...",
+      "authLoading": "Authentifizierung wird geladen",
+      "authMessage": "Authentifizierung läuft..."
+    },
+    "statusGame": {
+      "running": "Läuft",
+      "stopped": "Gestoppt"
+    },
+    "themeToggle": {
+      "toggleTheme": "Theme wechseln"
+    }
+  },
+  "pages": {
+    "pricing": {
+      "plans": {
+        "starter": {
+          "monitors": "5 Monitore",
+          "checks": "1 Überprüfung",
+          "alerts": "Basis-Warnungen",
+          "support": "E-Mail-Support"
+        },
+        "pro": {
+          "monitors": "25 Monitore",
+          "checks": "5 Überprüfungen",
+          "alerts": "Erweiterte Warnungen",
+          "support": "Prioritäts-Support",
+          "domains": "Benutzerdefinierte Domains",
+          "api": "API-Zugang"
+        },
+        "business": {
+          "monitors": "Unbegrenzte Monitore",
+          "checks": "Unbegrenzte Überprüfungen",
+          "alerts": "Alle Warnungen",
+          "support": "24/7 Support",
+          "domains": "Benutzerdefinierte Domains",
+          "api": "API-Zugang",
+          "sso": "SSO",
+          "analytics": "Erweiterte Analysen"
+        }
+      }
+    }
   }
 }

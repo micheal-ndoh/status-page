@@ -545,5 +545,73 @@
     "invitationLinkText": "Pour accepter cette invitation, cliquez sur le lien ci-dessus ou copiez-le dans votre navigateur.",
     "invitationSecurityNote": "Note de sécurité : Ce lien d'invitation vous est unique. Si vous n'attendiez pas cette invitation, veuillez ignorer cet email.",
     "prismPlatform": "Plateforme Prism Status Page"
+  },
+  "components": {
+    "logo": {
+      "alt": "Logo Prism"
+    },
+    "gamePreview": {
+      "mockServices": {
+        "webServer": "Serveur Web",
+        "database": "Base de données",
+        "apiGateway": "Passerelle API",
+        "cdn": "CDN"
+      }
+    },
+    "navbar": {
+      "openMenu": "Ouvrir le menu"
+    },
+    "strapiIntegration": {
+      "dataLoaded": "Données Strapi chargées",
+      "dataLoadedDesc": "{count} modèles et contenu statique chargés",
+      "loadError": "Erreur lors du chargement des données Strapi",
+      "loadErrorDesc": "Vérifiez votre configuration Strapi",
+      "templateSelected": "Modèle sélectionné"
+    },
+    "loadingDemo": {
+      "statusPageLoading": "Chargement de la page de statut",
+      "statusPageMessage": "Vérification du statut du système...",
+      "dashboardLoading": "Chargement du tableau de bord",
+      "dashboardMessage": "Chargement du tableau de bord...",
+      "authLoading": "Chargement de l'authentification",
+      "authMessage": "Authentification..."
+    },
+    "statusGame": {
+      "running": "En cours",
+      "stopped": "Arrêté"
+    },
+    "themeToggle": {
+      "toggleTheme": "Basculer le thème"
+    }
+  },
+  "pages": {
+    "pricing": {
+      "plans": {
+        "starter": {
+          "monitors": "5 Moniteurs",
+          "checks": "1 Vérification",
+          "alerts": "Alertes de base",
+          "support": "Support par email"
+        },
+        "pro": {
+          "monitors": "25 Moniteurs",
+          "checks": "5 Vérifications",
+          "alerts": "Alertes avancées",
+          "support": "Support prioritaire",
+          "domains": "Domaines personnalisés",
+          "api": "Accès API"
+        },
+        "business": {
+          "monitors": "Moniteurs illimités",
+          "checks": "Vérifications illimitées",
+          "alerts": "Toutes les alertes",
+          "support": "Support 24/7",
+          "domains": "Domaines personnalisés",
+          "api": "Accès API",
+          "sso": "SSO",
+          "analytics": "Analyses avancées"
+        }
+      }
+    }
   }
 }

@@ -683,5 +683,160 @@
     "invitationLinkText": "To accept this invitation, click the link above or copy and paste it into your browser.",
     "invitationSecurityNote": "Security Note: This invitation link is unique to you. If you didn't expect this invitation, please ignore this email.",
     "prismPlatform": "Prism Status Page Platform"
+  },
+  "components": {
+    "logo": {
+      "alt": "Prism Logo"
+    },
+    "gamePreview": {
+      "mockServices": {
+        "webServer": "Web Server",
+        "database": "Database",
+        "apiGateway": "API Gateway",
+        "cdn": "CDN"
+      }
+    },
+    "navbar": {
+      "openMenu": "Open menu"
+    },
+    "strapiIntegration": {
+      "dataLoaded": "Strapi data loaded",
+      "dataLoadedDesc": "Loaded {count} templates and static content",
+      "loadError": "Error loading Strapi data",
+      "loadErrorDesc": "Check your Strapi configuration",
+      "templateSelected": "Template selected"
+    },
+    "loadingDemo": {
+      "statusPageLoading": "Status Page Loading",
+      "statusPageMessage": "Checking system status...",
+      "dashboardLoading": "Dashboard Loading",
+      "dashboardMessage": "Loading dashboard...",
+      "authLoading": "Authentication Loading",
+      "authMessage": "Authenticating..."
+    },
+    "statusGame": {
+      "running": "Running",
+      "stopped": "Stopped"
+    },
+    "themeToggle": {
+      "toggleTheme": "Toggle theme"
+    }
+  },
+  "pages": {
+    "pricing": {
+      "plans": {
+        "starter": {
+          "monitors": "5 Monitors",
+          "checks": "1 Check",
+          "alerts": "Basic Alerts",
+          "support": "Email Support"
+        },
+        "pro": {
+          "monitors": "25 Monitors",
+          "checks": "5 Checks",
+          "alerts": "Advanced Alerts",
+          "support": "Priority Support",
+          "domains": "Custom Domains",
+          "api": "API Access"
+        },
+        "business": {
+          "monitors": "Unlimited Monitors",
+          "checks": "Unlimited Checks",
+          "alerts": "All Alerts",
+          "support": "24/7 Support",
+          "domains": "Custom Domains",
+          "api": "API Access",
+          "sso": "SSO",
+          "analytics": "Advanced Analytics"
+        }
+      }
+    },
+    "product": {
+      "features": {
+        "intelligentDetection": "Intelligent Detection",
+        "intelligentDetectionDesc": "Advanced monitoring with smart detection capabilities",
+        "advancedSecurity": "Advanced Security",
+        "advancedSecurityDesc": "Enterprise-grade security for your monitoring data",
+        "analyticsDashboard": "Analytics Dashboard",
+        "analyticsDashboardDesc": "Comprehensive analytics and reporting dashboard",
+        "smartNotifications": "Smart Notifications",
+        "smartNotificationsDesc": "Intelligent notification system with customizable alerts",
+        "globalMonitoring": "Global Monitoring",
+        "globalMonitoringDesc": "Monitor your services from multiple locations worldwide"
+      },
+      "demo": {
+        "dashboardOverview": "Dashboard Overview",
+        "dashboardOverviewDesc": "Get a bird's eye view of all your services",
+        "serviceDetails": "Service Details",
+        "serviceDetailsDesc": "Deep dive into individual service metrics",
+        "incidentManagement": "Incident Management",
+        "incidentManagementDesc": "Handle incidents with precision and speed"
+      }
+    },
+    "integrations": {
+      "services": {
+        "slack": "Slack",
+        "slackDesc": "Get instant notifications in your Slack channels",
+        "discord": "Discord",
+        "discordDesc": "Send alerts directly to Discord webhooks",
+        "pagerduty": "PagerDuty",
+        "pagerdutyDesc": "Integrate with PagerDuty for incident management",
+        "microsoftTeams": "Microsoft Teams",
+        "microsoftTeamsDesc": "Post updates to Microsoft Teams channels",
+        "email": "Email",
+        "emailDesc": "Send email notifications to your team",
+        "webhook": "Webhook",
+        "webhookDesc": "Custom webhook integration for any service",
+        "sms": "SMS",
+        "smsDesc": "Send SMS alerts via Twilio integration",
+        "telegram": "Telegram",
+        "telegramDesc": "Get notifications in Telegram channels",
+        "github": "GitHub",
+        "githubDesc": "Connect with GitHub for repository monitoring",
+        "jira": "Jira",
+        "jiraDesc": "Create and track issues in Jira",
+        "zapier": "Zapier",
+        "zapierDesc": "Automate workflows with Zapier"
+      },
+      "form": {
+        "incidentTitle": "Incident Title",
+        "selectStatus": "Select Status",
+        "addComponent": "Add component"
+      }
+    },
+    "customers": {
+      "companies": {
+        "techcorp": "TechCorp",
+        "dataflow": "DataFlow",
+        "cloudsync": "CloudSync",
+        "securenet": "SecureNet",
+        "innovatelab": "InnovateLab",
+        "futuretech": "FutureTech",
+        "digitalcore": "DigitalCore",
+        "smartscale": "SmartScale",
+        "cyberflow": "CyberFlow",
+        "quantumsoft": "QuantumSoft",
+        "neuralnet": "NeuralNet",
+        "aicore": "AICore"
+      },
+      "testimonials": {
+        "sarahChen": "Sarah Chen",
+        "sarahTitle": "CTO at TechCorp",
+        "sarahCompany": "TechCorp",
+        "marcusRodriguez": "Marcus Rodriguez",
+        "marcusTitle": "DevOps Lead",
+        "marcusCompany": "DataFlow",
+        "emilyWatson": "Emily Watson",
+        "emilyTitle": "VP of Engineering",
+        "emilyCompany": "CloudSync",
+        "davidKim": "David Kim",
+        "davidTitle": "Site Reliability Engineer",
+        "davidCompany": "SecureNet"
+      },
+      "navigation": {
+        "previousTestimonial": "Previous testimonial",
+        "nextTestimonial": "Next testimonial"
+      }
+    }
   }
 }
