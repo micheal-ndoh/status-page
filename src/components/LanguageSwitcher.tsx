@@ -27,14 +27,9 @@ export function LanguageSwitcher() {
   const handleLanguageChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const newLanguage = event.target.value;
+    const newLanguage = event.target.value as any;
     try {
       await changeLanguage(newLanguage);
-
-      // Force a re-render by updating localStorage
-      if (typeof window !== "undefined") {
-        localStorage.setItem("tolgee_language", newLanguage);
-      }
     } catch (error) {
       console.error("Failed to change language:", error);
     }

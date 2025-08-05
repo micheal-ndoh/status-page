@@ -3,7 +3,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
-import { TolgeeProvider } from "@/components/TolgeeProvider";
+import { TranslationProvider } from "@/contexts/TranslationContext";
 import theme from "@/theme";
 
 interface ClientProvidersProps {
@@ -12,7 +12,7 @@ interface ClientProvidersProps {
 
 export default function ClientProviders({ children }: ClientProvidersProps) {
   return (
-    <TolgeeProvider>
+    <TranslationProvider>
       <SessionProvider
         refetchInterval={0}
         refetchOnWindowFocus={false}
@@ -32,6 +32,6 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
           />
         </ChakraProvider>
       </SessionProvider>
-    </TolgeeProvider>
+    </TranslationProvider>
   );
-} 
+}
