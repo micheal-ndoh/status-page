@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "postbuild": "logrocket-cli release $npm_package_version --upload-path './.next' --api-key $LOGROCKET_API_KEY",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
@@ -31,6 +32,7 @@
     "@types/react-dom": "^18.2.18",
     "aws-sdk": "^2.1531.0",
     "framer-motion": "^10.16.16",
+    "logrocket": "^10.1.0",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
     "nodemailer": "^6.10.1",
@@ -45,6 +47,7 @@
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0",
+    "logrocket-cli": "^0.15.2",
     "prisma": "^5.7.1",
     "tsx": "^4.7.0"
   },
