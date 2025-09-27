@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "postbuild": "logrocket-cli release $npm_package_version --upload-path './.next' --api-key $LOGROCKET_API_KEY",
+    "postbuild": "npx logrocket-cli release $npm_package_version --upload-path './.next' --api-key $LOGROCKET_API_KEY",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
